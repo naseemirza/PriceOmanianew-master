@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="#61aa8f"
+    tools:context="com.example.naseem.pdemo.LoginActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:inputType="textPersonName"
+        android:hint="  Email"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:background="@color/colorWhite"
+        android:ems="13"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:id="@+id/editText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:inputType="textPassword"
+        android:hint=" Password"
+        android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+        android:background="@color/colorWhite"
+        android:ems="13"
+        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginTop="25dp"
+        android:id="@+id/editText2" />
+
+    <Button
+        android:text="LOGIN"
+        android:background="#507963"
+        android:textColor="@color/colorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="50dp"
+        android:id="@+id/button_login"
+        android:layout_alignEnd="@+id/editText2"
+        android:layout_alignStart="@+id/editText2" />
+
+    <TextView
+        android:text="Not a member?"
+        android:textColor="@color/colorWhite"
+        android:textSize="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/button_login"
+        android:layout_alignStart="@+id/button_login"
+        android:layout_marginTop="47dp"
+        android:id="@+id/textView2" />
+
+    <TextView
+        android:text="  Sign up now"
+        android:clickable="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17dp"
+
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/textView2"
+        android:id="@+id/textView_signup"
+        android:layout_alignTop="@+id/textView2" />
+</RelativeLayout>

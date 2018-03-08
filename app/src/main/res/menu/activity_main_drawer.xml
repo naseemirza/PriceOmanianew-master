@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/login"
+            android:title="Login/Register" />
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/wallet"
+            android:title="Wallet" />
+        <item
+            android:id="@+id/nav_favorite"
+            android:icon="@drawable/favorite"
+            android:title="Favorite" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/history"
+            android:title="History" />
+
+
+        <item
+            android:id="@+id/nav_myad"
+            android:icon="@drawable/my_ad"
+            android:title="My Ad" />
+        <item
+            android:id="@+id/nav_category"
+            android:icon="@drawable/categories"
+            android:title="Categories" />
+        <item
+            android:id="@+id/nav_offer"
+            android:icon="@drawable/offer"
+            android:title="Offer" />
+        <item
+            android:id="@+id/nav_store"
+            android:icon="@drawable/stores"
+            android:title="Stores" />
+
+
+        <item
+            android:id="@+id/nav_country"
+            android:icon="@drawable/country"
+            android:title="Country" />
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/language"
+            android:title="Language" />
+        <item
+            android:id="@+id/nav_rate"
+            android:icon="@drawable/rate_our_app"
+            android:title="Rate Our App" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/send_us_feedback"
+            android:title="Send Us Feedback" />
+    </group>
+
+
+
+</menu>
