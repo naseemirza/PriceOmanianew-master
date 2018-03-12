@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewcolor"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp" />
+
+    <RadioButton
+        android:id="@+id/rbuttonc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:focusable="false"
+
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="150dp"
+        android:gravity="center|center_vertical"/>
+
+
+
+</LinearLayout>

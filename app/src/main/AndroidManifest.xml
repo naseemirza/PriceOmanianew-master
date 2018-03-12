@@ -46,9 +46,19 @@
         <activity
             android:name=".CardDetails.GotoSIte"
             android:parentActivityName=".CardDetails.CardDetails" />
-        <activity android:name=".CardDetails.DialogActivity"
-android:parentActivityName=".CardDetails.CardDetails"
-            ></activity>
+        <activity
+            android:name=".CardDetails.DialogActivity"
+            android:parentActivityName=".CardDetails.CardDetails" />
+        <activity
+            android:name=".CardDetails.SeeAllOptions"
+            android:parentActivityName=".CardDetails.CardDetails" />
+        <activity
+            android:name=".CardDetails.ColorActivity"
+            android:parentActivityName=".CardDetails.DialogActivity" />
+        <activity
+            android:name=".CardDetails.StorageActivity"
+            android:parentActivityName=".CardDetails.DialogActivity" />
+        <activity android:name=".CardDetails.BrandActivity"></activity>
     </application>
 
 </manifest>

@@ -7,10 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.naseem.pdemo.CardDetails.CardDetails;
 
 import java.util.List;
 
@@ -18,7 +21,7 @@ import java.util.List;
  * Created by Naseem on 07-02-2018.
  */
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
     private List<App> mApps;
     private boolean mHorizontal;
 
@@ -54,6 +57,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.priceTextview1.setText(String.valueOf(app.getPrice()));
         holder.imageview.setImageResource(app.getImage());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView mobilename,mobileprice;
+                mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
+                mobilename=(TextView)v.findViewById(R.id.nameTextview);
+                String s=mobileprice.getText().toString();
+                String s1=mobilename.getText().toString();
+                Intent intent = new Intent(v.getContext(), CardDetails.class);
+                intent.putExtra("price",s);
+                intent.putExtra("name",s1);
+                v.getContext().startActivity(intent);
+
+            }
+        });
+
 
 
     }
@@ -68,8 +87,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public int getItemCount() {
         return mApps.size();
     }
-
-
 
 
 
@@ -95,8 +112,42 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
 
 
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//         @Override
+//         public void onClick(View v) {
+//
+//             TextView mobilename,mobileprice;
+//
+//             mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
+//             mobilename=(TextView)v.findViewById(R.id.nameTextview);
+//               String s=mobileprice.getText().toString();
+//               String s1=mobilename.getText().toString();
+//             Intent intent = new Intent(v.getContext(), CardDetails.class);
+//             intent.putExtra("price",s);
+//                intent.putExtra("name",s1);
+//             v.getContext().startActivity(intent);
+//
+//
+//           }
+//        });
+
+
+
         }
 
+//        @Override
+//        public void onClick(View v) {
+//            TextView mobilename,mobileprice;
+//            mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
+//            mobilename=(TextView)v.findViewById(R.id.nameTextview);
+//            String s=mobileprice.getText().toString();
+//            String s1=mobilename.getText().toString();
+//            Intent intent = new Intent(v.getContext(), CardDetails.class);
+//            intent.putExtra("price",s);
+//            intent.putExtra("name",s1);
+//            v.getContext().startActivity(intent);
+//
+//        }
     }
 
 }

@@ -91,91 +91,92 @@ android:background="#ffff"
                 <com.iarcuschin.simpleratingbar.SimpleRatingBar
                     android:id="@+id/ratingBarID"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    app:srb_starSize="20dp"
-                    app:srb_numberOfStars="5"
-                    app:srb_rating="3.5"
-                    app:srb_stepSize="0.01"
-                    app:srb_borderColor="#CFCF00"
-                    app:srb_fillColor="#CFCF00"
+                    android:layout_height="20dp"
                     android:layout_alignBottom="@+id/spacecraftImage"
                     android:layout_alignParentRight="true"
-                    />
+                    app:srb_borderColor="#CFCF00"
+                    app:srb_fillColor="#CFCF00"
+                    app:srb_numberOfStars="5"
+                    app:srb_rating="3.5"
+                    app:srb_starSize="20dp"
+                    app:srb_stepSize="0.01" />
 
                 <android.support.v7.widget.CardView
-                    android:layout_gravity="center"
-
                     android:id="@+id/optioncard"
-                    android:layout_width="270dp"
-                    android:layout_height="40dp">
+
+                    android:layout_width="260dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/buttob_border">
 
                     <TextView
                         android:id="@+id/mcolor"
-                        android:text="Color"
-
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple"
+                        android:layout_width="45dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="55dp"
-                        android:layout_width="60dp"
-                        android:layout_height="20dp" />
+                        android:layout_marginStart="45dp"
+                        android:gravity="start|center_vertical"
+                        android:text="Black"
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/coma1"
-                        android:text=","
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple"
+                        android:layout_width="5dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="95dp"
-                        android:layout_width="10dp"
-                        android:layout_height="20dp" />
+                        android:layout_marginStart="85dp"
+                        android:text=","
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/mmemory"
-                        android:text="Memory"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple"
-
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="110dp"
-                        android:layout_width="60dp"
-                        android:layout_height="20dp" />
+                        android:layout_marginStart="95dp"
+                        android:gravity="start|center_vertical"
+                        android:text="64 GB"
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/coma2"
-                        android:text=","
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple"
+                        android:layout_width="5dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="170dp"
-                        android:layout_width="10dp"
-                        android:layout_height="20dp" />
+                        android:layout_marginStart="140dp"
+                        android:text=","
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/mnetwork"
-                        android:text="Net"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple"
+                        android:layout_width="45dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="180dp"
-                        android:layout_width="50dp"
-                        android:layout_height="20dp" />
+                        android:layout_marginStart="160dp"
+                        android:gravity="start|center_vertical"
+                        android:text="LTE"
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/arrow"
-                        android:text=">"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/purple"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="110dp"
                         android:layout_width="20dp"
-                        android:layout_height="30dp" />
+                        android:layout_height="30dp"
+                        android:layout_gravity="center|end"
+                        android:layout_marginStart="110dp"
+                        android:text=">"
+                        android:textColor="@color/purple"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
 
                 </android.support.v7.widget.CardView>
@@ -194,15 +195,15 @@ android:background="#ffff"
 
                 <TextView
 
-                    android:text="price"
-                    android:textSize="20dp"
-                    android:textColor="#ffff"
-                    android:id="@+id/priceTextd"
-                    android:background="@color/green"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
+                    android:id="@+id/priceText"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp" />
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/green"
+                    android:gravity="center"
+                    android:text="price"
+                    android:textColor="#ffff"
+                    android:textSize="20dp" />
 
 
 

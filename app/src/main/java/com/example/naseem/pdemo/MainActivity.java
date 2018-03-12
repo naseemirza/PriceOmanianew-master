@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private Adapter mAdapter;
     private ArrayList clicklist;
     private Boolean mHorizontal;
+    private CardView cardView;
     NestedScrollView scrollView;
     public TextView textViewprice,textviewname;
 
@@ -75,30 +77,30 @@ public class MainActivity extends AppCompatActivity
         mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerview.setHasFixedSize(true);
 
-        mRecyclerview.addOnItemTouchListener(new CustomRVItemTouchListener(this, mRecyclerview, new RecyclerViewItemClickListener() {
-            @Override
-            public void onClick(View view, int position) {
 
-                textViewprice=(TextView)findViewById(R.id.onlinestoreTextview2);
-                textviewname=(TextView)findViewById(R.id.nameTextview);
-                String s=textViewprice.getText().toString();
-                String s1=textviewname.getText().toString();
-
-
-                Intent intent=new Intent(MainActivity.this,CardDetails.class);
-                intent.putExtra("price",s);
-                intent.putExtra("name",s1);
-                startActivity(intent);
-
-                //Intent intent=new Intent(MainActivity.this,CardDetails.class);
-
-                //startActivity(intent);
-
-
-            }
-
-
-        }));
+//        mRecyclerview.addOnItemTouchListener(new CustomRVItemTouchListener(this, mRecyclerview, new RecyclerViewItemClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//
+//                TextView mobilename,mobileprice;
+//                mobileprice=(TextView)findViewById(R.id.onlinestoreTextview2);
+//                mobilename=(TextView)findViewById(R.id.nameTextview);
+//                String s=mobileprice.getText().toString();
+//                String s1=mobilename.getText().toString();
+//                Intent intent = new Intent(MainActivity.this, CardDetails.class);
+//                intent.putExtra("price",s);
+//                intent.putExtra("name",s1);
+//                startActivity(intent);
+//
+//                //Intent intent=new Intent(MainActivity.this,CardDetails.class);
+//
+//                //startActivity(intent);
+//
+//
+//            }
+//
+//
+//        }));
 
 
 

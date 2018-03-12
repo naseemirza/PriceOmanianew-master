@@ -152,7 +152,7 @@ public class CardDetails extends AppCompatActivity {
         CardView  dialogbutton;
         private ImageView[] dots;
         ViewPager viewPager;
-        TextView textView1 ,textView2;
+        TextView textView1 ,textView2,textViewclr,textViewstrg,textViewbrnd;
         int images[] = {R.drawable.appleiphone6, R.drawable.apple,
                 R.drawable.apple7plus,R.drawable.appleiphone6,R.drawable.applemini,R.drawable.applimini11,R.drawable.apple,R.drawable.appleiphone6};
         ImageAdapter imageAdapter;
@@ -181,8 +181,33 @@ public class CardDetails extends AppCompatActivity {
 
                 sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
 
-                textView1=(TextView)rootView.findViewById(R.id.priceTextd) ;
+                textView1=(TextView)rootView.findViewById(R.id.priceText) ;
                 textView2=(TextView)rootView.findViewById(R.id.mobilenametext) ;
+
+
+//                 textViewclr=(TextView)rootView.findViewById(R.id.mcolor);
+//                 textViewstrg=(TextView)rootView.findViewById(R.id.mmemory);
+//                textViewbrnd=(TextView)rootView.findViewById(R.id.mnetwork);
+
+
+
+                //Intent iin=getIntent();
+                //Bundle b = iin.getExtras();
+
+               // if(b!=null)
+               // {
+                    //String j =(String) b.get("color");
+
+                   // String j1 =(String) b.get("storage");
+                    //String j2 =(String) b.get("Networks");
+
+                    //textView.setText(j);
+
+                    //textView1.setText(j1);
+                   // textView2.setText(j2);
+
+
+                //}
 
                 Intent iin= getActivity().getIntent();
                 Bundle b = iin.getExtras();
@@ -190,8 +215,16 @@ public class CardDetails extends AppCompatActivity {
                 {
                     String j =(String) b.get("price");
                     String j1 =(String) b.get("name");
+//                    String j2=(String) b.get("color");
+//                    String j3 =(String) b.get("storage");
+//                    String j4 =(String) b.get("brand");
+
                     textView1.setText(j);
                     textView2.setText(j1);
+//                    textViewclr.setText(j2);
+//                    textViewstrg.setText(j3);
+//                    textViewbrnd.setText(j4);
+
                 }
 
                 dialogbutton=(CardView) rootView.findViewById(R.id.optioncard);
@@ -336,11 +369,11 @@ public class CardDetails extends AppCompatActivity {
 
         private void setupAdapter(){
 
-            List<App> apps=getApps();
+            List<CardDetailsApp> apps=getApps();
 
-            SnapAdapter snapAdapter=new SnapAdapter();
+            CardSnapAdapter snapAdapter=new CardSnapAdapter();
 
-            snapAdapter.addSnap(new Snap(Gravity.START,"Similar Products",apps));
+            snapAdapter.addSnap(new CardSnap(Gravity.START,"Similar Products",apps));
 
             //if(mHorizontal){
             // snapAdapter.addSnap(new Snap(Gravity.START,"FEATURED PRODUCTS",apps));
@@ -361,19 +394,19 @@ public class CardDetails extends AppCompatActivity {
 
         }
 
-        private List<App> getApps(){
-            List<App> apps=new ArrayList<>();
+        private List<CardDetailsApp> getApps(){
+            List<CardDetailsApp> apps=new ArrayList<>();
 
-            apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-            apps.add(new App("Apple iPhone ", "AED 18190.00", "38 Online Store(s)", R.drawable.apple));
-            apps.add(new App("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
-            apps.add(new App("Apple iPhone ", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-            apps.add(new App("Apple iPhone 7 plus", "AED 18190.00", "38 Online Store(s)", R.drawable.apple7plus));
-            apps.add(new App("Apple iPhone ", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
-            apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-            apps.add(new App("Apple iPhone ", "AED 18190.00", "38 Online Store(s)", R.drawable.applemini));
-            apps.add(new App("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
-            apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
+            apps.add(new CardDetailsApp("Apple iPhone 5 plus", "AED 21990.00", "38 Online Store(s)", R.drawable.apple7plus));
+            apps.add(new CardDetailsApp("Apple iPhone ", "AED 18190.00", "38 Online Store(s)", R.drawable.apple));
+            apps.add(new CardDetailsApp("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
+            apps.add(new CardDetailsApp("Apple iPhone ", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
+            apps.add(new CardDetailsApp("Apple iPhone 7 plus", "AED 18190.00", "38 Online Store(s)", R.drawable.apple7plus));
+            apps.add(new CardDetailsApp("Apple iPhone ", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
+            apps.add(new CardDetailsApp("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
+            apps.add(new CardDetailsApp("Apple iPhone ", "AED 18190.00", "38 Online Store(s)", R.drawable.applemini));
+            apps.add(new CardDetailsApp("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
+            apps.add(new CardDetailsApp("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
 
 
 
