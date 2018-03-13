@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -82,6 +83,8 @@ public class DialogActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
         cardViewopt=(CardView)findViewById(R.id.card2);
+
+
         cardViewopt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

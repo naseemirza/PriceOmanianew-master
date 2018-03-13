@@ -64,6 +64,7 @@ public class SeeAllOptions extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("All Options"));
 
+
         OptionAdapter adapter = new OptionAdapter(this, Itemlist, Pricelist);
         ListView lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(adapter);

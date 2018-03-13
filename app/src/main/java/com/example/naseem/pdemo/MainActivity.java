@@ -44,18 +44,11 @@ public class MainActivity extends AppCompatActivity
     public static final String ORIENTATION = "orientation";
     private RecyclerView mRecyclerview;
     private Adapter mAdapter;
-    private ArrayList clicklist;
+
     private Boolean mHorizontal;
-    private CardView cardView;
-    NestedScrollView scrollView;
     public TextView textViewprice,textviewname;
 
-    public ImageButton imageButton;
-
-//    private DrawerLayout mDrawerlayout;
-//    private ActionBarDrawerToggle mTogel;
-
-
+    private List<App> mApps;
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
     private int dotscount;
@@ -70,40 +63,15 @@ public class MainActivity extends AppCompatActivity
 
         textViewprice=(TextView)findViewById(R.id.onlinestoreTextview2);
         textviewname=(TextView)findViewById(R.id.nameTextview);
+
         mRecyclerview = (RecyclerView) findViewById(R.id.recyclerview);
         mRecyclerview.setNestedScrollingEnabled(false);
 
 
         mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecyclerview.setAdapter(mAdapter);
         mRecyclerview.setHasFixedSize(true);
-
-
-//        mRecyclerview.addOnItemTouchListener(new CustomRVItemTouchListener(this, mRecyclerview, new RecyclerViewItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//
-//                TextView mobilename,mobileprice;
-//                mobileprice=(TextView)findViewById(R.id.onlinestoreTextview2);
-//                mobilename=(TextView)findViewById(R.id.nameTextview);
-//                String s=mobileprice.getText().toString();
-//                String s1=mobilename.getText().toString();
-//                Intent intent = new Intent(MainActivity.this, CardDetails.class);
-//                intent.putExtra("price",s);
-//                intent.putExtra("name",s1);
-//                startActivity(intent);
-//
-//                //Intent intent=new Intent(MainActivity.this,CardDetails.class);
-//
-//                //startActivity(intent);
-//
-//
-//            }
-//
-//
-//        }));
-
-
-
 
 
 

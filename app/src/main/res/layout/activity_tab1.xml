@@ -9,7 +9,7 @@
 android:background="#ffff"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.naseem.priceomania1.ScrollingActivity"
+    tools:context="com.example.naseem.pdemo.CardDetails.TabActivity1"
      >
 
     <ScrollView
@@ -19,74 +19,63 @@ android:background="#ffff"
 
         <RelativeLayout
             android:id="@+id/re1"
-
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-
-            <RelativeLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="170dp">
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="wrap_content"
-                    android:layout_height="170dp"
-
-                    android:id="@+id/viewpager">
-                </android.support.v4.view.ViewPager>
+            <ImageView
+                android:id="@+id/cardimg"
+                android:layout_width="200dp"
+                android:layout_height="260dp"
+                android:layout_centerHorizontal="true" />
 
 
+                <!--<android.support.v4.view.ViewPager-->
+                    <!--android:id="@+id/viewpager"-->
+                    <!--android:layout_width="wrap_content"-->
 
-                <LinearLayout
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:id="@+id/SliderDots"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal">
-                </LinearLayout>
+                    <!--android:layout_height="170dp"></android.support.v4.view.ViewPager>-->
 
 
-            </RelativeLayout>
-
-
-
-
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/SliderDots"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:layout_marginTop="4dp"-->
+                    <!--android:gravity="center_horizontal"-->
+                    <!--android:orientation="horizontal"></LinearLayout>-->
 
 
             <LinearLayout
-                android:layout_marginTop="170dp"
-
-                android:orientation="vertical"
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="160dp">
+                android:layout_height="155dp"
+                android:layout_below="@+id/cardimg"
+
+                android:orientation="vertical">
 
 
                 <TextView
-                    android:textSize="15dp"
-                    android:textStyle="bold"
-                    android:text="Mobile name"
                     android:id="@+id/mobilenametext"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp" />
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Mobile name"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <!--<TextView-->
 
-                    <!--android:text="rating"-->
-                    <!--android:id="@+id/ratingtext"-->
+                <!--android:text="rating"-->
+                <!--android:id="@+id/ratingtext"-->
 
 
-                    <!--android:gravity="center"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="25dp" />-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="25dp" />-->
 
                 <com.iarcuschin.simpleratingbar.SimpleRatingBar
                     android:id="@+id/ratingBarID"
@@ -94,8 +83,8 @@ android:background="#ffff"
                     android:layout_height="20dp"
                     android:layout_alignBottom="@+id/spacecraftImage"
                     android:layout_alignParentRight="true"
-                    app:srb_borderColor="#CFCF00"
-                    app:srb_fillColor="#CFCF00"
+                    app:srb_borderColor="#474700"
+                    app:srb_fillColor="#474700"
                     app:srb_numberOfStars="5"
                     app:srb_rating="3.5"
                     app:srb_starSize="20dp"
@@ -103,11 +92,12 @@ android:background="#ffff"
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/optioncard"
-
                     android:layout_width="260dp"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/buttob_border">
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/buttob_border"
+                    app:cardBackgroundColor="@color/gray">
 
                     <TextView
                         android:id="@+id/mcolor"
@@ -183,15 +173,15 @@ android:background="#ffff"
 
 
                 <!--<Button-->
-                    <!--android:background="@drawable/buttob_border"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:id="@+id/colorbutton"-->
-                    <!--android:textColor="@color/purple"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:textAllCaps="false"-->
-                    <!--android:text="Colors, Storage, Networks >"-->
-                    <!--android:layout_width="220dp"-->
-                    <!--android:layout_height="30dp" />-->
+                <!--android:background="@drawable/buttob_border"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:id="@+id/colorbutton"-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:text="Colors, Storage, Networks >"-->
+                <!--android:layout_width="220dp"-->
+                <!--android:layout_height="30dp" />-->
 
                 <TextView
 
@@ -206,71 +196,71 @@ android:background="#ffff"
                     android:textSize="20dp" />
 
 
-
-
             </LinearLayout>
 
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
                 android:id="@+id/card1"
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
                 android:layout_below="@+id/linear"
-                app:cardCornerRadius="10dp"
-                card_view:cardElevation="3dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="3dp"
+                card_view:cardElevation="1dp">
 
                 <LinearLayout
                     android:id="@+id/li1"
-                    android:orientation="horizontal"
-
                     android:layout_width="match_parent"
-                    android:layout_height="85dp">
+
+                    android:layout_height="82dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/li2"
-                        android:layout_gravity="top|start"
-                        android:orientation="vertical"
                         android:layout_width="190dp"
-                        android:layout_height="59dp">
+                        android:layout_height="59dp"
+                        android:layout_gravity="top|start"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/siteTextview"
-                            android:gravity="start"
+                            android:layout_width="match_parent"
 
-                            android:layout_marginTop="10dp"
+                            android:layout_height="25dp"
                             android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="start"
                             android:text="Amazone"
                             android:textColor="#000"
-                            android:textSize="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp" />
+                            android:textSize="20dp" />
 
                         <TextView
                             android:id="@+id/mobilename"
-                            android:text="Apple iPhone"
-                            android:layout_marginStart="10dp"
-
                             android:layout_width="match_parent"
-                            android:layout_height="25dp" />
+                            android:layout_height="25dp"
+
+                            android:layout_marginStart="10dp"
+                            android:text="Apple iPhone" />
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_gravity="right"
-
-                        android:orientation="horizontal"
                         android:id="@+id/li3"
+
                         android:layout_width="190dp"
-                        android:layout_height="80dp">
+                        android:layout_height="80dp"
+                        android:layout_gravity="right"
+                        android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/imageview"
 
+                            android:layout_width="164dp"
+                            android:layout_height="50dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/souqimg"
-                            android:layout_width="164dp"
-                            android:layout_height="50dp" />
+                            android:src="@drawable/souqimg" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -278,65 +268,65 @@ android:background="#ffff"
 
                 <LinearLayout
                     android:id="@+id/li12"
-                    android:layout_marginTop="80dp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp">
+                    android:layout_height="55dp"
+                    android:layout_marginTop="80dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/li121"
-                        android:orientation="vertical"
                         android:layout_width="144dp"
-                        android:layout_height="65dp">
+                        android:layout_height="65dp"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/pricetext"
 
-                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
                             android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
                             android:text="AED 2199.00"
                             android:textColor="@color/purple"
                             android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Shipping costs veri.."
-                            android:layout_marginStart="10dp"
-
                             android:layout_width="142dp"
-                            android:layout_height="25dp" />
+                            android:layout_height="25dp"
+
+                            android:layout_marginStart="10dp"
+                            android:text="Shipping costs veri.." />
 
                     </LinearLayout>
 
 
                     <LinearLayout
-                        android:weightSum="10"
                         android:id="@+id/li122"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="58dp">
+                        android:layout_height="58dp"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
 
                         <TextView
 
 
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
                             android:text="More Info+"
                             android:textColor="@color/green"
-                            android:textSize="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp" />
+                            android:textSize="15dp" />
 
                         <Button
                             android:id="@+id/buttonsite"
-                            android:text="Go to site"
-                            android:background="@color/purple"
-                            android:textColor="#fff"
-                            android:layout_weight="5"
-                            android:layout_marginStart="20dp"
                             android:layout_width="70dp"
-                            android:layout_height="35dp" />
-
+                            android:layout_height="35dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="5"
+                            android:background="@color/purple"
+                            android:text="Go to site"
+                            android:textColor="#fff" />
 
 
                     </LinearLayout>
@@ -347,65 +337,67 @@ android:background="#ffff"
 
 
             <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
                 android:id="@+id/card2"
-                app:cardCornerRadius="10dp"
-                card_view:cardElevation="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
                 android:layout_below="@+id/linear"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="170dp" >
+                android:layout_marginTop="150dp"
+                app:cardCornerRadius="3dp"
+                card_view:cardElevation="1dp">
 
                 <LinearLayout
                     android:id="@+id/lin1"
-                    android:orientation="horizontal"
-
                     android:layout_width="match_parent"
-                    android:layout_height="85dp">
+
+                    android:layout_height="82dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/lin2"
-                        android:layout_gravity="top|start"
-                        android:orientation="vertical"
                         android:layout_width="190dp"
-                        android:layout_height="59dp">
+                        android:layout_height="59dp"
+                        android:layout_gravity="top|start"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/siteTextview1"
-                            android:gravity="start"
+                            android:layout_width="match_parent"
 
-                            android:layout_marginTop="10dp"
+                            android:layout_height="25dp"
                             android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:gravity="start"
                             android:text="Flipkart"
                             android:textColor="#000"
-                            android:textSize="20dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp" />
+                            android:textSize="20dp" />
 
                         <TextView
                             android:id="@+id/mobilename1"
-                            android:text="iPhone7 Plus"
-                            android:layout_marginStart="10dp"
-
                             android:layout_width="match_parent"
-                            android:layout_height="25dp" />
+                            android:layout_height="25dp"
+
+                            android:layout_marginStart="10dp"
+                            android:text="iPhone7 Plus" />
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_gravity="right"
-
-                        android:orientation="horizontal"
                         android:id="@+id/lin3"
+
                         android:layout_width="190dp"
-                        android:layout_height="80dp">
+                        android:layout_height="80dp"
+                        android:layout_gravity="right"
+                        android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/imageview1"
 
+                            android:layout_width="164dp"
+                            android:layout_height="50dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
-                            android:src="@drawable/souqimg"
-                            android:layout_width="164dp"
-                            android:layout_height="50dp" />
+                            android:src="@drawable/souqimg" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -413,65 +405,65 @@ android:background="#ffff"
 
                 <LinearLayout
                     android:id="@+id/lin12"
-                    android:layout_marginTop="80dp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp">
+                    android:layout_height="55dp"
+                    android:layout_marginTop="80dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/lin121"
-                        android:orientation="vertical"
                         android:layout_width="144dp"
-                        android:layout_height="65dp">
+                        android:layout_height="65dp"
+                        android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/pricetext1"
 
-                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
                             android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
                             android:text="AED 30099.00"
                             android:textColor="@color/purple"
                             android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp" />
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="Shipping costs veri.."
-                            android:layout_marginStart="10dp"
-
                             android:layout_width="142dp"
-                            android:layout_height="25dp" />
+                            android:layout_height="25dp"
+
+                            android:layout_marginStart="10dp"
+                            android:text="Shipping costs veri.." />
 
                     </LinearLayout>
 
 
                     <LinearLayout
-                        android:weightSum="10"
                         android:id="@+id/lin122"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="58dp">
+                        android:layout_height="58dp"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
 
                         <TextView
 
 
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
                             android:text="More Info+"
                             android:textColor="@color/green"
-                            android:textSize="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp" />
+                            android:textSize="15dp" />
 
                         <Button
                             android:id="@+id/buttonsite1"
-                            android:text="Go to site"
-                            android:background="@color/purple"
-                            android:textColor="#fff"
-                            android:layout_weight="5"
-                            android:layout_marginStart="20dp"
                             android:layout_width="70dp"
-                            android:layout_height="35dp" />
-
+                            android:layout_height="35dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="5"
+                            android:background="@color/purple"
+                            android:text="Go to site"
+                            android:textColor="#fff" />
 
 
                     </LinearLayout>
@@ -492,30 +484,30 @@ android:background="#ffff"
 
 
             <android.support.v7.widget.CardView
-                android:layout_marginTop="20dp"
                 android:id="@+id/cardviewText"
-                android:layout_below="@+id/recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="70dp"
+                android:layout_below="@+id/recyclerview"
+                android:layout_marginTop="10dp">
 
                 <TextView
-                    android:textAllCaps="false"
-                    android:text="Popular Apple Products"
-                    android:textSize="15dp"
+                    android:layout_width="270dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="15dp"
                     android:gravity="center|start"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="270dp"
-                    android:layout_height="30dp" />
+                    android:text="Popular Apple Products"
+                    android:textAllCaps="false"
+                    android:textSize="15dp" />
 
                 <TextView
-                    android:text=">"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    android:layout_marginStart="300dp"
                     android:layout_width="40dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_height="30dp" />
+                    android:layout_marginStart="300dp"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textSize="20dp" />
 
             </android.support.v7.widget.CardView>
 
@@ -523,28 +515,28 @@ android:background="#ffff"
             <android.support.v7.widget.CardView
 
                 android:id="@+id/cardviewText1"
-                android:layout_below="@+id/cardviewText"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="70dp"
+                android:layout_below="@+id/cardviewText">
 
                 <TextView
-                    android:textAllCaps="false"
-                    android:text="Popular Apple Mobile Phones"
-                    android:textSize="15dp"
+                    android:layout_width="270dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="15dp"
                     android:gravity="center|start"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="270dp"
-                    android:layout_height="30dp" />
+                    android:text="Popular Apple Mobile Phones"
+                    android:textAllCaps="false"
+                    android:textSize="15dp" />
 
                 <TextView
-                    android:text=">"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    android:layout_marginStart="300dp"
                     android:layout_width="40dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_height="30dp" />
+                    android:layout_marginStart="300dp"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textSize="20dp" />
 
             </android.support.v7.widget.CardView>
 

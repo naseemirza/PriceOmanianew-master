@@ -13,8 +13,9 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
+            style="@style/MyCustomTabLayout1"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="80dp"
             android:layout_gravity="start"
             android:background="@color/colorWhite"
             android:textAlignment="viewStart">
@@ -23,14 +24,13 @@
     </android.support.design.widget.AppBarLayout>
 
 
-
     <RelativeLayout
 
         android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="428dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="90dp"
-        android:padding="10dp"
+        android:padding="8dp"
 
         >
 

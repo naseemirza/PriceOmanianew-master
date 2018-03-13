@@ -10,10 +10,10 @@ public class App {
     private int mImage;
     //private float mPrice;
 
-   public App(String name,String site, String price,int image ){
+   public App(String name, String price,String site,int image ){
        mName=name;
-       mSite=site;
        mPrice=price;
+       mSite=site;
        mImage=image;
 
    }

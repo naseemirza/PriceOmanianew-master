@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.naseem.pdemo.CardDetails.CardDetails;
+import com.example.naseem.pdemo.CardDetails.RecyclerViewItemClickListener;
 
 import java.util.List;
 
@@ -50,28 +52,53 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        App app=mApps.get(position);
+        final App app=mApps.get(position);
        // holder.imageview.setImageResource(app.getDrawable());
         holder.nameTextview.setText(app.getName());
         holder.onlinestoreTextview2.setText(String.valueOf(app.getSite()));
         holder.priceTextview1.setText(String.valueOf(app.getPrice()));
         holder.imageview.setImageResource(app.getImage());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
-            public void onClick(View v) {
-                TextView mobilename,mobileprice;
-                mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
-                mobilename=(TextView)v.findViewById(R.id.nameTextview);
-                String s=mobileprice.getText().toString();
-                String s1=mobilename.getText().toString();
-                Intent intent = new Intent(v.getContext(), CardDetails.class);
-                intent.putExtra("price",s);
-                intent.putExtra("name",s1);
-                v.getContext().startActivity(intent);
+            public void onClick(View view, int position) {
+                //Intent i=new Intent(view.getContext(),CardDetails.class);
+                //TextView mobilename,mobileprice;
+                //ImageView imageView;
+               // mobileprice=(TextView)view.findViewById(R.id.onlinestoreTextview2);
+               // mobilename=(TextView)view.findViewById(R.id.nameTextview);
+                //imageView=(ImageView)view.findViewById(R.id.imageview);
 
+                //String s=mobileprice.getText().toString();
+                //String s1=mobilename.getText().toString();
+                Intent intent = new Intent(view.getContext(), CardDetails.class);
+                intent.putExtra("price",app.getPrice());
+                intent.putExtra("name",app.getName());
+                intent.putExtra("cardimage",app.getImage());
+                view.getContext().startActivity(intent);
             }
         });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TextView mobilename,mobileprice;
+//                ImageView imageView;
+//                mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
+//                mobilename=(TextView)v.findViewById(R.id.nameTextview);
+//                imageView=(ImageView)v.findViewById(R.id.imageview);
+//
+//                String s=mobileprice.getText().toString();
+//                String s1=mobilename.getText().toString();
+//                Intent intent = new Intent(v.getContext(), CardDetails.class);
+//                intent.putExtra("price",s);
+//                intent.putExtra("name",s1);
+//                //intent.putExtra("cardimage",images);
+//                v.getContext().startActivity(intent);
+//
+//            }
+//        });
+
+
 
 
 
@@ -91,13 +118,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView imageview;
         public TextView nameTextview;
         public TextView onlinestoreTextview2;
         public TextView priceTextview1;
-
+        private RecyclerViewItemClickListener itemClickListener;
 
 
 
@@ -108,46 +135,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
             nameTextview=(TextView) itemView.findViewById(R.id.nameTextview);
             onlinestoreTextview2=(TextView) itemView.findViewById(R.id.onlinestoreTextview2);
             priceTextview1=(TextView) itemView.findViewById(R.id.priceTextview1);
-
-
-
-
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//         @Override
-//         public void onClick(View v) {
-//
-//             TextView mobilename,mobileprice;
-//
-//             mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
-//             mobilename=(TextView)v.findViewById(R.id.nameTextview);
-//               String s=mobileprice.getText().toString();
-//               String s1=mobilename.getText().toString();
-//             Intent intent = new Intent(v.getContext(), CardDetails.class);
-//             intent.putExtra("price",s);
-//                intent.putExtra("name",s1);
-//             v.getContext().startActivity(intent);
-//
-//
-//           }
-//        });
-
-
+            itemView.setOnClickListener(this);
 
         }
+        @Override
+        public void onClick(View v) {
+            this.itemClickListener.onClick(v,getLayoutPosition());
+        }
 
-//        @Override
-//        public void onClick(View v) {
-//            TextView mobilename,mobileprice;
-//            mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
-//            mobilename=(TextView)v.findViewById(R.id.nameTextview);
-//            String s=mobileprice.getText().toString();
-//            String s1=mobilename.getText().toString();
-//            Intent intent = new Intent(v.getContext(), CardDetails.class);
-//            intent.putExtra("price",s);
-//            intent.putExtra("name",s1);
-//            v.getContext().startActivity(intent);
-//
-//        }
+        public void setItemClickListener(RecyclerViewItemClickListener ic)
+        {
+            this.itemClickListener=ic;
+
+        }
     }
 
 }

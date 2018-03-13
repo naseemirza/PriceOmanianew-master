@@ -147,14 +147,15 @@ public class CardDetails extends AppCompatActivity {
          */
         private RecyclerView mRecyclerview;
 
-        LinearLayout sliderDotspanel;
+        //LinearLayout sliderDotspanel;
         private int dotscount;
         CardView  dialogbutton;
         private ImageView[] dots;
-        ViewPager viewPager;
+        //ViewPager viewPager;
         TextView textView1 ,textView2,textViewclr,textViewstrg,textViewbrnd;
-        int images[] = {R.drawable.appleiphone6, R.drawable.apple,
-                R.drawable.apple7plus,R.drawable.appleiphone6,R.drawable.applemini,R.drawable.applimini11,R.drawable.apple,R.drawable.appleiphone6};
+        ImageView imageView;
+        //int images[] = {R.drawable.appleiphone6, R.drawable.apple,
+                //R.drawable.apple7plus,R.drawable.appleiphone6,R.drawable.applemini,R.drawable.applimini11,R.drawable.apple,R.drawable.appleiphone6};
         ImageAdapter imageAdapter;
 
 
@@ -179,10 +180,22 @@ public class CardDetails extends AppCompatActivity {
 
 
 
-                sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
+               //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
 
                 textView1=(TextView)rootView.findViewById(R.id.priceText) ;
                 textView2=(TextView)rootView.findViewById(R.id.mobilenametext) ;
+               imageView=(ImageView)rootView.findViewById(R.id.cardimg);
+
+                Intent i=getActivity().getIntent();
+
+                final String name=i.getExtras().getString("name");
+                final String price=i.getExtras().getString("price");
+                final int image=i.getExtras().getInt("cardimage");
+
+                imageView.setImageResource(image);
+                textView2.setText(name);
+                textView1.setText(price);
+
 
 
 //                 textViewclr=(TextView)rootView.findViewById(R.id.mcolor);
@@ -191,41 +204,26 @@ public class CardDetails extends AppCompatActivity {
 
 
 
-                //Intent iin=getIntent();
-                //Bundle b = iin.getExtras();
 
-               // if(b!=null)
-               // {
-                    //String j =(String) b.get("color");
-
-                   // String j1 =(String) b.get("storage");
-                    //String j2 =(String) b.get("Networks");
-
-                    //textView.setText(j);
-
-                    //textView1.setText(j1);
-                   // textView2.setText(j2);
-
-
-                //}
-
-                Intent iin= getActivity().getIntent();
-                Bundle b = iin.getExtras();
-                if(b!=null)
-                {
-                    String j =(String) b.get("price");
-                    String j1 =(String) b.get("name");
-//                    String j2=(String) b.get("color");
-//                    String j3 =(String) b.get("storage");
-//                    String j4 =(String) b.get("brand");
-
-                    textView1.setText(j);
-                    textView2.setText(j1);
-//                    textViewclr.setText(j2);
-//                    textViewstrg.setText(j3);
-//                    textViewbrnd.setText(j4);
-
-                }
+//                Intent iin= getActivity().getIntent();
+//                Bundle b = iin.getExtras();
+//                if(b!=null)
+//                {
+//                    String j =(String) b.get("price");
+//                    String j1 =(String) b.get("name");
+//                    int pic=iin.getIntExtra("cardimage",0);
+////                    String j2=(String) b.get("color");
+////                    String j3 =(String) b.get("storage");
+////                    String j4 =(String) b.get("brand");
+//
+//                    textView1.setText(j);
+//                    textView2.setText(j1);
+//                    //imageView.setImageResource(pic);
+////                    textViewclr.setText(j2);
+////                    textViewstrg.setText(j3);
+////                    textViewbrnd.setText(j4);
+//
+//                }
 
                 dialogbutton=(CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
@@ -270,58 +268,58 @@ public class CardDetails extends AppCompatActivity {
                 setupAdapter();
 
 
-                viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
+                //viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
 
 
-                imageAdapter = new ImageAdapter(this.getActivity(), images);
-                viewPager.setAdapter(imageAdapter);
-                sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
+                //imageAdapter = new ImageAdapter(this.getActivity(), images);
+               // viewPager.setAdapter(imageAdapter);
+                //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
 
                 CardPager cardPager = new CardPager(this.getActivity());
-                viewPager.setAdapter(cardPager);
+                //viewPager.setAdapter(cardPager);
 
-                dotscount = cardPager.getCount();
-                dots = new ImageView[dotscount];
+                //dotscount = cardPager.getCount();
+                //dots = new ImageView[dotscount];
 
-                for(int i = 0; i < dotscount; i++){
+//                for(int i = 0; i < dotscount; i++){
+//
+//                    dots[i] = new ImageView(this.getActivity());
+//                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
+//
+//                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//
+//                    params.setMargins(8, 0, 8, 0);
+//
+//                    sliderDotspanel.addView(dots[i], params);
+//
+//                }
 
-                    dots[i] = new ImageView(this.getActivity());
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
+                //dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
 
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-                    params.setMargins(8, 0, 8, 0);
-
-                    sliderDotspanel.addView(dots[i], params);
-
-                }
-
-                dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
-
-                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                    }
-
-                    @Override
-                    public void onPageSelected(int position) {
-
-                        for(int i = 0; i< dotscount; i++){
-                            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
-                        }
-
-                        dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
-
-                    }
-
-                    @Override
-                    public void onPageScrollStateChanged(int state) {
-
-                    }
-                });
-                Timer timer=new Timer();
-                timer.scheduleAtFixedRate(new MyTimerTask(),2000,3000);
+//                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//                    @Override
+//                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onPageSelected(int position) {
+//
+//                        for(int i = 0; i< dotscount; i++){
+//                            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
+//                        }
+//
+//                        dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
+//
+//                    }
+//
+//                    @Override
+//                    public void onPageScrollStateChanged(int state) {
+//
+//                    }
+//                });
+                //Timer timer=new Timer();
+                //timer.scheduleAtFixedRate(new MyTimerTask(),2000,3000);
 
 
                 return rootView;
@@ -341,31 +339,31 @@ public class CardDetails extends AppCompatActivity {
 
         }
 
-        public class MyTimerTask extends TimerTask {
-            @Override
-            public void run() {
-
-                if(getActivity() == null)
-                    return;
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (viewPager.getCurrentItem()==0){
-                            viewPager.setCurrentItem(1);
-                        }
-                        else if(viewPager.getCurrentItem()==1){
-                            viewPager.setCurrentItem(2);
-                        }
-                        else if(viewPager.getCurrentItem()==2){
-                            viewPager.setCurrentItem(3);
-                        }
-                        else {
-                            viewPager.setCurrentItem(0);
-                        }
-                    }
-                });
-            }
-        }
+//        public class MyTimerTask extends TimerTask {
+//            @Override
+//            public void run() {
+//
+//                if(getActivity() == null)
+//                    return;
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if (viewPager.getCurrentItem()==0){
+//                            viewPager.setCurrentItem(1);
+//                        }
+//                        else if(viewPager.getCurrentItem()==1){
+//                            viewPager.setCurrentItem(2);
+//                        }
+//                        else if(viewPager.getCurrentItem()==2){
+//                            viewPager.setCurrentItem(3);
+//                        }
+//                        else {
+//                            viewPager.setCurrentItem(0);
+//                        }
+//                    }
+//                });
+//            }
+//        }
 
         private void setupAdapter(){
 
@@ -449,7 +447,7 @@ public class CardDetails extends AppCompatActivity {
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "Compare Prices";
+                        return "38 Online Store(s)";
                     case 1:
                         return "Description";
                     case 2:
