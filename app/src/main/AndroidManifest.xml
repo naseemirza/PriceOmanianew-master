@@ -39,26 +39,27 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CardDetails.CardDetails"
+            android:name=".CardDetailsPkg.CardDetails"
             android:label="@string/title_activity_card_details"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CardDetails.GotoSIte"
-            android:parentActivityName=".CardDetails.CardDetails" />
+            android:name=".CardDetailsPkg.GotoSIte"
+            android:parentActivityName=".CardDetailsPkg.CardDetails" />
         <activity
-            android:name=".CardDetails.DialogActivity"
-            android:parentActivityName=".CardDetails.CardDetails" />
+            android:name=".CardDetailsPkg.DialogActivity"
+            android:parentActivityName=".CardDetailsPkg.CardDetails"/>
         <activity
-            android:name=".CardDetails.SeeAllOptions"
-            android:parentActivityName=".CardDetails.CardDetails" />
+            android:name=".CardDetailsPkg.SeeAllOptions"
+            android:parentActivityName=".CardDetailsPkg.DialogActivity" />
         <activity
-            android:name=".CardDetails.ColorActivity"
-            android:parentActivityName=".CardDetails.DialogActivity" />
+            android:name=".CardDetailsPkg.ColorActivity"
+            android:parentActivityName=".CardDetailsPkg.DialogActivity" />
         <activity
-            android:name=".CardDetails.StorageActivity"
-            android:parentActivityName=".CardDetails.DialogActivity" />
-        <activity android:name=".CardDetails.BrandActivity"></activity>
+            android:name=".CardDetailsPkg.StorageActivity"
+            android:parentActivityName=".CardDetailsPkg.DialogActivity" />
+        <activity android:name=".CardDetailsPkg.BrandActivity"
+            android:parentActivityName=".CardDetailsPkg.DialogActivity"></activity>
     </application>
 
 </manifest>

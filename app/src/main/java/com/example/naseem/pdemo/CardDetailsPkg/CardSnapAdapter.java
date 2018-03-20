@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,10 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.naseem.pdemo.Adapter;
 import com.example.naseem.pdemo.R;
-import com.example.naseem.pdemo.Snap;
-import com.example.naseem.pdemo.SnapAdapter;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import java.util.ArrayList;

@@ -1,11 +1,7 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.naseem.pdemo.R;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;

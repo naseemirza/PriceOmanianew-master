@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
@@ -53,6 +53,13 @@ public class GotoSIte extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        return true;
     }
 }
 

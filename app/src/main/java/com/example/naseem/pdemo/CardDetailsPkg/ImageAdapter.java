@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

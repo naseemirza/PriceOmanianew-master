@@ -1,6 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
-
-import com.example.naseem.pdemo.App;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import java.util.List;
 

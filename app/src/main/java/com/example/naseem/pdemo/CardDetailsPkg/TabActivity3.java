@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

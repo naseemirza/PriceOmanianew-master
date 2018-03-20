@@ -1,16 +1,7 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,28 +20,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.naseem.pdemo.App;
-import com.example.naseem.pdemo.MainActivity;
-import com.example.naseem.pdemo.MyCustomPagerAdapter;
+import com.example.naseem.pdemo.Models.Phone;
+import com.example.naseem.pdemo.Models.PhoneCategory;
 import com.example.naseem.pdemo.R;
-import com.example.naseem.pdemo.Snap;
-import com.example.naseem.pdemo.SnapAdapter;
 
 import java.util.ArrayList;
 
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import iammert.com.expandablelib.ExpandableLayout;
+import iammert.com.expandablelib.Section;
 
 public class CardDetails extends AppCompatActivity {
 
@@ -69,12 +53,20 @@ public class CardDetails extends AppCompatActivity {
      */
     private ViewPager mViewPager;
     TextView textViewpri;
-
+    private Button btnSite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_details);
+
+//        btnSite=(Button)findViewById(R.id.buttonsite);
+//        btnSite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(CardDetails.this, GotoSIte.class));
+//            }
+//        });
 
         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -146,14 +138,19 @@ public class CardDetails extends AppCompatActivity {
          * number.
          */
         private RecyclerView mRecyclerview;
-
+        private RecyclerView recyclerView;
         //LinearLayout sliderDotspanel;
         private int dotscount;
         CardView  dialogbutton;
         private ImageView[] dots;
         //ViewPager viewPager;
-        TextView textView1 ,textView2,textViewclr,textViewstrg,textViewbrnd;
-        ImageView imageView;
+        public  TextView textView1 ,textView2,textViewclr,textViewstrg,textViewbrnd;
+       public  ImageView imageView;
+
+        String name;
+        String price;
+        int image;
+
         //int images[] = {R.drawable.appleiphone6, R.drawable.apple,
                 //R.drawable.apple7plus,R.drawable.appleiphone6,R.drawable.applemini,R.drawable.applimini11,R.drawable.apple,R.drawable.appleiphone6};
         ImageAdapter imageAdapter;
@@ -179,57 +176,73 @@ public class CardDetails extends AppCompatActivity {
 
 
 
+                ExpandableLayout layout=(ExpandableLayout)rootView.findViewById(R.id.el);
+                layout.setRenderer(new ExpandableLayout.Renderer<PhoneCategory, Phone>(){
 
-               //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
+                                                    @Override
+                                                    public void renderParent(View view, PhoneCategory model, boolean b, int i) {
+                                                        ((TextView) view.findViewById(R.id.texviewtmore)).setText(model.name);
+                                                    }
+
+                                                    @Override
+                                                    public void renderChild(View view, Phone model, int i, int i1) {
+                                                        ((TextView) view.findViewById(R.id.tvChild)).setText(model.name);
+
+                                                    }
+                                                });
+
+                layout.addSection(getSection());
+//                layout.addSection(getSection());
+//                layout.addSection(getSection());
+//                layout.addSection(getSection());
+//                layout.addSection(getSection());
+//                layout.addSection(getSection());
+
+
+
+
+
+
+
+
+                //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
 
                 textView1=(TextView)rootView.findViewById(R.id.priceText) ;
                 textView2=(TextView)rootView.findViewById(R.id.mobilenametext) ;
                imageView=(ImageView)rootView.findViewById(R.id.cardimg);
 
-                Intent i=getActivity().getIntent();
+                final Intent i=getActivity().getIntent();
 
-                final String name=i.getExtras().getString("name");
-                final String price=i.getExtras().getString("price");
-                final int image=i.getExtras().getInt("cardimage");
+                Bundle bd = i.getExtras();
+                if(bd != null)
+                {
+                    final String getname = (String) bd.get("name");
+                    textView2.setText(getname);
+                    final String getprice = (String) bd.get("price");
+                    textView1.setText(getprice);
+                    final Integer getimage=(Integer)bd.get("cardimage");
+                    imageView.setImageResource(getimage);
+                }
 
-                imageView.setImageResource(image);
-                textView2.setText(name);
-                textView1.setText(price);
-
-
-
-//                 textViewclr=(TextView)rootView.findViewById(R.id.mcolor);
-//                 textViewstrg=(TextView)rootView.findViewById(R.id.mmemory);
-//                textViewbrnd=(TextView)rootView.findViewById(R.id.mnetwork);
-
-
-
-
-//                Intent iin= getActivity().getIntent();
-//                Bundle b = iin.getExtras();
-//                if(b!=null)
-//                {
-//                    String j =(String) b.get("price");
-//                    String j1 =(String) b.get("name");
-//                    int pic=iin.getIntExtra("cardimage",0);
-////                    String j2=(String) b.get("color");
-////                    String j3 =(String) b.get("storage");
-////                    String j4 =(String) b.get("brand");
+//                name=i.getExtras().getString("name");
+//                 price=i.getExtras().getString("price");
+//                image=i.getExtras().getInt("cardimage");
 //
-//                    textView1.setText(j);
-//                    textView2.setText(j1);
-//                    //imageView.setImageResource(pic);
-////                    textViewclr.setText(j2);
-////                    textViewstrg.setText(j3);
-////                    textViewbrnd.setText(j4);
-//
-//                }
+//                imageView.setImageResource(image);
+//                textView2.setText(name);
+//                textView1.setText(price);
+
 
                 dialogbutton=(CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(getActivity(), DialogActivity.class));
+                    public void onClick(View view) {
+                        Intent intent=new Intent(getActivity(), DialogActivity.class);
+
+                        startActivityForResult(intent,0);
+
+
+                       startActivity(new Intent(getActivity(), DialogActivity.class));
 
                         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -248,14 +261,16 @@ public class CardDetails extends AppCompatActivity {
                     }
                 });
 
-                buttonSite1=(Button)rootView.findViewById(R.id.buttonsite1);
-                buttonSite1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(getActivity(),GotoSIte.class));
-
-                    }
-                });
+//                buttonSite1=(Button)rootView.findViewById(R.id.buttonsite1);
+//                buttonSite1.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent=new Intent(getActivity(), GotoSIte.class);
+//
+//                        startActivityForResult(intent,0);
+//
+//                    }
+//                });
                 mRecyclerview=(RecyclerView)rootView.findViewById(R.id.recyclerview);
                 mRecyclerview.setNestedScrollingEnabled(false);
 
@@ -337,7 +352,33 @@ public class CardDetails extends AppCompatActivity {
                 return rootView;
             }
 
+
+
         }
+
+        private Section<PhoneCategory,Phone> getSection(){
+            Section<PhoneCategory,Phone> section=new Section<>();
+            PhoneCategory phoneCategory=new PhoneCategory("MoreItem+");
+            List<Phone> listname=new ArrayList<>();
+            for (int i=1;i<=1;i++)
+                listname.add(new Phone("Delivery "));
+                //listname.add(new Phone("Notes "));
+
+                section.parent=phoneCategory;
+                section.children.addAll(listname);
+                return section;
+
+
+        }
+
+        @Override
+        public void onSaveInstanceState(Bundle outState){
+            super.onSaveInstanceState(outState);
+
+            //((MyAdapter)recyclerView.getAdapter()).onSaveInstanceState(outState);
+        }
+
+
 
 //        public class MyTimerTask extends TimerTask {
 //            @Override

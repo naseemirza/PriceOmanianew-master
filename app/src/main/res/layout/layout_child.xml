@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:id="@+id/lidelvry"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+                <TextView
+                    android:id="@+id/tvChild"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp"
+
+                    />
+
+                <TextView
+
+                    android:id="@+id/dlvrytext"
+
+                    android:text="1-7 working days"
+                    android:layout_width="200dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_height="25dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Notes"
+                    android:layout_width="120dp"
+                    android:layout_height="25dp" />
+
+
+
+                <TextView
+                    android:id="@+id/notetext"
+                    android:text="free shipping for orders of min of RS1000 with 2 products excluding gifts"
+                    android:layout_width="200dp"
+
+                    android:layout_marginStart="20dp"
+                    android:layout_height="60dp" />
+
+        </LinearLayout>
+</LinearLayout>

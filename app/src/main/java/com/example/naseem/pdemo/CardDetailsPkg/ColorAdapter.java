@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,16 +12,16 @@ import android.widget.TextView;
 import com.example.naseem.pdemo.R;
 
 /**
- * Created by User on 3/12/2018.
+ * Created by User on 3/9/2018.
  */
 
-public class BrandAdapter extends ArrayAdapter<String> {
+public class ColorAdapter extends ArrayAdapter<String> {
 
     String[] colorname;
     Context context;
 
-    public BrandAdapter(Activity context, String[] item){
-        super(context, R.layout.brandlist, item);
+    public ColorAdapter(Activity context, String[] item){
+        super(context, R.layout.colorlist, item);
         // TODO Auto-generated constructor stub
         this.colorname = item;
 
@@ -34,11 +34,11 @@ public class BrandAdapter extends ArrayAdapter<String> {
         // TODO Auto-generated method stub
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View single_row = inflater.inflate(R.layout.brandlist, null,
+        View single_row = inflater.inflate(R.layout.colorlist, null,
                 true);
 
-        TextView textView = (TextView) single_row.findViewById(R.id.textViewbrand);
-        RadioButton radioButton=(RadioButton)single_row.findViewById(R.id.rbuttonn);
+        TextView textView = (TextView) single_row.findViewById(R.id.textViewcolor);
+        RadioButton radioButton=(RadioButton)single_row.findViewById(R.id.rbuttonc);
 
 
         textView.setText(colorname[position]);

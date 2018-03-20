@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -13,52 +13,47 @@ import android.widget.TextView;
 
 import com.example.naseem.pdemo.R;
 
-public class ColorActivity extends AppCompatActivity {
+public class StorageActivity extends AppCompatActivity {
+
     private TabLayout tabLayout;
 
-
     String Itemlist[] = {
-            "All Colors",
-            "Black",
-            "Blue",
-            "Gold",
-            "Grey",
-
-
+            "32 GB",
+            "64 GB",
+            "128 GB",
+            "256 GB",
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color);
+        setContentView(R.layout.activity_storage);
 
         getSupportActionBar().setTitle("Filters");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.addTab(tabLayout.newTab().setText("Color"));
+        tabLayout.addTab(tabLayout.newTab().setText("Storage"));
 
-
-        ColorAdapter adapter = new ColorAdapter(this, Itemlist);
-        ListView lv = (ListView) findViewById(R.id.list_view);
+        StorageAdapter adapter = new StorageAdapter(this, Itemlist);
+        ListView lv = (ListView) findViewById(R.id.list_viewstrg);
         lv.setAdapter(adapter);
-
+        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View view,
                                     int position, long arg3) {
-                TextView tv=(TextView)findViewById(R.id.textViewcolor);
+                TextView tv=(TextView)findViewById(R.id.textViewstorage);
                 String name = arg0.getItemAtPosition(position).toString();
-                //String name = tv.getText().toString();
-                Intent intent=new Intent(ColorActivity.this,DialogActivity.class);
-                intent.putExtra("color",name);
-                startActivity(intent);
+                //String name1 = tv.getText().toString();
+                Intent intent=new Intent(StorageActivity.this,DialogActivity.class);
+                intent.putExtra("storage",name);
+                startActivityForResult(intent,0);
 
                 LinearLayout item_view = (LinearLayout) view;
                 final RadioButton itemcheck = (RadioButton)
-                        item_view.findViewById(R.id.rbuttonc);
+                        item_view.findViewById(R.id.rbuttons);
 
 
 
@@ -73,7 +68,8 @@ public class ColorActivity extends AppCompatActivity {
 
             }
 
-       });
+        });
+
 
     }
 
@@ -83,5 +79,4 @@ public class ColorActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         return true;
     }
-
 }

@@ -9,7 +9,7 @@
 android:background="#ffff"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.naseem.pdemo.CardDetails.TabActivity1"
+    tools:context="com.example.naseem.pdemo.CardDetailsPkg.TabActivity1"
      >
 
     <ScrollView
@@ -188,7 +188,7 @@ android:background="#ffff"
                     android:id="@+id/priceText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="2dp"
                     android:background="@color/green"
                     android:gravity="center"
                     android:text="price"
@@ -202,7 +202,7 @@ android:background="#ffff"
             <android.support.v7.widget.CardView
                 android:id="@+id/card1"
                 android:layout_width="match_parent"
-                android:layout_height="142dp"
+                android:layout_height="80dp"
                 android:layout_below="@+id/linear"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
@@ -231,7 +231,7 @@ android:background="#ffff"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
                             android:gravity="start"
-                            android:text="Amazone"
+                            android:text="Souq"
                             android:textColor="#000"
                             android:textSize="20dp" />
 
@@ -266,217 +266,34 @@ android:background="#ffff"
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/li12"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="80dp"
-                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/li121"
-                        android:layout_width="144dp"
-                        android:layout_height="65dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/pricetext"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:text="AED 2199.00"
-                            android:textColor="@color/purple"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="142dp"
-                            android:layout_height="25dp"
-
-                            android:layout_marginStart="10dp"
-                            android:text="Shipping costs veri.." />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/li122"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-
-                        <TextView
-
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:text="More Info+"
-                            android:textColor="@color/green"
-                            android:textSize="15dp" />
-
-                        <Button
-                            android:id="@+id/buttonsite"
-                            android:layout_width="70dp"
-                            android:layout_height="35dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_weight="5"
-                            android:background="@color/purple"
-                            android:text="Go to site"
-                            android:textColor="#fff" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
             </android.support.v7.widget.CardView>
 
+            <!--<include-->
+                <!--android:layout_below="@+id/card1"-->
+                <!--android:id="@+id/inclayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--layout="@layout/layout_parent" />-->
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/card2"
+
+
+            <iammert.com.expandablelib.ExpandableLayout
+                android:id="@+id/el"
+                android:layout_below="@+id/card1"
                 android:layout_width="match_parent"
-                android:layout_height="142dp"
-                android:layout_below="@+id/linear"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
-                app:cardCornerRadius="3dp"
-                card_view:cardElevation="1dp">
-
-                <LinearLayout
-                    android:id="@+id/lin1"
-                    android:layout_width="match_parent"
-
-                    android:layout_height="82dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/lin2"
-                        android:layout_width="190dp"
-                        android:layout_height="59dp"
-                        android:layout_gravity="top|start"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/siteTextview1"
-                            android:layout_width="match_parent"
-
-                            android:layout_height="25dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:gravity="start"
-                            android:text="Flipkart"
-                            android:textColor="#000"
-                            android:textSize="20dp" />
-
-                        <TextView
-                            android:id="@+id/mobilename1"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-
-                            android:layout_marginStart="10dp"
-                            android:text="iPhone7 Plus" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lin3"
-
-                        android:layout_width="190dp"
-                        android:layout_height="80dp"
-                        android:layout_gravity="right"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageview1"
-
-                            android:layout_width="164dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:src="@drawable/souqimg" />
-
-                    </LinearLayout>
-                </LinearLayout>
+                android:layout_height="match_parent"
+                app:childLayout="@layout/layout_child"
+                app:parentLayout="@layout/layout_parent" />
 
 
-                <LinearLayout
-                    android:id="@+id/lin12"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="80dp"
-                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:id="@+id/lin121"
-                        android:layout_width="144dp"
-                        android:layout_height="65dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/pricetext1"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:text="AED 30099.00"
-                            android:textColor="@color/purple"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="142dp"
-                            android:layout_height="25dp"
-
-                            android:layout_marginStart="10dp"
-                            android:text="Shipping costs veri.." />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/lin122"
-                        android:layout_width="match_parent"
-                        android:layout_height="58dp"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-
-                        <TextView
-
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:text="More Info+"
-                            android:textColor="@color/green"
-                            android:textSize="15dp" />
-
-                        <Button
-                            android:id="@+id/buttonsite1"
-                            android:layout_width="70dp"
-                            android:layout_height="35dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_weight="5"
-                            android:background="@color/purple"
-                            android:text="Go to site"
-                            android:textColor="#fff" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
 
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview"
-                android:layout_below="@+id/card2"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/el"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -544,6 +361,7 @@ android:background="#ffff"
 
 
         </RelativeLayout>
+
 
 
 

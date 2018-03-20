@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,16 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.naseem.pdemo.CardDetails.CardDetails;
-
-import com.example.naseem.pdemo.CardDetails.CustomRVItemTouchListener;
-import com.example.naseem.pdemo.CardDetails.RecyclerViewItemClickListener;
-import com.example.naseem.pdemo.CardDetails.TabActivity1;
 import com.example.naseem.pdemo.CategoryItems.Categories;
 
 import java.util.ArrayList;
@@ -73,7 +64,13 @@ public class MainActivity extends AppCompatActivity
         mRecyclerview.setAdapter(mAdapter);
         mRecyclerview.setHasFixedSize(true);
 
-
+//  mRecyclerview.addOnItemTouchListener(new CustomRVItemTouchListener(this, mRecyclerview, new RecyclerViewItemClickListener() {
+//      @Override
+//      public void onClick(View view, int position) {
+//
+//          startActivity(new Intent(MainActivity.this,CardDetails.class));
+//      }
+//  }));
 
         if (savedInstanceState == null) {
             mHorizontal = true;
@@ -261,9 +258,6 @@ public class MainActivity extends AppCompatActivity
 
         return apps3;
     }
-
-
-
 
 
 

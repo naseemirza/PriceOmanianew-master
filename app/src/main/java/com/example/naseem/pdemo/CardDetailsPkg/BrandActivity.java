@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -41,8 +41,9 @@ public class BrandActivity extends AppCompatActivity {
 
 
         ColorAdapter adapter = new ColorAdapter(this, Itemlist);
-        ListView lv = (ListView) findViewById(R.id.list_view);
+        ListView lv = (ListView) findViewById(R.id.list_viewbrnd);
         lv.setAdapter(adapter);
+        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -50,7 +51,7 @@ public class BrandActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View view,
                                     int position, long arg3) {
                 TextView tv=(TextView)findViewById(R.id.textViewbrand);
-                String name = arg0.getItemAtPosition(position).toString();
+                String name = (String) arg0.getItemAtPosition(position).toString();
                 //String name = tv.getText().toString();
                 Intent intent=new Intent(BrandActivity.this,DialogActivity.class);
                 intent.putExtra("brand",name);
@@ -69,8 +70,6 @@ public class BrandActivity extends AppCompatActivity {
                 }
 
                 itemcheck.setChecked(true);
-
-
 
             }
 

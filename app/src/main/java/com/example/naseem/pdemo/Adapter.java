@@ -1,21 +1,17 @@
 package com.example.naseem.pdemo;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.naseem.pdemo.CardDetails.CardDetails;
-import com.example.naseem.pdemo.CardDetails.RecyclerViewItemClickListener;
+import com.example.naseem.pdemo.CardDetailsPkg.CardDetails;
+import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
 
 import java.util.List;
 
@@ -62,44 +58,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //Intent i=new Intent(view.getContext(),CardDetails.class);
-                //TextView mobilename,mobileprice;
-                //ImageView imageView;
-               // mobileprice=(TextView)view.findViewById(R.id.onlinestoreTextview2);
-               // mobilename=(TextView)view.findViewById(R.id.nameTextview);
-                //imageView=(ImageView)view.findViewById(R.id.imageview);
 
-                //String s=mobileprice.getText().toString();
-                //String s1=mobilename.getText().toString();
                 Intent intent = new Intent(view.getContext(), CardDetails.class);
                 intent.putExtra("price",app.getPrice());
                 intent.putExtra("name",app.getName());
                 intent.putExtra("cardimage",app.getImage());
                 view.getContext().startActivity(intent);
+
             }
         });
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                TextView mobilename,mobileprice;
-//                ImageView imageView;
-//                mobileprice=(TextView)v.findViewById(R.id.onlinestoreTextview2);
-//                mobilename=(TextView)v.findViewById(R.id.nameTextview);
-//                imageView=(ImageView)v.findViewById(R.id.imageview);
-//
-//                String s=mobileprice.getText().toString();
-//                String s1=mobilename.getText().toString();
-//                Intent intent = new Intent(v.getContext(), CardDetails.class);
-//                intent.putExtra("price",s);
-//                intent.putExtra("name",s1);
-//                //intent.putExtra("cardimage",images);
-//                v.getContext().startActivity(intent);
-//
-//            }
-//        });
-
-
-
 
 
     }
@@ -118,6 +85,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
 
 
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView imageview;
@@ -125,12 +93,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         public TextView onlinestoreTextview2;
         public TextView priceTextview1;
         private RecyclerViewItemClickListener itemClickListener;
-
-
+        LinearLayout linearLayout;
+        CardView cv;
 
         public ViewHolder(View itemView) {
 
             super(itemView);
+            linearLayout=(LinearLayout)itemView.findViewById(R.id.linearL);
+           cv=(CardView)itemView.findViewById(R.id.cardID);
             imageview=(ImageView)itemView.findViewById(R.id.imageview);
             nameTextview=(TextView) itemView.findViewById(R.id.nameTextview);
             onlinestoreTextview2=(TextView) itemView.findViewById(R.id.onlinestoreTextview2);

@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +16,8 @@ public class CustomRVItemTouchListener implements RecyclerView.OnItemTouchListen
 
     GestureDetector gestureDetector;
     private RecyclerViewItemClickListener clickListener;
+
+
 
     public CustomRVItemTouchListener(Context context, final RecyclerView recyclerView,
                                      final RecyclerViewItemClickListener clickListener){
@@ -51,10 +53,5 @@ public class CustomRVItemTouchListener implements RecyclerView.OnItemTouchListen
     public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
     }
-
-
-
-
-
 
 }

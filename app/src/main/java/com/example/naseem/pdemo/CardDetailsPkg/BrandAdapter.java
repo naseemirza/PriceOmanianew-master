@@ -1,4 +1,4 @@
-package com.example.naseem.pdemo.CardDetails;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,18 +12,19 @@ import android.widget.TextView;
 import com.example.naseem.pdemo.R;
 
 /**
- * Created by User on 3/9/2018.
+ * Created by User on 3/12/2018.
  */
 
-public class StorageAdapter extends ArrayAdapter<String> {
+public class BrandAdapter extends ArrayAdapter<String> {
 
-    String[] storagename;
+    String[] colorname;
     Context context;
 
-    public StorageAdapter(Activity context, String[] item){
-        super(context, R.layout.storagelist, item);
+    public BrandAdapter(Activity context, String[] item){
+        super(context, R.layout.brandlist, item);
         // TODO Auto-generated constructor stub
-        this.storagename = item;
+        this.colorname = item;
+
         this.context = context;
 
     }
@@ -33,14 +34,14 @@ public class StorageAdapter extends ArrayAdapter<String> {
         // TODO Auto-generated method stub
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View single_row = inflater.inflate(R.layout.storagelist, null,
+        View single_row = inflater.inflate(R.layout.brandlist, null,
                 true);
 
-        TextView textView = (TextView) single_row.findViewById(R.id.textViewstorage);
-        RadioButton radioButton=(RadioButton)single_row.findViewById(R.id.rbuttons);
+        TextView textView = (TextView) single_row.findViewById(R.id.textViewbrand);
+        RadioButton radioButton=(RadioButton)single_row.findViewById(R.id.rbuttonn);
 
 
-        textView.setText(storagename[position]);
+        textView.setText(colorname[position]);
 
 
 
