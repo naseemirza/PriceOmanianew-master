@@ -29,7 +29,7 @@ public class StorageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_storage);
 
         getSupportActionBar().setTitle("Filters");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Storage"));
@@ -46,10 +46,10 @@ public class StorageActivity extends AppCompatActivity {
                                     int position, long arg3) {
                 TextView tv=(TextView)findViewById(R.id.textViewstorage);
                 String name = arg0.getItemAtPosition(position).toString();
-                //String name1 = tv.getText().toString();
-                Intent intent=new Intent(StorageActivity.this,DialogActivity.class);
+                Intent intent=new Intent();
                 intent.putExtra("storage",name);
-                startActivityForResult(intent,0);
+                setResult(3,intent);
+                finish();
 
                 LinearLayout item_view = (LinearLayout) view;
                 final RadioButton itemcheck = (RadioButton)

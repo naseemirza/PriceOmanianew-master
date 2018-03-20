@@ -18,6 +18,7 @@ public class DialogActivity extends AppCompatActivity {
     private TabLayout tabLayout;
 
     private CardView cardView1,cardView2,cardView3;
+    private  TextView textView,textView1,textView2;
     private Button buttonaply;
     Adapter mAdapter;
     RelativeLayout relativeLayout;
@@ -58,25 +59,25 @@ public class DialogActivity extends AppCompatActivity {
 
 
 
-        TextView textView=(TextView)findViewById(R.id.subtextcolor);
-        TextView textView1=(TextView)findViewById(R.id.storagetext);
-        TextView textView2=(TextView)findViewById(R.id.brandtextview);
+         textView=(TextView)findViewById(R.id.subtextcolor);
+         textView1=(TextView)findViewById(R.id.storagetext);
+         textView2=(TextView)findViewById(R.id.brandtextview);
 
 
 
-       final Intent iin=getIntent();
-        Bundle b = iin.getExtras();
-
-        if(b!=null)
-        {
-            final String cname = (String) b.get("color");
-            textView.setText(cname);
-            final String strgname = (String) b.get("storage");
-            textView1.setText(strgname);
-            final String brndname = (String) b.get("brand");
-            textView2.setText(brndname);
-
-        }
+//       final Intent iin=getIntent();
+//        Bundle b = iin.getExtras();
+//
+//        if(b!=null)
+//        {
+//            final String cname = (String) b.get("color");
+//            textView.setText(cname);
+//            final String strgname = (String) b.get("storage");
+//            textView1.setText(strgname);
+//            final String brndname = (String) b.get("brand");
+//            textView2.setText(brndname);
+//
+//        }
 
 
         relativeLayout=(RelativeLayout)findViewById(R.id.rel1) ;
@@ -94,7 +95,8 @@ public class DialogActivity extends AppCompatActivity {
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DialogActivity.this,ColorActivity.class));
+                Intent intent=new Intent(DialogActivity.this,ColorActivity.class);
+                startActivityForResult(intent, 2);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -102,7 +104,8 @@ public class DialogActivity extends AppCompatActivity {
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DialogActivity.this,StorageActivity.class));
+                Intent intent=new Intent(DialogActivity.this,StorageActivity.class);
+                startActivityForResult(intent, 3);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -112,7 +115,8 @@ public class DialogActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(DialogActivity.this,BrandActivity.class));
+                Intent intent=new Intent(DialogActivity.this,BrandActivity.class);
+                startActivityForResult(intent, 4);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -134,6 +138,27 @@ public class DialogActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2)
+        {
+            String message=data.getStringExtra("color");
+            textView.setText(message);
+        }
+        if(requestCode==3)
+        {
+            String message1=data.getStringExtra("storage");
+            textView1.setText(message1);
+        }
+        if(requestCode==4)
+        {
+            String message2=data.getStringExtra("brand");
+            textView2.setText(message2);
+        }
+    }
 
 
     @Override

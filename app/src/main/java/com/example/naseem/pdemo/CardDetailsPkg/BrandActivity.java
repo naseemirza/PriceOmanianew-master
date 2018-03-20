@@ -34,13 +34,13 @@ public class BrandActivity extends AppCompatActivity {
         setContentView(R.layout.activity_brand);
 
         getSupportActionBar().setTitle("Filters");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Networks"));
 
 
-        ColorAdapter adapter = new ColorAdapter(this, Itemlist);
+        BrandAdapter adapter = new BrandAdapter(this, Itemlist);
         ListView lv = (ListView) findViewById(R.id.list_viewbrnd);
         lv.setAdapter(adapter);
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -52,14 +52,15 @@ public class BrandActivity extends AppCompatActivity {
                                     int position, long arg3) {
                 TextView tv=(TextView)findViewById(R.id.textViewbrand);
                 String name = (String) arg0.getItemAtPosition(position).toString();
-                //String name = tv.getText().toString();
-                Intent intent=new Intent(BrandActivity.this,DialogActivity.class);
+                Intent intent=new Intent();
                 intent.putExtra("brand",name);
-                startActivity(intent);
+                setResult(4,intent);
+                finish();
 
                 LinearLayout item_view = (LinearLayout) view;
                 final RadioButton itemcheck = (RadioButton)
                         item_view.findViewById(R.id.rbuttonn);
+
 
 
                 if (itemcheck.isChecked()) {
@@ -74,6 +75,7 @@ public class BrandActivity extends AppCompatActivity {
             }
 
         });
+
 
     }
 

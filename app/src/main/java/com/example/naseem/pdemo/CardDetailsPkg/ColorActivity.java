@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -33,7 +34,7 @@ public class ColorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_color);
 
         getSupportActionBar().setTitle("Filters");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Color"));
@@ -53,9 +54,11 @@ public class ColorActivity extends AppCompatActivity {
 
                 TextView tv=(TextView)findViewById(R.id.textViewcolor);
                 String name = arg0.getItemAtPosition(position).toString();
-                Intent intent=new Intent(ColorActivity.this,DialogActivity.class);
+                //Intent intent=new Intent(ColorActivity.this,DialogActivity.class);
+                Intent intent=new Intent();
                 intent.putExtra("color",name);
-                startActivityForResult(intent,0);
+                setResult(2,intent);
+                finish();
 
                 //String name = tv.getText().toString();
 

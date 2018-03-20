@@ -1,5 +1,6 @@
 package com.example.naseem.pdemo.CardDetailsPkg;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +9,16 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.naseem.pdemo.R;
 
 public class SeeAllOptions extends AppCompatActivity {
     private TabLayout tabLayout;
+
+    TextView textname,textpric;
+
+
 
     String Itemlist[] = {
                 "Black,64 GB,3G",
@@ -43,6 +49,9 @@ public class SeeAllOptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_all_options);
 
+        textname=(TextView)findViewById(R.id.textViewname);
+        textpric=(TextView)findViewById(R.id.textViewprc);
+
         getSupportActionBar().setTitle("Filters");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -54,14 +63,22 @@ public class SeeAllOptions extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(adapter);
 
-       lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               startActivity(new Intent(SeeAllOptions.this,CardDetails.class));
-           }
-       });
+        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                                      @Override
+                                      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                          //String name = parent.getItemAtPosition(position).toString();
+                                          Intent returnIntent = new Intent();
+                                          setResult(Activity.RESULT_CANCELED, returnIntent);
+                                          finish();
+                                      }
+                                  });
+                //Intent intent=new Intent(SeeAllOptions.this,CardDetails.class);
 
+        //startActivityForResult(intent, 5);
    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

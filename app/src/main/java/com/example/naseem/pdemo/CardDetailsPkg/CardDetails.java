@@ -144,7 +144,7 @@ public class CardDetails extends AppCompatActivity {
         CardView  dialogbutton;
         private ImageView[] dots;
         //ViewPager viewPager;
-        public  TextView textView1 ,textView2,textViewclr,textViewstrg,textViewbrnd;
+        public  TextView textView1 ,textView2,textViewcolor;
        public  ImageView imageView;
 
         String name;
@@ -206,7 +206,7 @@ public class CardDetails extends AppCompatActivity {
 
 
                 //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
-
+                textViewcolor=(TextView)rootView.findViewById(R.id.mcolor) ;
                 textView1=(TextView)rootView.findViewById(R.id.priceText) ;
                 textView2=(TextView)rootView.findViewById(R.id.mobilenametext) ;
                imageView=(ImageView)rootView.findViewById(R.id.cardimg);
@@ -239,10 +239,10 @@ public class CardDetails extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent intent=new Intent(getActivity(), DialogActivity.class);
 
-                        startActivityForResult(intent,0);
+                        startActivity(intent);
 
 
-                       startActivity(new Intent(getActivity(), DialogActivity.class));
+                       //startActivity(new Intent(getActivity(), DialogActivity.class));
 
                         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
@@ -370,6 +370,7 @@ public class CardDetails extends AppCompatActivity {
 
 
         }
+
 
         @Override
         public void onSaveInstanceState(Bundle outState){

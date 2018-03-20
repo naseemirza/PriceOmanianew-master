@@ -26,5 +26,16 @@
         android:gravity="center|center_vertical"/>
 
 
+    <!--<CheckBox-->
+        <!--android:id="@+id/rbuttonc"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:focusable="false"-->
+        <!--android:button="@drawable/custom_checkbox"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_marginLeft="150dp"-->
+        <!--android:gravity="center|center_vertical"/>-->
+
+
 
 </LinearLayout>
