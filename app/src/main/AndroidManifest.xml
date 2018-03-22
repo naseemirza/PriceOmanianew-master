@@ -48,7 +48,7 @@
             android:parentActivityName=".CardDetailsPkg.CardDetails" />
         <activity
             android:name=".CardDetailsPkg.DialogActivity"
-            android:parentActivityName=".CardDetailsPkg.CardDetails"/>
+            android:parentActivityName=".CardDetailsPkg.CardDetails" />
         <activity
             android:name=".CardDetailsPkg.SeeAllOptions"
             android:parentActivityName=".CardDetailsPkg.DialogActivity" />
@@ -58,8 +58,12 @@
         <activity
             android:name=".CardDetailsPkg.StorageActivity"
             android:parentActivityName=".CardDetailsPkg.DialogActivity" />
-        <activity android:name=".CardDetailsPkg.BrandActivity"
-            android:parentActivityName=".CardDetailsPkg.DialogActivity"></activity>
+        <activity
+            android:name=".CardDetailsPkg.BrandActivity"
+            android:parentActivityName=".CardDetailsPkg.DialogActivity" />
+        <activity android:name=".AutoEditTextActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">Price Omania</string>
+    
+    <string-array name="ItemList">
+        <item>India</item>
+        <item>America</item>
+        <item>Japan</item>
+        <item>Pakistan</item>
+        <item>Australiya</item>
+        <item>Ruse</item>
+        <item>Dubai</item>
+        <item>Soudi</item>
+    </string-array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

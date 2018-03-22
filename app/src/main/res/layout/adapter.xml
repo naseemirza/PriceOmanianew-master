@@ -8,10 +8,10 @@
     android:layout_height="wrap_content"
 
     android:clickable="false"
+    app:cardCornerRadius="10dp"
+    card_view:cardElevation="10dp"
 
-    android:orientation="vertical"
-    app:cardCornerRadius="5dp"
-    card_view:cardElevation="2dp">
+    >
 
     <LinearLayout
         android:id="@+id/linearL"

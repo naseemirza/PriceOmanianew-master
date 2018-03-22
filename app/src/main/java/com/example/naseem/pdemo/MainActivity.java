@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,7 +31,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+private EditText editText;
     public static String BACK_STACK_TAG = "tag";
 
     public static final String ORIENTATION = "orientation";
@@ -51,6 +53,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        editText=(EditText)findViewById(R.id.etext);
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, AutoEditTextActivity.class);
+                startActivity(intent);
+            }
+        });
 
         textViewprice=(TextView)findViewById(R.id.onlinestoreTextview2);
         textviewname=(TextView)findViewById(R.id.nameTextview);
@@ -155,6 +167,9 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+
 
 
     @Override

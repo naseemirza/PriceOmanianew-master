@@ -14,7 +14,7 @@ import com.example.naseem.pdemo.R;
 
 public class Categories extends AppCompatActivity {
 
-    String categoriesItems[] = {
+    public static String categoriesItems[] = {
             "Mobile Phones (23026)", "Computers/Laptops (34838)", "Tablets (1437)", "Cameras (15610)",
             "TV Video (2700)", "Audio (1525)", "Video Games (1499)", "Kids & Babies (27359)",
             "Men Fashion (13164)", "Eyewear (11946)", "Watches (15670)", "Women Fashion (44105)",

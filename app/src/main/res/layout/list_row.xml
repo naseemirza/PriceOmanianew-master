@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/textView"
         android:textSize="17dp"
-        android:textColor="@color/green"
+        android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="center"
