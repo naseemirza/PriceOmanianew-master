@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/linear_Layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:background="#F1F3F4"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+    <ImageButton
+        android:id="@+id/bachbtn"
+        android:background="#F1F3F4"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:layout_width="50dp"
+        android:layout_height="56dp">
+
+    </ImageButton>
+
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextView1"
+            android:layout_width="270dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="@android:color/transparent"
+            android:cursorVisible="false"
+            android:hint="Search for products"
+            android:paddingStart="5dp"
+            android:textCursorDrawable="@color/colorBlack">
+
+            <requestFocus />
+        </AutoCompleteTextView>
+
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="50dp"
+
+            android:layout_height="56dp"
+
+
+            android:layout_toEndOf="@+id/autoCompleteTextView1"
+            android:src="@drawable/ic_close_black_24dp" />
+
+
+    </RelativeLayout>
 
 
 
 
 
-
-            <ImageButton
-                android:id="@+id/bachbtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@color/colorWhite"
-                android:paddingRight="20dp"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView1"
-                android:layout_width="320dp"
-                android:layout_height="50dp"
-
-                android:background="@android:color/transparent"
-                android:cursorVisible="true"
-                android:ems="10"
-                android:hint="Search millions of products"
-                android:textCursorDrawable="@color/colorBlack">
-
-                <requestFocus />
-            </AutoCompleteTextView>
-
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent" />
-
-            <!--<ImageButton-->
-                <!--android:id="@+id/closebtn"-->
-                <!--android:layout_width="50dp"-->
-                <!--android:layout_height="50dp"-->
-                <!--android:background="@color/colorWhite"-->
-                <!--android:layout_alignRight="@+id/autoCompleteTextView1"-->
-                <!--android:src="@drawable/ic_close_black_24dp" />-->
-
-
-        </LinearLayout>
+</LinearLayout>
 
 

@@ -28,10 +28,9 @@
                 android:layout_weight="0.54"
                 android:background="@color/colorWhite"
                 android:cursorVisible="false"
-
                 android:drawableLeft="@drawable/ic_search_black_24dp"
-               android:drawablePadding="10dp"
-                android:hint="    Search for products"
+               android:paddingStart="10dp"
+                android:hint="   Search for products"
 
                 android:textColor="#2F2F2F"
                 android:textColorHint="#2F2F2F"

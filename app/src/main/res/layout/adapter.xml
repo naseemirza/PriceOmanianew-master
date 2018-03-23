@@ -6,9 +6,9 @@
 
     android:layout_width="160dp"
     android:layout_height="wrap_content"
-
+android:layout_marginStart="3dp"
     android:clickable="false"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="3dp"
     card_view:cardElevation="10dp"
 
     >

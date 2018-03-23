@@ -61,9 +61,10 @@
         <activity
             android:name=".CardDetailsPkg.BrandActivity"
             android:parentActivityName=".CardDetailsPkg.DialogActivity" />
-        <activity android:name=".AutoEditTextActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AutoEditTextActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

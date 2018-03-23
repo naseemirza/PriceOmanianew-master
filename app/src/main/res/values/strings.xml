@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Price Omania</string>
-    
+
+
+
+        <string name="search">search</string>
+        <string name="and_search_ARG1">and search %1$s</string>
+
+
     <string-array name="ItemList">
         <item>India</item>
         <item>America</item>

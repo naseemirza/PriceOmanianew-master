@@ -42,16 +42,17 @@
             </LinearLayout>
 
 
-                <TextView
+        <TextView
 
-                    android:id="@+id/texviewtmore"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="More Info+"
-                    android:gravity="center"
-                    android:layout_marginStart="180dp"
-                    android:textColor="@color/green"
-                    android:textSize="15dp" />
+            android:id="@+id/texviewtmore"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="More Info+"
+            android:textColor="@color/green"
+            android:textSize="15dp" />
 
                 <Button
                     android:layout_marginTop="10dp"

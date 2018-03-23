@@ -170,8 +170,6 @@ private EditText editText;
 
 
 
-
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
