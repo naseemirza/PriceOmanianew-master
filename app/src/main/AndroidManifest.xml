@@ -65,6 +65,12 @@
             android:name=".AutoEditTextActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity android:name=".CategoryItems.ParentActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".CategoryItems.ChildActivity"
+            android:parentActivityName=".CategoryItems.ParentActivity"/>
     </application>
 
 </manifest>

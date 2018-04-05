@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.naseem.pdemo.CategoryItems.Categories;
+import com.example.naseem.pdemo.CategoryItems.ParentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -354,7 +355,7 @@ private EditText editText;
         } else if (id == R.id.nav_myad) {
 
         } else if (id == R.id.nav_category) {
-            startActivity(new Intent(MainActivity.this, Categories.class));
+            startActivity(new Intent(MainActivity.this,ParentActivity.class));
 
 
 
