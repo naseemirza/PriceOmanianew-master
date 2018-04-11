@@ -20,20 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CategoryItems.Categories"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".LoginActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SignupActivity"
             android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".MobilePhonesItems.MobilePhones"
-            android:parentActivityName=".CategoryItems.Categories" />
-        <activity
-            android:name=".Computers"
-            android:parentActivityName=".CategoryItems.Categories" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -65,12 +56,17 @@
             android:name=".AutoEditTextActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CategoryItems.ParentActivity"
+            android:parentActivityName=".MainActivity" />
 
-
-        <activity android:name=".CategoryItems.ParentActivity"
-            android:parentActivityName=".MainActivity"/>
         <activity android:name=".CategoryItems.ChildActivity"
             android:parentActivityName=".CategoryItems.ParentActivity"/>
+
+        <activity android:name=".CategoryItems.Sub_ChildActivity"
+            android:parentActivityName=".CategoryItems.ChildActivity">
+
+        </activity>
     </application>
 
 </manifest>

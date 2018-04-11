@@ -112,8 +112,8 @@ public class SnapAdapter extends RecyclerView.Adapter<SnapAdapter.ViewHolder> im
             new GravitySnapHelper(snap.getGravity()).attachToRecyclerView(holder.recyclerview);
 
         }
-        holder.recyclerview.setAdapter(new Adapter(snap.getGravity()==Gravity.START||snap.getGravity()==Gravity.END
-                ||snap.getGravity()==Gravity.CENTER_HORIZONTAL,snap.getGravity()==Gravity.CENTER,snap.getApps()));
+//        holder.recyclerview.setAdapter(new Adapter(snap.getGravity()==Gravity.START||snap.getGravity()==Gravity.END
+//                ||snap.getGravity()==Gravity.CENTER_HORIZONTAL,snap.getGravity()==Gravity.CENTER,snap.getApps()));
 
 
 

@@ -1,17 +1,12 @@
 package com.example.naseem.pdemo;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.AttributeSet;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,11 +16,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.naseem.pdemo.CardDetailsPkg.CardDetails;
-import com.example.naseem.pdemo.CategoryItems.Categories;
-import com.example.naseem.pdemo.MobilePhonesItems.MobilePhones;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.example.naseem.pdemo.CategoryItems.ChildActivity;
+import com.example.naseem.pdemo.CategoryItems.ParentActivity;
 
-import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class AutoEditTextActivity extends AppCompatActivity {
@@ -100,13 +94,13 @@ public class AutoEditTextActivity extends AppCompatActivity {
 
 
 
-        ItemAdapter = new
-                ArrayAdapter<String>(this,R.layout.hint_completion_layout,R.id.tvHintCompletion, MobilePhones.mobileItems);
+       // ItemAdapter = new
+                //ArrayAdapter<String>(this,R.layout.hint_completion_layout,R.id.tvHintCompletion, );
 
 
-        listView.setAdapter(ItemAdapter);
+        //listView.setAdapter(ItemAdapter);
         listView.setVisibility(View.GONE);
-        //autoCompleteTextView.setAdapter(ItemAdapter);
+        autoCompleteTextView.setAdapter(ItemAdapter);
 
         autoCompleteTextView.setThreshold(1);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

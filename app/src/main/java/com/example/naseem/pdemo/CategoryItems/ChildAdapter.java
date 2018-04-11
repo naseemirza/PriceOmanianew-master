@@ -20,7 +20,7 @@ public class ChildAdapter extends ArrayAdapter<Child> {
     private Context mCtx;
 
     public ChildAdapter(List<Child> childList, Context mCtx) {
-        super(mCtx, R.layout.list_items, childList);
+        super(mCtx, R.layout.child_items, childList);
         this.childList = childList;
         this.mCtx = mCtx;
     }

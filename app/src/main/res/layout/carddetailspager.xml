@@ -8,9 +8,9 @@
 
     android:clickable="true"
     android:orientation="vertical"
-    app:cardCornerRadius="5dp"
-
-    card_view:cardElevation="2dp">
+    app:cardCornerRadius="8dp"
+    android:layout_margin="2dp"
+    card_view:cardElevation="3dp">
 
     <LinearLayout
         android:id="@+id/linearL"

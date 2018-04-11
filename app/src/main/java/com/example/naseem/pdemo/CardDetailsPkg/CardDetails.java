@@ -1,6 +1,9 @@
 package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -27,7 +30,9 @@ import android.widget.TextView;
 import com.example.naseem.pdemo.Models.Phone;
 import com.example.naseem.pdemo.Models.PhoneCategory;
 import com.example.naseem.pdemo.R;
+import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -142,9 +147,10 @@ public class CardDetails extends AppCompatActivity {
         //LinearLayout sliderDotspanel;
         private int dotscount;
         CardView  dialogbutton;
+        String image_url;
         private ImageView[] dots;
         //ViewPager viewPager;
-        public  TextView textView1 ,textView2,textViewcolor;
+        public  TextView textViewname ,textViewcurncy,textViewprice ,textViewcount,textViewcolor;
        public  ImageView imageView;
 
         String name;
@@ -207,31 +213,34 @@ public class CardDetails extends AppCompatActivity {
 
                 //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
                 textViewcolor=(TextView)rootView.findViewById(R.id.mcolor) ;
-                textView1=(TextView)rootView.findViewById(R.id.priceText) ;
-                textView2=(TextView)rootView.findViewById(R.id.mobilenametext) ;
+
+                textViewname=(TextView)rootView.findViewById(R.id.mobilenametext) ;
+                textViewcurncy=(TextView)rootView.findViewById(R.id.crncytype) ;
+                textViewprice=(TextView)rootView.findViewById(R.id.pricetext1);
+                //textViewcount=(TextView)rootView.findViewById(R.id.mobilenametext);
+
                imageView=(ImageView)rootView.findViewById(R.id.cardimg);
 
                 final Intent i=getActivity().getIntent();
 
                 Bundle bd = i.getExtras();
+
+
+
                 if(bd != null)
                 {
-                    final String getname = (String) bd.get("name");
-                    textView2.setText(getname);
-                    final String getprice = (String) bd.get("price");
-                    textView1.setText(getprice);
-                    final Integer getimage=(Integer)bd.get("cardimage");
-                    imageView.setImageResource(getimage);
+                    image_url= String.valueOf(i.getStringExtra("cardimage"));
+
+                    Picasso.with(getActivity()).load(image_url).fit().centerInside().into(imageView);
+
+                        final String getname = (String) bd.get("name");
+                        textViewname.setText(getname);
+                        final String getprice = (String) bd.get("price");
+                        textViewprice.setText(getprice);
+                        final String getcurncy = (String) bd.get("currency");
+                        textViewcurncy.setText(getcurncy);
+
                 }
-
-//                name=i.getExtras().getString("name");
-//                 price=i.getExtras().getString("price");
-//                image=i.getExtras().getInt("cardimage");
-//
-//                imageView.setImageResource(image);
-//                textView2.setText(name);
-//                textView1.setText(price);
-
 
                 dialogbutton=(CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
@@ -261,16 +270,7 @@ public class CardDetails extends AppCompatActivity {
                     }
                 });
 
-//                buttonSite1=(Button)rootView.findViewById(R.id.buttonsite1);
-//                buttonSite1.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent=new Intent(getActivity(), GotoSIte.class);
-//
-//                        startActivityForResult(intent,0);
-//
-//                    }
-//                });
+
                 mRecyclerview=(RecyclerView)rootView.findViewById(R.id.recyclerview);
                 mRecyclerview.setNestedScrollingEnabled(false);
 
