@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        mRequestQueue1 = Volley.newRequestQueue(this);
         mRequestQueue1.add(stringRequest);
     }
 
@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        mRequestQueue2 = Volley.newRequestQueue(this);
         mRequestQueue2.add(stringRequest);
     }
 
@@ -377,7 +377,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        mRequestQueue3 = Volley.newRequestQueue(this);
         mRequestQueue3.add(stringRequest);
     }
 
@@ -426,7 +426,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        mRequestQueue4 = Volley.newRequestQueue(this);
         mRequestQueue4.add(stringRequest);
     }
 
