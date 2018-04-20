@@ -6,9 +6,12 @@ package com.example.naseem.pdemo.Models;
 
 public class Phone {
 
-    public String name;
+    public String dlivry,warranty,shipping,notes;
 
-    public Phone(String name) {
-        this.name = name;
+    public Phone(String dlivry, String warranty, String shipping, String notes) {
+        this.dlivry = dlivry;
+        this.warranty = warranty;
+        this.shipping = shipping;
+        this.notes = notes;
     }
 }

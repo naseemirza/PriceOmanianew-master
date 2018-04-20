@@ -1,9 +1,8 @@
 package com.example.naseem.pdemo.CardDetailsPkg;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -25,37 +24,22 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.naseem.pdemo.Models.Phone;
-import com.example.naseem.pdemo.Models.PhoneCategory;
+import com.example.naseem.pdemo.Options.MoreOptionActivity;
 import com.example.naseem.pdemo.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 
 import java.util.List;
 
-import iammert.com.expandablelib.ExpandableLayout;
-import iammert.com.expandablelib.Section;
-
 public class CardDetails extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private PlaceholderFragment.SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
     TextView textViewpri;
     private Button btnSite;
@@ -105,11 +89,6 @@ public class CardDetails extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -120,28 +99,17 @@ public class CardDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment extends Fragment  {
 
 
 
         Button buttonSite,buttonSite1;
 
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         private RecyclerView mRecyclerview;
         private RecyclerView recyclerView;
         //LinearLayout sliderDotspanel;
@@ -153,17 +121,9 @@ public class CardDetails extends AppCompatActivity {
         public  TextView textViewname ,textViewcurncy,textViewprice ,textViewcount,textViewcolor;
        public  ImageView imageView;
 
-        String name;
-        String price;
-        int image;
-
-        //int images[] = {R.drawable.appleiphone6, R.drawable.apple,
-                //R.drawable.apple7plus,R.drawable.appleiphone6,R.drawable.applemini,R.drawable.applimini11,R.drawable.apple,R.drawable.appleiphone6};
-        ImageAdapter imageAdapter;
-
-
-
-
+        LinearLayout mLinearLayoutDetalis;
+        LinearLayout mLinearLayoutMore;
+        LinearLayout mLinearLayoutLess;
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
@@ -182,33 +142,38 @@ public class CardDetails extends AppCompatActivity {
 
 
 
-                ExpandableLayout layout=(ExpandableLayout)rootView.findViewById(R.id.el);
-                layout.setRenderer(new ExpandableLayout.Renderer<PhoneCategory, Phone>(){
+                mLinearLayoutLess=(LinearLayout)rootView.findViewById(R.id.linrless);
+                mLinearLayoutDetalis = (LinearLayout)rootView.findViewById(R.id.expandable);
+                mLinearLayoutDetalis.setVisibility(View.GONE);
+                mLinearLayoutMore = (LinearLayout)rootView.findViewById(R.id.linrtextmore);
 
-                                                    @Override
-                                                    public void renderParent(View view, PhoneCategory model, boolean b, int i) {
-                                                        ((TextView) view.findViewById(R.id.texviewtmore)).setText(model.name);
-                                                    }
+                mLinearLayoutMore.setOnClickListener(new View.OnClickListener() {
 
-                                                    @Override
-                                                    public void renderChild(View view, Phone model, int i, int i1) {
-                                                        ((TextView) view.findViewById(R.id.tvChild)).setText(model.name);
+                    @Override
+                    public void onClick(View v) {
+                        mLinearLayoutMore.setVisibility(View.GONE);
+                        expand();
 
-                                                    }
-                                                });
-
-                layout.addSection(getSection());
-//                layout.addSection(getSection());
-//                layout.addSection(getSection());
-//                layout.addSection(getSection());
-//                layout.addSection(getSection());
-//                layout.addSection(getSection());
+                    }
+                });
+                mLinearLayoutLess.setOnClickListener(new View.OnClickListener() {
 
 
+                    @Override
+                    public void onClick(View v) {
+                        mLinearLayoutMore.setVisibility(View.VISIBLE);
+                        collapse();
 
+                    }
+                });
 
-
-
+                TextView optiontext=(TextView)rootView.findViewById(R.id.options);
+                optiontext.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getActivity(),MoreOptionActivity.class));
+                    }
+                });
 
 
                 //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
@@ -250,9 +215,6 @@ public class CardDetails extends AppCompatActivity {
 
                         startActivity(intent);
 
-
-                       //startActivity(new Intent(getActivity(), DialogActivity.class));
-
                         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
                     }
@@ -273,69 +235,12 @@ public class CardDetails extends AppCompatActivity {
 
                 mRecyclerview=(RecyclerView)rootView.findViewById(R.id.recyclerview);
                 mRecyclerview.setNestedScrollingEnabled(false);
-
-
-
-
-
                 mRecyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
                 mRecyclerview.setHasFixedSize(true);
                 setupAdapter();
 
 
-                //viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
-
-
-                //imageAdapter = new ImageAdapter(this.getActivity(), images);
-               // viewPager.setAdapter(imageAdapter);
-                //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
-
                 CardPager cardPager = new CardPager(this.getActivity());
-                //viewPager.setAdapter(cardPager);
-
-                //dotscount = cardPager.getCount();
-                //dots = new ImageView[dotscount];
-
-//                for(int i = 0; i < dotscount; i++){
-//
-//                    dots[i] = new ImageView(this.getActivity());
-//                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
-//
-//                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//
-//                    params.setMargins(8, 0, 8, 0);
-//
-//                    sliderDotspanel.addView(dots[i], params);
-//
-//                }
-
-                //dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
-
-//                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//                    @Override
-//                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onPageSelected(int position) {
-//
-//                        for(int i = 0; i< dotscount; i++){
-//                            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.non_active_dot));
-//                        }
-//
-//                        dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.active_dot));
-//
-//                    }
-//
-//                    @Override
-//                    public void onPageScrollStateChanged(int state) {
-//
-//                    }
-//                });
-                //Timer timer=new Timer();
-                //timer.scheduleAtFixedRate(new MyTimerTask(),2000,3000);
-
 
                 return rootView;
             } else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
@@ -356,21 +261,72 @@ public class CardDetails extends AppCompatActivity {
 
         }
 
-        private Section<PhoneCategory,Phone> getSection(){
-            Section<PhoneCategory,Phone> section=new Section<>();
-            PhoneCategory phoneCategory=new PhoneCategory("MoreItem+");
-            List<Phone> listname=new ArrayList<>();
-            for (int i=1;i<=1;i++)
-                listname.add(new Phone("Delivery "));
-                //listname.add(new Phone("Notes "));
 
-                section.parent=phoneCategory;
-                section.children.addAll(listname);
-                return section;
+        private void expand() {
+            //set Visible
+            mLinearLayoutDetalis.setVisibility(View.VISIBLE);
+            // mLinearLayoutMore.setVisibility(View.GONE);
 
+
+
+            final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            mLinearLayoutDetalis.measure(widthSpec, heightSpec);
+
+
+            ValueAnimator mAnimator = slideAnimator(0, mLinearLayoutDetalis.getMeasuredHeight());
+            mAnimator.start();
 
         }
+        private void collapse() {
+            int finalHeight = mLinearLayoutDetalis.getHeight();
 
+            ValueAnimator mAnimator = slideAnimator(finalHeight, 0);
+
+            mAnimator.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    //Height=0, but it set visibility to GONE
+                    mLinearLayoutDetalis.setVisibility(View.GONE);
+
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+
+            });
+            mAnimator.start();
+        }
+
+
+        private ValueAnimator slideAnimator(int start, int end) {
+
+            ValueAnimator animator = ValueAnimator.ofInt(start, end);
+
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    //Update Height
+                    int value = (Integer) valueAnimator.getAnimatedValue();
+                    ViewGroup.LayoutParams layoutParams = mLinearLayoutDetalis.getLayoutParams();
+                    layoutParams.height = value;
+                    mLinearLayoutDetalis.setLayoutParams(layoutParams);
+                }
+            });
+            return animator;
+        }
 
         @Override
         public void onSaveInstanceState(Bundle outState){
@@ -379,33 +335,6 @@ public class CardDetails extends AppCompatActivity {
             //((MyAdapter)recyclerView.getAdapter()).onSaveInstanceState(outState);
         }
 
-
-
-//        public class MyTimerTask extends TimerTask {
-//            @Override
-//            public void run() {
-//
-//                if(getActivity() == null)
-//                    return;
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if (viewPager.getCurrentItem()==0){
-//                            viewPager.setCurrentItem(1);
-//                        }
-//                        else if(viewPager.getCurrentItem()==1){
-//                            viewPager.setCurrentItem(2);
-//                        }
-//                        else if(viewPager.getCurrentItem()==2){
-//                            viewPager.setCurrentItem(3);
-//                        }
-//                        else {
-//                            viewPager.setCurrentItem(0);
-//                        }
-//                    }
-//                });
-//            }
-//        }
 
         private void setupAdapter(){
 

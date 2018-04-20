@@ -1,6 +1,7 @@
 package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,9 +25,6 @@ public class DialogActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,23 +37,22 @@ public class DialogActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
-//        buttonaply=(Button)findViewById(R.id.buttonapply);
-//        buttonaply.setOnClickListener(new View.OnClickListener() {
-//          @Override
-//          public void onClick(View view) {
-//
-//
-//
+
+        buttonaply=(Button)findViewById(R.id.buttonok);
+        buttonaply.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+
+
+              onBackPressed();
 //              Intent intent=new Intent(DialogActivity.this,CardDetails.class);
 //
-//
-//
-//              startActivityForResult(intent,0);
-//
-//              overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-//
-//          }
-//      });
+//              startActivity(intent);
+
+              overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+
+          }
+      });
 
 
 
@@ -159,6 +156,8 @@ public class DialogActivity extends AppCompatActivity {
             textView2.setText(message2);
         }
     }
+
+
 
 
     @Override

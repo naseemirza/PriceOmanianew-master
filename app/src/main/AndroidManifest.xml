@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.naseem.pdemo">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -59,14 +61,15 @@
         <activity
             android:name=".CategoryItems.ParentActivity"
             android:parentActivityName=".MainActivity" />
-
-        <activity android:name=".CategoryItems.ChildActivity"
-            android:parentActivityName=".CategoryItems.ParentActivity"/>
-
-        <activity android:name=".CategoryItems.Sub_ChildActivity"
-            android:parentActivityName=".CategoryItems.ChildActivity">
-
-        </activity>
+        <activity
+            android:name=".CategoryItems.ChildActivity"
+            android:parentActivityName=".CategoryItems.ParentActivity" />
+        <activity
+            android:name=".CategoryItems.Sub_ChildActivity"
+            android:parentActivityName=".CategoryItems.ChildActivity" />
+        <activity
+            android:name=".Options.MoreOptionActivity"
+            android:parentActivityName=".CardDetailsPkg.CardDetails" />
     </application>
 
 </manifest>

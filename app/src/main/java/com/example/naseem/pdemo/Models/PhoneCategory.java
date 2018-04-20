@@ -10,5 +10,6 @@ public class PhoneCategory {
 
     public PhoneCategory(String name) {
         this.name = name;
+
     }
 }

@@ -6,7 +6,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/nestdscrolview"
     android:fillViewport="true"
-android:background="#ffff"
+    android:background="#ffff"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.naseem.pdemo.CardDetailsPkg.TabActivity1"
@@ -206,17 +206,6 @@ android:background="#ffff"
                 </android.support.v7.widget.CardView>
 
 
-                <!--<Button-->
-                <!--android:background="@drawable/buttob_border"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:id="@+id/colorbutton"-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:textAllCaps="false"-->
-                <!--android:text="Colors, Storage, Networks >"-->
-                <!--android:layout_width="220dp"-->
-                <!--android:layout_height="30dp" />-->
-
                 <LinearLayout
                     android:background="@color/green"
                     android:id="@+id/linearprice"
@@ -258,18 +247,6 @@ android:background="#ffff"
 
                 </LinearLayout>
 
-                <!--<TextView-->
-
-                    <!--android:id="@+id/priceText"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="40dp"-->
-                    <!--android:layout_marginTop="2dp"-->
-                    <!--android:background="@color/green"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="price"-->
-                    <!--android:textColor="#ffff"-->
-                    <!--android:textSize="20dp" />-->
-
 
             </LinearLayout>
 
@@ -277,18 +254,16 @@ android:background="#ffff"
             <android.support.v7.widget.CardView
                 android:id="@+id/card1"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/linear"
-                android:layout_centerHorizontal="true"
 
-                app:cardCornerRadius="3dp"
-                card_view:cardElevation="1dp">
+               >
 
                 <LinearLayout
                     android:id="@+id/li1"
                     android:layout_width="match_parent"
-
-                    android:layout_height="82dp"
+                    android:layout_height="75dp"
+                    android:background="@color/colorWhite"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -296,6 +271,7 @@ android:background="#ffff"
                         android:layout_width="190dp"
                         android:layout_height="59dp"
                         android:layout_gravity="top|start"
+                        android:background="@color/colorWhite"
                         android:orientation="vertical">
 
                         <TextView
@@ -303,7 +279,7 @@ android:background="#ffff"
                             android:layout_width="match_parent"
 
                             android:layout_height="25dp"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="20dp"
                             android:layout_marginTop="10dp"
                             android:gravity="start"
                             android:text="Souq"
@@ -315,23 +291,24 @@ android:background="#ffff"
                             android:layout_width="match_parent"
                             android:layout_height="25dp"
 
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="20dp"
                             android:text="Apple iPhone" />
 
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:id="@+id/li3"
-
-                        android:layout_width="190dp"
-                        android:layout_height="80dp"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"
                         android:layout_gravity="right"
+                        android:layout_marginStart="30dp"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/imageview"
 
-                            android:layout_width="164dp"
+                            android:layout_width="140dp"
                             android:layout_height="50dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
@@ -341,33 +318,215 @@ android:background="#ffff"
                 </LinearLayout>
 
 
-
-            </android.support.v7.widget.CardView>
-
-            <!--<include-->
-                <!--android:layout_below="@+id/card1"-->
-                <!--android:id="@+id/inclayout"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--layout="@layout/layout_parent" />-->
-
-
-
-            <iammert.com.expandablelib.ExpandableLayout
-                android:id="@+id/el"
-                android:layout_below="@+id/card1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:childLayout="@layout/layout_child"
-                app:parentLayout="@layout/layout_parent" />
+                <TextView
+                    android:id="@+id/options"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="80dp"
+                    android:text="+Options"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15dp" />
 
 
+                    <RelativeLayout
+
+                        android:id="@+id/linrinfo"
+                        android:layout_marginTop="110dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="@color/colorWhite"
+                        >
 
 
+                        <LinearLayout
+                            android:id="@+id/li121"
+                            android:layout_width="144dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/pricetext"
+                                android:layout_width="match_parent"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="5dp"
+                                android:clickable="true"
+                                android:text="AED 2199.00"
+                                android:textColor="@color/purple"
+                                android:textSize="20dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="135dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="10dp"
+                                android:clickable="true"
+                                android:maxLines="1"
+                                android:text="Shipping costs varies" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linrtextmore"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@+id/li121"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/texviewtmore"
+                                android:layout_width="95dp"
+                                android:layout_height="25dp"
+                                android:gravity="center"
+                                android:text="MoreInfo"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+
+
+
+
+                        <Button
+                            android:id="@+id/buttonsite"
+                            android:layout_width="90dp"
+                            android:layout_height="35dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="25dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_weight="5"
+                            android:background="@color/purple"
+                            android:text="Go to site"
+                            android:textColor="#fff" />
+
+
+                    </RelativeLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/expandable"
+                        android:layout_marginTop="180dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="#FFF"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/lidelvry"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:text="Delivery"
+                                android:id="@+id/textdlvry"
+                                android:layout_width="80dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="20dp" />
+
+                            <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:gravity="start|center_vertical"
+                                android:text="within 4-13 working days" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:text="Warranty"
+                                android:id="@+id/textwrnty"
+                                android:layout_width="80dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="20dp"
+                                />
+
+                            <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:gravity="start|center_vertical"
+                                android:text="1 year since date of purchase" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:text="Shipping"
+                                android:id="@+id/textship"
+                                android:layout_width="80dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="20dp"
+                                />
+
+                            <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:text="Same Day in India/Noida for Orders before 6:30pm" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:text="Notes"
+                                android:id="@+id/textnotes"
+                                android:layout_width="80dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="20dp"
+                                />
+
+                            <TextView
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+
+                                android:text="+2.5% fee for payment by creadit card, No Extra charge on COD, Prices includeVAT" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linrless"
+                            android:orientation="vertical"
+                            android:layout_width="80dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="280dp">
+                            <TextView
+                                android:text="LessInfo"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:id="@+id/lesstext"
+                                android:layout_width="70dp"
+                                android:layout_height="28dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview"
-                android:layout_below="@+id/el"
+                android:layout_below="@+id/card1"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -432,12 +591,7 @@ android:background="#ffff"
 
             </android.support.v7.widget.CardView>
 
-
-
-
         </RelativeLayout>
-
-
 
 
     </ScrollView>
