@@ -81,7 +81,7 @@ public class AutoEditTextActivity extends Activity {
 
     private void parseJSON() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/assets/search/allkeywords.json",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/assets/search/compare.json",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

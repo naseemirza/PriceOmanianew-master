@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,14 +23,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.naseem.pdemo.Adapter;
+import com.example.naseem.pdemo.App;
+import com.example.naseem.pdemo.CategoryItems.Child;
+import com.example.naseem.pdemo.CategoryItems.ChildActivity;
+import com.example.naseem.pdemo.CategoryItems.ChildAdapter;
+import com.example.naseem.pdemo.CategoryItems.Sub_ChildActivity;
+import com.example.naseem.pdemo.MainActivity;
 import com.example.naseem.pdemo.Options.MoreOptionActivity;
 import com.example.naseem.pdemo.R;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -110,6 +130,8 @@ public class CardDetails extends AppCompatActivity {
         public PlaceholderFragment() {
         }
 
+
+
         private RecyclerView mRecyclerview;
         private RecyclerView recyclerView;
         //LinearLayout sliderDotspanel;
@@ -125,6 +147,8 @@ public class CardDetails extends AppCompatActivity {
         LinearLayout mLinearLayoutMore;
         LinearLayout mLinearLayoutLess;
 
+
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -139,6 +163,7 @@ public class CardDetails extends AppCompatActivity {
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
                 View rootView = inflater.inflate(R.layout.activity_tab1, container, false);
+
 
 
 
@@ -167,10 +192,13 @@ public class CardDetails extends AppCompatActivity {
                     }
                 });
 
+                //replace text with button
+
                 TextView optiontext=(TextView)rootView.findViewById(R.id.options);
                 optiontext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         startActivity(new Intent(getActivity(),MoreOptionActivity.class));
                     }
                 });
@@ -260,6 +288,8 @@ public class CardDetails extends AppCompatActivity {
 
 
         }
+
+
 
 
         private void expand() {

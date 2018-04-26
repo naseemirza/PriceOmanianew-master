@@ -18,8 +18,6 @@ import java.util.List;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     private List<CardDetailsApp> mApps;
     private boolean mHorizontal;
-
-
     private boolean mPager;
 
     public CardAdapter(boolean horizontal, boolean pager, List<CardDetailsApp> apps) {
@@ -53,6 +51,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
 
 
+
+
     }
 
     @Override
@@ -68,17 +68,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
 
 
-
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageview;
         public TextView mobilenameTextview;
         public TextView onlinestoreTextview2;
         public TextView priceTextview11;
-
-
 
 
         public ViewHolder(View itemView) {
@@ -88,9 +83,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             mobilenameTextview=(TextView) itemView.findViewById(R.id.Mnametext);
             onlinestoreTextview2=(TextView) itemView.findViewById(R.id.priceTextview1);
             priceTextview11=(TextView) itemView.findViewById(R.id.Mpricetext);
-
-
-
 
         }
 

@@ -28,7 +28,8 @@ public class MoreOptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_more_option);
 
 
-
+        getSupportActionBar().setTitle("Store Options");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         //1st cardview
@@ -147,11 +148,10 @@ public class MoreOptionActivity extends AppCompatActivity {
 
 
 
-        getSupportActionBar().setTitle("Store Options");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }
+
 
 
     //1st cardview
@@ -360,6 +360,10 @@ public class MoreOptionActivity extends AppCompatActivity {
         return animator;
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
 
 }

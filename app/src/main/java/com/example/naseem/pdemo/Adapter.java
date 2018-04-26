@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         final App app=mApps.get(position);
 
 
@@ -89,6 +90,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
+                //String prdname=app.getmName();
+                //Log.e("subId",prdname);
+                //intent.putExtra("slug",prdname);
 
                 Intent intent = new Intent(view.getContext(), CardDetails.class);
                 intent.putExtra("price",app.getmPrice());
