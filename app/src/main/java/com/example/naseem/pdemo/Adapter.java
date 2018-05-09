@@ -99,6 +99,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
                 intent.putExtra("currency",app.getmCurrency());
                 intent.putExtra("name",app.getmName());
                 intent.putExtra("cardimage",app.getmImageUrl());
+
+
+
+
                 Bundle bundle= new Bundle();
                 bundle.putString("cardimage",app.getmImageUrl());
                 intent.putExtras(bundle);
@@ -129,6 +133,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         public TextView mTextViewCurrency;
         public TextView mTextViewCount;
         public TextView mTextViewPrice;
+
         private RecyclerViewItemClickListener itemClickListener;
 
 
@@ -140,6 +145,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
             mTextViewCurrency=(TextView) itemView.findViewById(R.id.crncytype);
             mTextViewPrice=(TextView) itemView.findViewById(R.id.pricetext1);
             mTextViewCount=(TextView) itemView.findViewById(R.id.countext);
+
             itemView.setOnClickListener(this);
 
 

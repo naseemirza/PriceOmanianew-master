@@ -70,6 +70,10 @@
         <activity
             android:name=".Options.MoreOptionActivity"
             android:parentActivityName=".CardDetailsPkg.CardDetails" />
+        <activity android:name=".BottomBar.Activity1" />
+        <activity android:name=".BottomBar.Activity2" />
+        <activity android:name=".BottomBar.Activity3" />
+        <activity android:name=".BottomBar.Activity4" />
     </application>
 
 </manifest>

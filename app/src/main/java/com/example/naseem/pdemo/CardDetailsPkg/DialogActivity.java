@@ -38,16 +38,31 @@ public class DialogActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
 
+        textView=(TextView)findViewById(R.id.subtextcolor);
+        textView1=(TextView)findViewById(R.id.storagetext);
+        textView2=(TextView)findViewById(R.id.brandtextview);
+
         buttonaply=(Button)findViewById(R.id.buttonok);
         buttonaply.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
 
 
-              onBackPressed();
-//              Intent intent=new Intent(DialogActivity.this,CardDetails.class);
-//
-//              startActivity(intent);
+
+              //Intent intent=new Intent();
+              Intent intent=new Intent(DialogActivity.this,CardDetails.class);
+              String color=textView.getText().toString();
+              String storage=textView1.getText().toString();
+              String network=textView2.getText().toString();
+
+              intent.putExtra("Color",color);
+              intent.putExtra("Storage",storage);
+              intent.putExtra("Network",network);
+
+              //setResult(3,intent);
+              //finish();
+              //onBackPressed();
+              startActivity(intent);
 
               overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
 
@@ -56,9 +71,7 @@ public class DialogActivity extends AppCompatActivity {
 
 
 
-         textView=(TextView)findViewById(R.id.subtextcolor);
-         textView1=(TextView)findViewById(R.id.storagetext);
-         textView2=(TextView)findViewById(R.id.brandtextview);
+
 
 
 
@@ -118,18 +131,7 @@ public class DialogActivity extends AppCompatActivity {
             }
         });
 
-        //TabItem tabItem=(TabItem)findViewById(R.id.tabitm);
 
-
-
-        //relativeLayout=(RelativeLayout)findViewById(R.id.re2);
-//        relativeLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(DialogActivity.this,AllOptions.class));
-//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//            }
-//        });
 
 
 

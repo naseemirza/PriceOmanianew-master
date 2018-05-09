@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +35,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.naseem.pdemo.BottomBar.Activity1;
+import com.example.naseem.pdemo.BottomBar.Activity2;
+import com.example.naseem.pdemo.BottomBar.Activity3;
+import com.example.naseem.pdemo.BottomBar.Activity4;
+import com.example.naseem.pdemo.BottomBar.BottomNavigationViewHelper;
 import com.example.naseem.pdemo.CategoryItems.ParentActivity;
 
 import org.json.JSONArray;
@@ -82,6 +89,49 @@ public class MainActivity extends AppCompatActivity
         }
 
 
+        //bottombar
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.ic_arrow:
+
+                        break;
+
+                    case R.id.ic_android:
+                        Intent intent1 = new Intent(MainActivity.this, AutoEditTextActivity.class);
+                        startActivity(intent1);
+                        break;
+
+                    case R.id.ic_books:
+                        Intent intent2 = new Intent(MainActivity.this, Activity2.class);
+                        startActivity(intent2);
+                        break;
+
+                    case R.id.ic_center_focus:
+                        Intent intent3 = new Intent(MainActivity.this, Activity3.class);
+                        startActivity(intent3);
+                        break;
+
+                    case R.id.ic_backup:
+                        Intent intent4 = new Intent(MainActivity.this,Activity4.class);
+                        startActivity(intent4);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
+
         //Snap 1
 
         mExampleList1 = new ArrayList<>();
@@ -129,7 +179,7 @@ public class MainActivity extends AppCompatActivity
         mRecyclerview4.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         mRecyclerview4.setHasFixedSize(true);
 
-        parseJSON4();
+       // parseJSON4();
 
        // AutoCompleteTextView
 
@@ -426,53 +476,53 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void parseJSON4() {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getTablets",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            Log.e("rootJsonArray",response);
-                            JSONArray rootJsonArray = new JSONArray(response);
-
-                            Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
-
-                            for (int i = 0; i < rootJsonArray.length(); i++) {
-                                JSONObject object = rootJsonArray.getJSONObject(i);
-
-                                mExampleList4.add(new App(object.optString("product_image"),
-                                        object.optString("modelno"),
-                                        object.optString("currency_type"),
-                                        object.optString("price"),
-                                        object.optString("store_count")));
-                            }
-
-                            Log.e("rootJsonArray",mExampleList4.size()+"");
-
-                            mExampleAdapter4 = new Adapter(MainActivity.this, mExampleList4);
-                            mRecyclerview4.setAdapter(mExampleAdapter4);
-                            mExampleAdapter4.notifyDataSetChanged();
-                            mRecyclerview4.setHasFixedSize(true);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("TAg",error.getMessage());
-                    }
-                });
-
-        mRequestQueue4 = Volley.newRequestQueue(this);
-        mRequestQueue4.add(stringRequest);
-    }
+//    private void parseJSON4() {
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getTablets",
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        try {
+//                            Log.e("rootJsonArray",response);
+//                            JSONArray rootJsonArray = new JSONArray(response);
+//
+//                            Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
+//
+//                            for (int i = 0; i < rootJsonArray.length(); i++) {
+//                                JSONObject object = rootJsonArray.getJSONObject(i);
+//
+//                                mExampleList4.add(new App(object.optString("product_image"),
+//                                        object.optString("modelno"),
+//                                        object.optString("currency_type"),
+//                                        object.optString("price"),
+//                                        object.optString("store_count")));
+//                            }
+//
+//                            Log.e("rootJsonArray",mExampleList4.size()+"");
+//
+//                            mExampleAdapter4 = new Adapter(MainActivity.this, mExampleList4);
+//                            mRecyclerview4.setAdapter(mExampleAdapter4);
+//                            mExampleAdapter4.notifyDataSetChanged();
+//                            mRecyclerview4.setHasFixedSize(true);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Log.e("TAg",error.getMessage());
+//                    }
+//                });
+//
+//        mRequestQueue4 = Volley.newRequestQueue(this);
+//        mRequestQueue4.add(stringRequest);
+//    }
 
 
 

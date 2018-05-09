@@ -86,7 +86,6 @@ public class CardDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -95,7 +94,7 @@ public class CardDetails extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.setTabTextColors(R.color.colorBlack,R.color.colorBlack);
+        tabLayout.setTabTextColors(R.color.colorBlack, R.color.colorBlack);
 
     }
 
@@ -119,11 +118,10 @@ public class CardDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class PlaceholderFragment extends Fragment  {
+    public static class PlaceholderFragment extends Fragment {
 
 
-
-        Button buttonSite,buttonSite1;
+        Button buttonSite, buttonSite1;
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -131,22 +129,21 @@ public class CardDetails extends AppCompatActivity {
         }
 
 
-
         private RecyclerView mRecyclerview;
         private RecyclerView recyclerView;
         //LinearLayout sliderDotspanel;
         private int dotscount;
-        CardView  dialogbutton;
+        CardView dialogbutton;
         String image_url;
         private ImageView[] dots;
         //ViewPager viewPager;
-        public  TextView textViewname ,textViewcurncy,textViewprice ,textViewcount,textViewcolor;
-       public  ImageView imageView;
+        public TextView textViewclr, textViewstrg, textViewntwrk;
+        public TextView textViewname, textViewcurncy, textViewprice, textViewcount;
+        public ImageView imageView;
 
         LinearLayout mLinearLayoutDetalis;
         LinearLayout mLinearLayoutMore;
         LinearLayout mLinearLayoutLess;
-
 
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
@@ -165,12 +162,10 @@ public class CardDetails extends AppCompatActivity {
                 View rootView = inflater.inflate(R.layout.activity_tab1, container, false);
 
 
-
-
-                mLinearLayoutLess=(LinearLayout)rootView.findViewById(R.id.linrless);
-                mLinearLayoutDetalis = (LinearLayout)rootView.findViewById(R.id.expandable);
+                mLinearLayoutLess = (LinearLayout) rootView.findViewById(R.id.linrless);
+                mLinearLayoutDetalis = (LinearLayout) rootView.findViewById(R.id.expandable);
                 mLinearLayoutDetalis.setVisibility(View.GONE);
-                mLinearLayoutMore = (LinearLayout)rootView.findViewById(R.id.linrtextmore);
+                mLinearLayoutMore = (LinearLayout) rootView.findViewById(R.id.linrtextmore);
 
                 mLinearLayoutMore.setOnClickListener(new View.OnClickListener() {
 
@@ -194,52 +189,74 @@ public class CardDetails extends AppCompatActivity {
 
                 //replace text with button
 
-                TextView optiontext=(TextView)rootView.findViewById(R.id.options);
+                TextView optiontext = (TextView) rootView.findViewById(R.id.options);
                 optiontext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        startActivity(new Intent(getActivity(),MoreOptionActivity.class));
+                        startActivity(new Intent(getActivity(), MoreOptionActivity.class));
                     }
                 });
 
 
                 //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
-                textViewcolor=(TextView)rootView.findViewById(R.id.mcolor) ;
+                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
+                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
+                textViewntwrk = (TextView) rootView.findViewById(R.id.mnetwork);
 
-                textViewname=(TextView)rootView.findViewById(R.id.mobilenametext) ;
-                textViewcurncy=(TextView)rootView.findViewById(R.id.crncytype) ;
-                textViewprice=(TextView)rootView.findViewById(R.id.pricetext1);
+                final Intent i2=getActivity().getIntent();
+                Bundle bd2=i2.getExtras();
+                if (bd2!=null){
+                    final String color = (String) bd2.get("Color");
+                    textViewclr.setText(color);
+                    final String storage = (String) bd2.get("Storage");
+                    textViewstrg.setText(storage);
+                    final String ntwork = (String) bd2.get("Network");
+                    textViewntwrk.setText(ntwork);
+
+                }
+
+
+                textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
+                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
+                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
                 //textViewcount=(TextView)rootView.findViewById(R.id.mobilenametext);
 
-               imageView=(ImageView)rootView.findViewById(R.id.cardimg);
+                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
 
-                final Intent i=getActivity().getIntent();
+                final Intent i = getActivity().getIntent();
+
 
                 Bundle bd = i.getExtras();
 
 
-
-                if(bd != null)
-                {
-                    image_url= String.valueOf(i.getStringExtra("cardimage"));
+                if (bd != null) {
+                    image_url = String.valueOf(i.getStringExtra("cardimage"));
 
                     Picasso.with(getActivity()).load(image_url).fit().centerInside().into(imageView);
 
-                        final String getname = (String) bd.get("name");
-                        textViewname.setText(getname);
-                        final String getprice = (String) bd.get("price");
-                        textViewprice.setText(getprice);
-                        final String getcurncy = (String) bd.get("currency");
-                        textViewcurncy.setText(getcurncy);
+                    final String getname = (String) bd.get("name");
+                    textViewname.setText(getname);
+                    final String getprice = (String) bd.get("price");
+                    textViewprice.setText(getprice);
+                    final String getcurncy = (String) bd.get("currency");
+                    textViewcurncy.setText(getcurncy);
+
+
+//                    final String color = (String) bd.get("Color");
+//                    textViewclr.setText(color);
+//                    final String storage = (String) bd.get("Storage");
+//                    textViewstrg.setText(storage);
+//                    final String ntwork = (String) bd.get("Network");
+//                    textViewntwrk.setText(ntwork);
 
                 }
 
-                dialogbutton=(CardView) rootView.findViewById(R.id.optioncard);
+                dialogbutton = (CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent=new Intent(getActivity(), DialogActivity.class);
+                        Intent intent = new Intent(getActivity(), DialogActivity.class);
 
                         startActivity(intent);
 
@@ -249,19 +266,17 @@ public class CardDetails extends AppCompatActivity {
                 });
 
 
-
-
-                buttonSite=(Button)rootView.findViewById(R.id.buttonsite);
+                buttonSite = (Button) rootView.findViewById(R.id.buttonsite);
                 buttonSite.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(getActivity(),GotoSIte.class));
+                        startActivity(new Intent(getActivity(), GotoSIte.class));
 
                     }
                 });
 
 
-                mRecyclerview=(RecyclerView)rootView.findViewById(R.id.recyclerview);
+                mRecyclerview = (RecyclerView) rootView.findViewById(R.id.recyclerview);
                 mRecyclerview.setNestedScrollingEnabled(false);
                 mRecyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity()));
                 mRecyclerview.setHasFixedSize(true);
@@ -286,7 +301,6 @@ public class CardDetails extends AppCompatActivity {
             }
 
 
-
         }
 
 
@@ -298,7 +312,6 @@ public class CardDetails extends AppCompatActivity {
             // mLinearLayoutMore.setVisibility(View.GONE);
 
 
-
             final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
             final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
             mLinearLayoutDetalis.measure(widthSpec, heightSpec);
@@ -308,6 +321,7 @@ public class CardDetails extends AppCompatActivity {
             mAnimator.start();
 
         }
+
         private void collapse() {
             int finalHeight = mLinearLayoutDetalis.getHeight();
 
@@ -358,21 +372,23 @@ public class CardDetails extends AppCompatActivity {
             return animator;
         }
 
+
+
         @Override
-        public void onSaveInstanceState(Bundle outState){
+        public void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
 
             //((MyAdapter)recyclerView.getAdapter()).onSaveInstanceState(outState);
         }
 
 
-        private void setupAdapter(){
+        private void setupAdapter() {
 
-            List<CardDetailsApp> apps=getApps();
+            List<CardDetailsApp> apps = getApps();
 
-            CardSnapAdapter snapAdapter=new CardSnapAdapter();
+            CardSnapAdapter snapAdapter = new CardSnapAdapter();
 
-            snapAdapter.addSnap(new CardSnap(Gravity.START,"Similar Products",apps));
+            snapAdapter.addSnap(new CardSnap(Gravity.START, "Similar Products", apps));
 
             //if(mHorizontal){
             // snapAdapter.addSnap(new Snap(Gravity.START,"FEATURED PRODUCTS",apps));
@@ -393,8 +409,8 @@ public class CardDetails extends AppCompatActivity {
 
         }
 
-        private List<CardDetailsApp> getApps(){
-            List<CardDetailsApp> apps=new ArrayList<>();
+        private List<CardDetailsApp> getApps() {
+            List<CardDetailsApp> apps = new ArrayList<>();
 
             apps.add(new CardDetailsApp("Apple iPhone 5 plus", "AED 21990.00", "38 Online Store(s)", R.drawable.apple7plus));
             apps.add(new CardDetailsApp("Apple iPhone ", "AED 18190.00", "38 Online Store(s)", R.drawable.apple));
@@ -408,10 +424,10 @@ public class CardDetails extends AppCompatActivity {
             apps.add(new CardDetailsApp("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
 
 
-
-
             return apps;
         }
+
+
 
 
         /**
@@ -433,10 +449,10 @@ public class CardDetails extends AppCompatActivity {
             @Override
             public Fragment getItem(int position) {
 
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
-        }
+                // getItem is called to instantiate the fragment for the given page.
+                // Return a PlaceholderFragment (defined as a static inner class below).
+                return PlaceholderFragment.newInstance(position + 1);
+            }
 
             @Override
             public int getCount() {
@@ -467,6 +483,14 @@ public class CardDetails extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        return true;
+
+    }
 
 
 }

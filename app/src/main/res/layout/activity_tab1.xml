@@ -134,61 +134,61 @@
 
                     <TextView
                         android:id="@+id/mcolor"
-                        android:layout_width="150dp"
-                        android:layout_height="40dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="50dp"
-                        android:gravity="start|center_vertical"
-                        android:text="Black,64GB,LTE "
+                        android:layout_marginStart="40dp"
+                        android:gravity="center"
+                        android:text="Black "
                         android:textColor="@color/purple"
                         android:textSize="17dp"
                         android:textStyle="bold" />
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/coma1"-->
-                    <!--android:layout_width="5dp"-->
-                    <!--android:layout_height="20dp"-->
-                    <!--android:layout_gravity="start|center"-->
-                    <!--android:layout_marginStart="85dp"-->
-                    <!--android:text=","-->
-                    <!--android:textColor="@color/purple"-->
-                    <!--android:textSize="15dp"-->
-                    <!--android:textStyle="bold" />-->
+                    <TextView
+                    android:id="@+id/coma1"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="98dp"
+                    android:text=","
+                    android:textColor="@color/purple"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/mmemory"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="35dp"-->
-                    <!--android:layout_gravity="start|center"-->
-                    <!--android:layout_marginStart="95dp"-->
-                    <!--android:gravity="start|center_vertical"-->
-                    <!--android:text="64 GB"-->
-                    <!--android:textColor="@color/purple"-->
-                    <!--android:textSize="15dp"-->
-                    <!--android:textStyle="bold" />-->
+                    <TextView
+                        android:id="@+id/mmemory"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="start|center"
+                        android:layout_marginStart="105dp"
+                        android:gravity="center"
+                        android:text="64 GB"
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/coma2"-->
-                    <!--android:layout_width="5dp"-->
-                    <!--android:layout_height="20dp"-->
-                    <!--android:layout_gravity="start|center"-->
-                    <!--android:layout_marginStart="140dp"-->
-                    <!--android:text=","-->
-                    <!--android:textColor="@color/purple"-->
-                    <!--android:textSize="15dp"-->
-                    <!--android:textStyle="bold" />-->
+                    <TextView
+                    android:id="@+id/coma2"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="165dp"
+                    android:text=","
+                    android:textColor="@color/purple"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-                    <!--<TextView-->
-                    <!--android:id="@+id/mnetwork"-->
-                    <!--android:layout_width="45dp"-->
-                    <!--android:layout_height="35dp"-->
-                    <!--android:layout_gravity="start|center"-->
-                    <!--android:layout_marginStart="160dp"-->
-                    <!--android:gravity="start|center_vertical"-->
-                    <!--android:text="LTE"-->
-                    <!--android:textColor="@color/purple"-->
-                    <!--android:textSize="15dp"-->
-                    <!--android:textStyle="bold" />-->
+                    <TextView
+                        android:id="@+id/mnetwork"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="start|center"
+                        android:layout_marginStart="175dp"
+                        android:gravity="center"
+                        android:text="LTE"
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/arrow"
@@ -201,6 +201,8 @@
                         android:textColor="@color/purple"
                         android:textSize="30dp"
                         android:textStyle="bold" />
+
+
 
 
                 </android.support.v7.widget.CardView>
