@@ -49,14 +49,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
         View v = LayoutInflater.from(mContext).inflate(R.layout.adapter, parent, false);
         return new ViewHolder(v);
-//        if (mPager){
-//            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_pager,parent,false));
-//
-//        }else {
-//            return mHorizontal ? new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.adapter,parent,false)):
-//                    new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_vertical,parent,false));
-//        }
-
     }
 
     @Override
@@ -90,18 +82,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //String prdname=app.getmName();
-                //Log.e("subId",prdname);
-                //intent.putExtra("slug",prdname);
 
                 Intent intent = new Intent(view.getContext(), CardDetails.class);
                 intent.putExtra("price",app.getmPrice());
                 intent.putExtra("currency",app.getmCurrency());
                 intent.putExtra("name",app.getmName());
                 intent.putExtra("cardimage",app.getmImageUrl());
-
-
-
 
                 Bundle bundle= new Bundle();
                 bundle.putString("cardimage",app.getmImageUrl());

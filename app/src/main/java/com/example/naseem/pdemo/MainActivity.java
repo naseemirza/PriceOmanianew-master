@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity
         mRecyclerview4.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         mRecyclerview4.setHasFixedSize(true);
 
-       // parseJSON4();
+        parseJSON4();
 
        // AutoCompleteTextView
 
@@ -347,7 +347,8 @@ public class MainActivity extends AppCompatActivity
                             for (int i = 0; i < rootJsonArray.length(); i++) {
                                 JSONObject object = rootJsonArray.getJSONObject(i);
 
-                                mExampleList1.add(new App(object.optString("product_image"),
+                                mExampleList1.add(new App(object.optString("id"),
+                                        object.optString("product_image"),
                                         object.optString("modelno"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
@@ -390,12 +391,14 @@ public class MainActivity extends AppCompatActivity
                             Log.e("rootJsonArray",response);
                             JSONArray rootJsonArray = new JSONArray(response);
 
+
                             Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
 
                             for (int i = 0; i < rootJsonArray.length(); i++) {
                                 JSONObject object = rootJsonArray.getJSONObject(i);
 
-                                mExampleList2.add(new App(object.optString("product_image"),
+                                mExampleList2.add(new App(object.optString("id"),
+                                        object.optString("product_image"),
                                         object.optString("modelno"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
@@ -443,7 +446,8 @@ public class MainActivity extends AppCompatActivity
                             for (int i = 0; i < rootJsonArray.length(); i++) {
                                 JSONObject object = rootJsonArray.getJSONObject(i);
 
-                                mExampleList3.add(new App(object.optString("product_image"),
+                                mExampleList3.add(new App(object.optString("id"),
+                                        object.optString("product_image"),
                                         object.optString("modelno"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
@@ -476,53 +480,54 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-//    private void parseJSON4() {
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getTablets",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                        try {
-//                            Log.e("rootJsonArray",response);
-//                            JSONArray rootJsonArray = new JSONArray(response);
-//
-//                            Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
-//
-//                            for (int i = 0; i < rootJsonArray.length(); i++) {
-//                                JSONObject object = rootJsonArray.getJSONObject(i);
-//
-//                                mExampleList4.add(new App(object.optString("product_image"),
-//                                        object.optString("modelno"),
-//                                        object.optString("currency_type"),
-//                                        object.optString("price"),
-//                                        object.optString("store_count")));
-//                            }
-//
-//                            Log.e("rootJsonArray",mExampleList4.size()+"");
-//
-//                            mExampleAdapter4 = new Adapter(MainActivity.this, mExampleList4);
-//                            mRecyclerview4.setAdapter(mExampleAdapter4);
-//                            mExampleAdapter4.notifyDataSetChanged();
-//                            mRecyclerview4.setHasFixedSize(true);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-//                        Log.e("TAg",error.getMessage());
-//                    }
-//                });
-//
-//        mRequestQueue4 = Volley.newRequestQueue(this);
-//        mRequestQueue4.add(stringRequest);
-//    }
+    private void parseJSON4() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getTablets",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            Log.e("rootJsonArray",response);
+                            JSONArray rootJsonArray = new JSONArray(response);
+
+                            Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
+
+                            for (int i = 0; i < rootJsonArray.length(); i++) {
+                                JSONObject object = rootJsonArray.getJSONObject(i);
+
+                                mExampleList4.add(new App(object.optString("id"),
+                                        object.optString("product_image"),
+                                        object.optString("modelno"),
+                                        object.optString("currency_type"),
+                                        object.optString("price"),
+                                        object.optString("store_count")));
+                            }
+
+                            Log.e("rootJsonArray",mExampleList4.size()+"");
+
+                            mExampleAdapter4 = new Adapter(MainActivity.this, mExampleList4);
+                            mRecyclerview4.setAdapter(mExampleAdapter4);
+                            mExampleAdapter4.notifyDataSetChanged();
+                            mRecyclerview4.setHasFixedSize(true);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("TAg",error.getMessage());
+                    }
+                });
+
+        mRequestQueue4 = Volley.newRequestQueue(this);
+        mRequestQueue4.add(stringRequest);
+    }
 
 
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -54,6 +55,9 @@ public class ColorActivity extends AppCompatActivity {
 
                 TextView tv=(TextView)findViewById(R.id.textViewcolor);
                 String name = arg0.getItemAtPosition(position).toString();
+
+                Log.e("Id", name);
+
                 //Intent intent=new Intent(ColorActivity.this,DialogActivity.class);
                 Intent intent=new Intent();
                 intent.putExtra("color",name);

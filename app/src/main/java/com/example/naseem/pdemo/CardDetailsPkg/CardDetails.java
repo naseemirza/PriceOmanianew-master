@@ -204,25 +204,23 @@ public class CardDetails extends AppCompatActivity {
                 textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
                 textViewntwrk = (TextView) rootView.findViewById(R.id.mnetwork);
 
-                final Intent i2=getActivity().getIntent();
-                Bundle bd2=i2.getExtras();
-                if (bd2!=null){
-                    final String color = (String) bd2.get("Color");
-                    textViewclr.setText(color);
-                    final String storage = (String) bd2.get("Storage");
-                    textViewstrg.setText(storage);
-                    final String ntwork = (String) bd2.get("Network");
-                    textViewntwrk.setText(ntwork);
-
-                }
-
+//                final Intent i2=getActivity().getIntent();
+//                Bundle bd2=i2.getExtras();
+//                if (bd2!=null){
+//                    final String color = (String) bd2.get("Color");
+//                    textViewclr.setText(color);
+//                    final String storage = (String) bd2.get("Storage");
+//                    textViewstrg.setText(storage);
+//                    final String ntwork = (String) bd2.get("Network");
+//                    textViewntwrk.setText(ntwork);
+//
+//                }
 
                 textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
                 textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
                 textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
-                //textViewcount=(TextView)rootView.findViewById(R.id.mobilenametext);
-
                 imageView = (ImageView) rootView.findViewById(R.id.cardimg);
+
 
                 final Intent i = getActivity().getIntent();
 
@@ -251,7 +249,6 @@ public class CardDetails extends AppCompatActivity {
 //                    textViewntwrk.setText(ntwork);
 
                 }
-
                 dialogbutton = (CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
                     @Override

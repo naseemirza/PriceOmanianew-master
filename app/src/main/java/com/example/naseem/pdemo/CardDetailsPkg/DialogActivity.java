@@ -50,19 +50,19 @@ public class DialogActivity extends AppCompatActivity {
 
 
               //Intent intent=new Intent();
-              Intent intent=new Intent(DialogActivity.this,CardDetails.class);
-              String color=textView.getText().toString();
-              String storage=textView1.getText().toString();
-              String network=textView2.getText().toString();
-
-              intent.putExtra("Color",color);
-              intent.putExtra("Storage",storage);
-              intent.putExtra("Network",network);
+             // Intent intent=new Intent(DialogActivity.this,CardDetails.class);
+//              String color=textView.getText().toString();
+//              String storage=textView1.getText().toString();
+//              String network=textView2.getText().toString();
+//
+//              intent.putExtra("Color",color);
+//              intent.putExtra("Storage",storage);
+//              intent.putExtra("Network",network);
 
               //setResult(3,intent);
               //finish();
-              //onBackPressed();
-              startActivity(intent);
+              onBackPressed();
+              //startActivity(intent);
 
               overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
 

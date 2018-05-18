@@ -50,7 +50,7 @@ public class ChildActivity extends AppCompatActivity {
             Toast.makeText(this, "Sorry Data Not Available", Toast.LENGTH_SHORT).show();
         }
 
-        //Log.e("subId", subCategoryId);
+        Log.e("subId", subCategoryId);
 
 
         loadItemList();

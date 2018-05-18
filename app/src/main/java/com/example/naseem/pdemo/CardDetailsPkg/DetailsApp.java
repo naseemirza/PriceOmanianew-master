@@ -1,32 +1,22 @@
-package com.example.naseem.pdemo;
+package com.example.naseem.pdemo.CardDetailsPkg;
 
 /**
- * Created by Naseem on 07-02-2018.
+ * Created by User on 11-May-18.
  */
 
-public class App {
-    private String mID;
+public class DetailsApp  {
+
     private String mImageUrl;
     private String mName;
     private String mCurrency;
     private String mPrice;
-    private String mCount;
-
     String image_path = "http://ae.priceomania.com/backend/ProductImage/";
 
-    public App(String mID,String mImageUrl, String mName, String mCurrency, String mPrice, String mCount) {
+    public DetailsApp(String mImageUrl, String mName, String mCurrency, String mPrice) {
         this.mImageUrl =image_path+mImageUrl;
         this.mName = mName;
         this.mCurrency = mCurrency;
         this.mPrice = mPrice;
-        this.mCount = mCount;
-    }
-    public String getmID() {
-        return mID;
-    }
-
-    public void setmID(String mID) {
-        this.mID = mID;
     }
 
     public String getmImageUrl() {
@@ -59,13 +49,5 @@ public class App {
 
     public void setmPrice(String mPrice) {
         this.mPrice = mPrice;
-    }
-
-    public String getmCount() {
-        return mCount;
-    }
-
-    public void setmCount(String mCount) {
-        this.mCount = mCount;
     }
 }

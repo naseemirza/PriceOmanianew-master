@@ -6,10 +6,10 @@ package com.example.naseem.pdemo.CardDetailsPkg;
 
 public class CardDetailsApp {
 
-    //private int mDrawable;
+
     private String mName,mSite,mPrice;
     private int mImage;
-    //private float mPrice;
+
 
     public CardDetailsApp(String name,String price,String site, int image ){
         mName=name;
