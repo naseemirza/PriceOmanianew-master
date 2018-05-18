@@ -1,11 +1,13 @@
 package com.example.naseem.pdemo.CardDetailsPkg;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -19,7 +21,7 @@ public class DialogActivity extends AppCompatActivity {
     private TabLayout tabLayout;
 
     private CardView cardView1,cardView2,cardView3;
-    private  TextView textView,textView1,textView2;
+    private  TextView textViewc,textViews,textViewn;
     private Button buttonaply;
     Adapter mAdapter;
     RelativeLayout relativeLayout;
@@ -37,57 +39,51 @@ public class DialogActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
+//        final Intent i = getIntent();
+//        Bundle bd = i.getExtras();
+//
+//        if (bd != null) {
+//
+//
+//            final String subCategoryId = (String) bd.get("category_id");
+//
+//            Log.e("subId", subCategoryId);
+//
+//
+//        }
 
-        textView=(TextView)findViewById(R.id.subtextcolor);
-        textView1=(TextView)findViewById(R.id.storagetext);
-        textView2=(TextView)findViewById(R.id.brandtextview);
+
+        textViewc=(TextView)findViewById(R.id.subtextcolor);
+        textViews=(TextView)findViewById(R.id.storagetext);
+        textViewn=(TextView)findViewById(R.id.brandtextview);
 
         buttonaply=(Button)findViewById(R.id.buttonok);
         buttonaply.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
 
+              String color=textViewc.getText().toString();
+              String storage=textViews.getText().toString();
+              String network=textViewn.getText().toString();
 
+              SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+              SharedPreferences.Editor edit = pref.edit();
 
-              //Intent intent=new Intent();
-             // Intent intent=new Intent(DialogActivity.this,CardDetails.class);
-//              String color=textView.getText().toString();
-//              String storage=textView1.getText().toString();
-//              String network=textView2.getText().toString();
-//
-//              intent.putExtra("Color",color);
-//              intent.putExtra("Storage",storage);
-//              intent.putExtra("Network",network);
+              edit.putString("color",color);
+              edit.putString("storag",storage);
+              edit.putString("netwk",network);
 
-              //setResult(3,intent);
-              //finish();
-              onBackPressed();
-              //startActivity(intent);
+              edit.commit();
+
+              Intent intent=new Intent(DialogActivity.this,CardDetails.class);
+              startActivity(intent);
 
               overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+
 
           }
       });
 
-
-
-
-
-
-
-//       final Intent iin=getIntent();
-//        Bundle b = iin.getExtras();
-//
-//        if(b!=null)
-//        {
-//            final String cname = (String) b.get("color");
-//            textView.setText(cname);
-//            final String strgname = (String) b.get("storage");
-//            textView1.setText(strgname);
-//            final String brndname = (String) b.get("brand");
-//            textView2.setText(brndname);
-//
-//        }
 
 
         relativeLayout=(RelativeLayout)findViewById(R.id.rel1) ;
@@ -125,7 +121,7 @@ public class DialogActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(DialogActivity.this,BrandActivity.class);
+                Intent intent=new Intent(DialogActivity.this,NetworkActivity.class);
                 startActivityForResult(intent, 4);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
@@ -144,18 +140,31 @@ public class DialogActivity extends AppCompatActivity {
         // check if the request code is same as what is passed  here it is 2
         if(requestCode==2)
         {
+
+//            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//            String message=pref.getString("color","");
+//            textViewc.setText(message);
             String message=data.getStringExtra("color");
-            textView.setText(message);
+            textViewc.setText(message);
         }
         if(requestCode==3)
         {
+//            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//            String message1=pref.getString("storag","");
+//            textViews.setText(message1);
+
             String message1=data.getStringExtra("storage");
-            textView1.setText(message1);
+            textViews.setText(message1);
         }
         if(requestCode==4)
         {
-            String message2=data.getStringExtra("brand");
-            textView2.setText(message2);
+
+//            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//            String message2=pref.getString("netwk","");
+//            textViewn.setText(message2);
+
+            String message2=data.getStringExtra("n/w");
+            textViewn.setText(message2);
         }
     }
 

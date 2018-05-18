@@ -1,50 +1,49 @@
 package com.example.naseem.pdemo.CardDetailsPkg;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.naseem.pdemo.R;
+
+import java.util.List;
 
 /**
  * Created by User on 3/9/2018.
  */
 
-public class StorageAdapter extends ArrayAdapter<String> {
+public class StorageAdapter extends ArrayAdapter<StorageModel> {
 
-    String[] storagename;
-    Context context;
+    private List<StorageModel> storageList;
+    private Context mCtx;
 
-    public StorageAdapter(Activity context, String[] item){
-        super(context, R.layout.storagelist, item);
-        // TODO Auto-generated constructor stub
-        this.storagename = item;
-        this.context = context;
-
+    public StorageAdapter(List<StorageModel> storageList, Context mCtx) {
+        super(mCtx, R.layout.storagelist, storageList);
+        this.storageList = storageList;
+        this.mCtx = mCtx;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View single_row = inflater.inflate(R.layout.storagelist, null,
-                true);
+        //getting the layoutinflater
+        LayoutInflater inflater = LayoutInflater.from(mCtx);
 
-        TextView textView = (TextView) single_row.findViewById(R.id.textViewstorage);
-        RadioButton radioButton=(RadioButton)single_row.findViewById(R.id.rbuttons);
+//        LayoutInflater inflater = (LayoutInflater) mCtx
+//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        //creating a view with our xml layout
+        View listViewItem = inflater.inflate(R.layout.storagelist, null, true);
+        TextView textViewname = (TextView)listViewItem.findViewById(R.id.textViewstorage);
 
-        textView.setText(storagename[position]);
+        StorageModel storage = storageList.get(position);
 
+        textViewname.setText(storage.getStorage());
 
-
-        return single_row;
-
+        return listViewItem;
     }
+
+
 }

@@ -15,6 +15,8 @@ public class App {
     String image_path = "http://ae.priceomania.com/backend/ProductImage/";
 
     public App(String mID,String mImageUrl, String mName, String mCurrency, String mPrice, String mCount) {
+
+        this.mID=mID;
         this.mImageUrl =image_path+mImageUrl;
         this.mName = mName;
         this.mCurrency = mCurrency;

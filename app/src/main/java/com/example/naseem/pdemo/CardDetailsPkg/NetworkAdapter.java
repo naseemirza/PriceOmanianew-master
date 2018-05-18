@@ -12,17 +12,17 @@ import com.example.naseem.pdemo.R;
 import java.util.List;
 
 /**
- * Created by User on 3/9/2018.
+ * Created by User on 3/12/2018.
  */
 
-public class ColorAdapter extends ArrayAdapter<ColorModel> {
+public class NetworkAdapter extends ArrayAdapter<NetworkModel> {
 
-    private List<ColorModel> colorList;
+    private List<NetworkModel> netList;
     private Context mCtx;
 
-    public ColorAdapter(List<ColorModel> colorList, Context mCtx) {
-        super(mCtx, R.layout.colorlist, colorList);
-        this.colorList = colorList;
+    public NetworkAdapter(List<NetworkModel> netList, Context mCtx) {
+        super(mCtx, R.layout.networklist, netList);
+        this.netList = netList;
         this.mCtx = mCtx;
     }
 
@@ -35,15 +35,14 @@ public class ColorAdapter extends ArrayAdapter<ColorModel> {
 //                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         //creating a view with our xml layout
-        View listViewItem = inflater.inflate(R.layout.colorlist, null, true);
-        TextView textViewname = (TextView)listViewItem.findViewById(R.id.textViewcolor);
+        View listViewItem = inflater.inflate(R.layout.networklist, null, true);
+        TextView textViewname = (TextView)listViewItem.findViewById(R.id.textViewbrand);
 
-        ColorModel color = colorList.get(position);
+        NetworkModel netwrk = netList.get(position);
 
-        textViewname.setText(color.getColorname());
+        textViewname.setText(netwrk.getNetwork());
 
         return listViewItem;
     }
 
-//
 }

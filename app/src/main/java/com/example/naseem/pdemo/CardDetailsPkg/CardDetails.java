@@ -2,7 +2,11 @@ package com.example.naseem.pdemo.CardDetailsPkg;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -38,6 +42,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.naseem.pdemo.Adapter;
 import com.example.naseem.pdemo.App;
+import com.example.naseem.pdemo.AutoEditTextActivity;
+import com.example.naseem.pdemo.BottomBar.Activity2;
+import com.example.naseem.pdemo.BottomBar.Activity3;
+import com.example.naseem.pdemo.BottomBar.Activity4;
+import com.example.naseem.pdemo.BottomBar.BottomNavigationViewHelper;
 import com.example.naseem.pdemo.CategoryItems.Child;
 import com.example.naseem.pdemo.CategoryItems.ChildActivity;
 import com.example.naseem.pdemo.CategoryItems.ChildAdapter;
@@ -76,6 +85,46 @@ public class CardDetails extends AppCompatActivity {
 //                startActivity(new Intent(CardDetails.this, GotoSIte.class));
 //            }
 //        });
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.ic_arrow:
+
+                        break;
+
+                    case R.id.ic_android:
+                        Intent intent1 = new Intent(CardDetails.this, AutoEditTextActivity.class);
+                        startActivity(intent1);
+                        break;
+
+                    case R.id.ic_books:
+                        Intent intent2 = new Intent(CardDetails.this, Activity2.class);
+                        startActivity(intent2);
+                        break;
+
+                    case R.id.ic_center_focus:
+                        Intent intent3 = new Intent(CardDetails.this, Activity3.class);
+                        startActivity(intent3);
+                        break;
+
+                    case R.id.ic_backup:
+                        Intent intent4 = new Intent(CardDetails.this,Activity4.class);
+                        startActivity(intent4);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -137,13 +186,17 @@ public class CardDetails extends AppCompatActivity {
         String image_url;
         private ImageView[] dots;
         //ViewPager viewPager;
-        public TextView textViewclr, textViewstrg, textViewntwrk;
         public TextView textViewname, textViewcurncy, textViewprice, textViewcount;
+        public TextView textViewclr, textViewstrg, textViewntwk;
         public ImageView imageView;
 
         LinearLayout mLinearLayoutDetalis;
         LinearLayout mLinearLayoutMore;
         LinearLayout mLinearLayoutLess;
+
+
+        String ustring,mname,mcrncy,mprice,mimage;
+        String color,strg,netwk;
 
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
@@ -160,6 +213,42 @@ public class CardDetails extends AppCompatActivity {
 
             if (getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
                 View rootView = inflater.inflate(R.layout.activity_tab1, container, false);
+
+
+                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
+                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
+                textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
+
+
+                textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
+                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
+                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
+                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
+
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+                color=pref.getString("color","");
+                strg=pref.getString("storag","");
+                netwk=pref.getString("netwk","");
+
+
+                textViewclr.setText(color);
+                textViewstrg.setText(strg);
+                textViewntwk.setText(netwk);
+
+
+                ustring=pref.getString("usermessage","");
+                mname=pref.getString("name","");
+                mcrncy=pref.getString("currency","");
+                mprice=pref.getString("price","");
+                mimage=pref.getString("cardimage","");
+
+                //Picasso.with(getActivity()).load(new File(mimage)).into(imageView);
+                Picasso.with(getActivity()).load(mimage).fit().centerInside().into(imageView);
+                textViewname.setText(mname);
+                textViewprice.setText(mprice);
+                textViewcurncy.setText(mcrncy);
+
 
 
                 mLinearLayoutLess = (LinearLayout) rootView.findViewById(R.id.linrless);
@@ -200,9 +289,9 @@ public class CardDetails extends AppCompatActivity {
 
 
                 //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
-                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
-                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
-                textViewntwrk = (TextView) rootView.findViewById(R.id.mnetwork);
+//                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
+//                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
+//                textViewntwrk = (TextView) rootView.findViewById(R.id.mnetwork);
 
 //                final Intent i2=getActivity().getIntent();
 //                Bundle bd2=i2.getExtras();
@@ -216,39 +305,39 @@ public class CardDetails extends AppCompatActivity {
 //
 //                }
 
-                textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
-                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
-                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
-                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
+//                textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
+//                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
+//                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
+//                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
+//
+//
+//                final Intent i = getActivity().getIntent();
+//
+//
+//                Bundle bd = i.getExtras();
 
 
-                final Intent i = getActivity().getIntent();
-
-
-                Bundle bd = i.getExtras();
-
-
-                if (bd != null) {
-                    image_url = String.valueOf(i.getStringExtra("cardimage"));
-
-                    Picasso.with(getActivity()).load(image_url).fit().centerInside().into(imageView);
-
-                    final String getname = (String) bd.get("name");
-                    textViewname.setText(getname);
-                    final String getprice = (String) bd.get("price");
-                    textViewprice.setText(getprice);
-                    final String getcurncy = (String) bd.get("currency");
-                    textViewcurncy.setText(getcurncy);
-
-
-//                    final String color = (String) bd.get("Color");
-//                    textViewclr.setText(color);
-//                    final String storage = (String) bd.get("Storage");
-//                    textViewstrg.setText(storage);
-//                    final String ntwork = (String) bd.get("Network");
-//                    textViewntwrk.setText(ntwork);
-
-                }
+//                if (bd != null) {
+//                    image_url = String.valueOf(i.getStringExtra("cardimage"));
+//
+//                    Picasso.with(getActivity()).load(image_url).fit().centerInside().into(imageView);
+//
+//                    final String getname = (String) bd.get("name");
+//                    textViewname.setText(getname);
+//                    final String getprice = (String) bd.get("price");
+//                    textViewprice.setText(getprice);
+//                    final String getcurncy = (String) bd.get("currency");
+//                    textViewcurncy.setText(getcurncy);
+//
+//
+////                    final String color = (String) bd.get("Color");
+////                    textViewclr.setText(color);
+////                    final String storage = (String) bd.get("Storage");
+////                    textViewstrg.setText(storage);
+////                    final String ntwork = (String) bd.get("Network");
+////                    textViewntwrk.setText(ntwork);
+//
+//                }
                 dialogbutton = (CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -484,7 +573,7 @@ public class CardDetails extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         finish();
-        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         return true;
 
     }

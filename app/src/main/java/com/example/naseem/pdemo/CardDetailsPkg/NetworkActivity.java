@@ -30,18 +30,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StorageActivity extends AppCompatActivity {
+public class NetworkActivity extends AppCompatActivity {
     private TabLayout tabLayout;
+
     ListView childListView;
     String ustring;
 
-    public static List<StorageModel> storageList = new ArrayList<>();
-
+    public static List<NetworkModel> networkList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_storage);
+        setContentView(R.layout.activity_network);
 
         getSupportActionBar().setTitle("Filters");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,8 +49,9 @@ public class StorageActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
-        childListView = (ListView) findViewById(R.id.list_viewstrg);
-        storageList = new ArrayList<>();
+
+        childListView = (ListView) findViewById(R.id.list_viewbrnd);
+        networkList = new ArrayList<>();
 
 
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -65,11 +66,12 @@ public class StorageActivity extends AppCompatActivity {
 
 
 
-       // tabLayout = (TabLayout) findViewById(R.id.tabs);
-        //tabLayout.addTab(tabLayout.newTab().setText("Storage"));
-
-//        StorageAdapter adapter = new StorageAdapter(this, Itemlist);
-//        ListView lv = (ListView) findViewById(R.id.list_viewstrg);
+//        tabLayout = (TabLayout) findViewById(R.id.tabs);
+//        tabLayout.addTab(tabLayout.newTab().setText("Networks"));
+//
+//
+//        NetworkAdapter adapter = new NetworkAdapter(this, Itemlist);
+//        ListView lv = (ListView) findViewById(R.id.list_viewbrnd);
 //        lv.setAdapter(adapter);
 //        lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 //
@@ -78,16 +80,16 @@ public class StorageActivity extends AppCompatActivity {
 //            @Override
 //            public void onItemClick(AdapterView<?> arg0, View view,
 //                                    int position, long arg3) {
-//                TextView tv=(TextView)findViewById(R.id.textViewstorage);
-//                String name = arg0.getItemAtPosition(position).toString();
+//                TextView tv=(TextView)findViewById(R.id.textViewbrand);
+//                String name = (String) arg0.getItemAtPosition(position).toString();
 //                Intent intent=new Intent();
-//                intent.putExtra("storage",name);
-//                setResult(3,intent);
+//                intent.putExtra("brand",name);
+//                setResult(4,intent);
 //                finish();
 //
 //                LinearLayout item_view = (LinearLayout) view;
 //                final RadioButton itemcheck = (RadioButton)
-//                        item_view.findViewById(R.id.rbuttons);
+//                        item_view.findViewById(R.id.rbuttonn);
 //
 //
 //
@@ -110,7 +112,7 @@ public class StorageActivity extends AppCompatActivity {
 
     private void loadItemList() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getStorage?pid=" +ustring ,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getNetwork?pid=" +ustring ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -122,14 +124,14 @@ public class StorageActivity extends AppCompatActivity {
                             //String  id = rootJsonObject.getString("category_id");
                             //Log.e("Id", id);
 
-                            JSONArray subCategoryArray = rootJsonObject.getJSONArray("storage");
+                            JSONArray subCategoryArray = rootJsonObject.getJSONArray("network");
                             Log.e("subCategoryArray", subCategoryArray.length() + "");
 
                             for (int i = 0; i < subCategoryArray.length(); i++) {
 
                                 JSONObject detailsObject = subCategoryArray.getJSONObject(i);
-                                storageList.add(new StorageModel(
-                                        detailsObject.optString("storage")
+                                networkList.add(new NetworkModel(
+                                        detailsObject.optString("network")
                                 ));
 
 
@@ -139,7 +141,7 @@ public class StorageActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        StorageAdapter adapter = new StorageAdapter(storageList, getApplicationContext());
+                        NetworkAdapter adapter = new NetworkAdapter(networkList, getApplicationContext());
                         childListView.setAdapter(adapter);
 
                         childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -148,7 +150,7 @@ public class StorageActivity extends AppCompatActivity {
                             public void onItemClick(AdapterView<?> arg0, View view,
                                                     int position, long arg3) {
 
-                                TextView tv=(TextView)view.findViewById(R.id.textViewstorage);
+                                TextView tv=(TextView)view.findViewById(R.id.textViewbrand);
                                 String tag=tv.getText().toString();
 
                                 Log.e("Id", tag);
@@ -157,18 +159,18 @@ public class StorageActivity extends AppCompatActivity {
 //                                SharedPreferences.Editor edit = pref.edit();
 //
 //                                Intent intent=new Intent();
-//                                edit.putString("storag",tag);
-//                                setResult(3,intent);
+//                                edit.putString("netwk",tag);
+//                                setResult(4,intent);
 //                                finish();
 
                                 Intent intent=new Intent();
-                                intent.putExtra("storage",tag);
-                                setResult(3,intent);
+                                intent.putExtra("n/w",tag);
+                                setResult(4,intent);
                                 finish();
 
                                 LinearLayout item_view = (LinearLayout) view;
                                 final RadioButton itemcheck = (RadioButton)
-                                        item_view.findViewById(R.id.rbuttons);
+                                        item_view.findViewById(R.id.rbuttonn);
 
 
 
@@ -198,11 +200,12 @@ public class StorageActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-
     @Override
     public boolean onSupportNavigateUp(){
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         return true;
     }
+
 }
+

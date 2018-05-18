@@ -2,6 +2,7 @@ package com.example.naseem.pdemo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -68,31 +69,33 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         holder.mTextViewCount.setText(totalCount+" Online Store(s)");
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
 
-//        holder.mTextViewName.setText(app.getmName());
-//        holder.mTextViewCurrency.setText(String.valueOf(app.getmCurrency()));
-//        holder.mTextViewPrice.setText(String.valueOf(app.getmPrice()));
-//        holder.mTextViewCount.setText(String.valueOf(app.getmCount()));
-//        holder.mImageView.setImageResource(Integer.parseInt(String.valueOf(app.getmImageUrl())));
-//
-//        String imageUrl = app.getmImageUrl();
-//        Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
-
-
 
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
 
-                Intent intent = new Intent(view.getContext(), CardDetails.class);
-                intent.putExtra("price",app.getmPrice());
-                intent.putExtra("currency",app.getmCurrency());
-                intent.putExtra("name",app.getmName());
-                intent.putExtra("cardimage",app.getmImageUrl());
+                String prd_id=app.getmID().toString();
+                String prd_name=app.getmName().toString();
+                String prd_image=app.getmImageUrl().toString();
+                String prd_crny=app.getmCurrency().toString();
+                String prd_price=app.getmPrice().toString();
 
-                Bundle bundle= new Bundle();
-                bundle.putString("cardimage",app.getmImageUrl());
-                intent.putExtras(bundle);
+                Log.e("responce",prd_id);
+
+                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = pref.edit();
+
+                edit.putString("usermessage",prd_id);
+                edit.putString("price",prd_price);
+                edit.putString("currency",prd_crny);
+                edit.putString("name",prd_name);
+                edit.putString("cardimage",prd_image);
+
+
+                edit.commit();
+                Intent intent = new Intent(view.getContext(), CardDetails.class);
                 view.getContext().startActivity(intent);
+
 
             }
         });
