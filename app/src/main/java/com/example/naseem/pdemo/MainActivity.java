@@ -104,6 +104,9 @@ public class MainActivity extends AppCompatActivity
                 switch (item.getItemId()){
                     case R.id.ic_arrow:
 
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+
                         break;
 
                     case R.id.ic_android:
@@ -112,18 +115,18 @@ public class MainActivity extends AppCompatActivity
                         break;
 
                     case R.id.ic_books:
-                        Intent intent2 = new Intent(MainActivity.this, Activity2.class);
-                        startActivity(intent2);
+//                        Intent intent2 = new Intent(MainActivity.this, Activity2.class);
+//                        startActivity(intent2);
                         break;
 
                     case R.id.ic_center_focus:
-                        Intent intent3 = new Intent(MainActivity.this, Activity3.class);
-                        startActivity(intent3);
+//                        Intent intent3 = new Intent(MainActivity.this, Activity3.class);
+//                        startActivity(intent3);
                         break;
 
                     case R.id.ic_backup:
-                        Intent intent4 = new Intent(MainActivity.this,Activity4.class);
-                        startActivity(intent4);
+//                        Intent intent4 = new Intent(MainActivity.this,Activity4.class);
+//                        startActivity(intent4);
                         break;
                 }
 

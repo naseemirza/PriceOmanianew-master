@@ -40,6 +40,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.naseem.pdemo.Adapter;
 import com.example.naseem.pdemo.App;
 import com.example.naseem.pdemo.AutoEditTextActivity;
@@ -70,22 +71,11 @@ public class CardDetails extends AppCompatActivity {
     private PlaceholderFragment.SectionsPagerAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
-    TextView textViewpri;
-    private Button btnSite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_details);
-
-//        btnSite=(Button)findViewById(R.id.buttonsite);
-//        btnSite.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(CardDetails.this, GotoSIte.class));
-//            }
-//        });
-
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
@@ -99,6 +89,8 @@ public class CardDetails extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.ic_arrow:
 
+                        Intent intent = new Intent(CardDetails.this, MainActivity.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.ic_android:
@@ -219,6 +211,20 @@ public class CardDetails extends AppCompatActivity {
                 textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
                 textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
 
+                Intent intent=getActivity().getIntent();
+                Bundle b = intent.getExtras();
+
+                if(b!=null)
+                {
+                    String color =(String) b.get("color");
+                    textViewclr.setText(color);
+                    String strg =(String) b.get("storage");
+                    textViewstrg.setText(strg);
+                    String ntwk =(String) b.get("network");
+                    textViewntwk.setText(ntwk);
+
+                }
+
 
                 textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
                 textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
@@ -227,14 +233,14 @@ public class CardDetails extends AppCompatActivity {
 
                 SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-                color=pref.getString("color","");
-                strg=pref.getString("storag","");
-                netwk=pref.getString("netwk","");
-
-
-                textViewclr.setText(color);
-                textViewstrg.setText(strg);
-                textViewntwk.setText(netwk);
+//                color=pref.getString("color","");
+//                strg=pref.getString("storag","");
+//                netwk=pref.getString("netwk","");
+//
+//
+//                textViewclr.setText(color);
+//                textViewstrg.setText(strg);
+//                textViewntwk.setText(netwk);
 
 
                 ustring=pref.getString("usermessage","");
@@ -243,8 +249,12 @@ public class CardDetails extends AppCompatActivity {
                 mprice=pref.getString("price","");
                 mimage=pref.getString("cardimage","");
 
-                //Picasso.with(getActivity()).load(new File(mimage)).into(imageView);
-                Picasso.with(getActivity()).load(mimage).fit().centerInside().into(imageView);
+                Glide.with(getActivity())
+                        .load(mimage)
+                        .fitCenter()
+                        .into(imageView);
+
+               // Picasso.with(getActivity()).load(mimage).fit().centerInside().into(imageView);
                 textViewname.setText(mname);
                 textViewprice.setText(mprice);
                 textViewcurncy.setText(mcrncy);
@@ -288,60 +298,23 @@ public class CardDetails extends AppCompatActivity {
                 });
 
 
-                //sliderDotspanel = (LinearLayout) rootView.findViewById(R.id.SliderDots);
-//                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
-//                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
-//                textViewntwrk = (TextView) rootView.findViewById(R.id.mnetwork);
 
-//                final Intent i2=getActivity().getIntent();
-//                Bundle bd2=i2.getExtras();
-//                if (bd2!=null){
-//                    final String color = (String) bd2.get("Color");
-//                    textViewclr.setText(color);
-//                    final String storage = (String) bd2.get("Storage");
-//                    textViewstrg.setText(storage);
-//                    final String ntwork = (String) bd2.get("Network");
-//                    textViewntwrk.setText(ntwork);
-//
-//                }
-
-//                textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
-//                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
-//                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
-//                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
-//
-//
-//                final Intent i = getActivity().getIntent();
-//
-//
-//                Bundle bd = i.getExtras();
-
-
-//                if (bd != null) {
-//                    image_url = String.valueOf(i.getStringExtra("cardimage"));
-//
-//                    Picasso.with(getActivity()).load(image_url).fit().centerInside().into(imageView);
-//
-//                    final String getname = (String) bd.get("name");
-//                    textViewname.setText(getname);
-//                    final String getprice = (String) bd.get("price");
-//                    textViewprice.setText(getprice);
-//                    final String getcurncy = (String) bd.get("currency");
-//                    textViewcurncy.setText(getcurncy);
-//
-//
-////                    final String color = (String) bd.get("Color");
-////                    textViewclr.setText(color);
-////                    final String storage = (String) bd.get("Storage");
-////                    textViewstrg.setText(storage);
-////                    final String ntwork = (String) bd.get("Network");
-////                    textViewntwrk.setText(ntwork);
-//
-//                }
                 dialogbutton = (CardView) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        String color=textViewclr.getText().toString();
+                        String storage=textViewstrg.getText().toString();
+                        String network=textViewntwk.getText().toString();
+
+                        SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor edit = pref.edit();
+                        edit.putString("color",color);
+                        edit.putString("storag",storage);
+                        edit.putString("netwk",network);
+
+                        edit.commit();
                         Intent intent = new Intent(getActivity(), DialogActivity.class);
 
                         startActivity(intent);
@@ -388,8 +361,6 @@ public class CardDetails extends AppCompatActivity {
 
 
         }
-
-
 
 
         private void expand() {
@@ -457,8 +428,6 @@ public class CardDetails extends AppCompatActivity {
             });
             return animator;
         }
-
-
 
         @Override
         public void onSaveInstanceState(Bundle outState) {

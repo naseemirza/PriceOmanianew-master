@@ -25,12 +25,28 @@ public class DialogActivity extends AppCompatActivity {
     private Button buttonaply;
     Adapter mAdapter;
     RelativeLayout relativeLayout;
+    String color,strg,netwk;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
+
+        textViewc=(TextView)findViewById(R.id.subtextcolor);
+        textViews=(TextView)findViewById(R.id.storagetext);
+        textViewn=(TextView)findViewById(R.id.brandtextview);
+
+        SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+        color=pref.getString("color","");
+        strg=pref.getString("storag","");
+        netwk=pref.getString("netwk","");
+
+
+        textViewc.setText(color);
+        textViews.setText(strg);
+        textViewn.setText(netwk);
 
 
         getSupportActionBar().setTitle("Filters");
@@ -66,16 +82,21 @@ public class DialogActivity extends AppCompatActivity {
               String storage=textViews.getText().toString();
               String network=textViewn.getText().toString();
 
-              SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-              SharedPreferences.Editor edit = pref.edit();
+//              SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//              SharedPreferences.Editor edit = pref.edit();
+//
+//              edit.putString("color",color);
+//              edit.putString("storag",storage);
+//              edit.putString("netwk",network);
+//
+//              edit.commit();
 
-              edit.putString("color",color);
-              edit.putString("storag",storage);
-              edit.putString("netwk",network);
-
-              edit.commit();
 
               Intent intent=new Intent(DialogActivity.this,CardDetails.class);
+
+              intent.putExtra("color",color);
+              intent.putExtra("storage",storage);
+              intent.putExtra("network",network);
               startActivity(intent);
 
               overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
@@ -86,16 +107,16 @@ public class DialogActivity extends AppCompatActivity {
 
 
 
-        relativeLayout=(RelativeLayout)findViewById(R.id.rel1) ;
+        //relativeLayout=(RelativeLayout)findViewById(R.id.rel1) ;
 
 
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DialogActivity.this,SeeAllOptions.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
+//        relativeLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(DialogActivity.this,SeeAllOptions.class));
+//                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//            }
+//        });
 
         cardView1=(CardView)findViewById(R.id.card1);
         cardView1.setOnClickListener(new View.OnClickListener() {

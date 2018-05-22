@@ -43,8 +43,8 @@ public class StorageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_storage);
 
-        getSupportActionBar().setTitle("Filters");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+         getSupportActionBar().setTitle("Filters");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));

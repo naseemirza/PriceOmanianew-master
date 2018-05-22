@@ -46,10 +46,11 @@ public class ColorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_color);
 
         getSupportActionBar().setTitle("Filters");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
+
 
         childListView = (ListView) findViewById(R.id.list_viewclr);
         colorList = new ArrayList<>();

@@ -44,7 +44,7 @@ public class NetworkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_network);
 
         getSupportActionBar().setTitle("Filters");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));

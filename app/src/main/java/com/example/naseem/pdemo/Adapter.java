@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.naseem.pdemo.CardDetailsPkg.CardDetails;
 import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
 import com.squareup.picasso.Picasso;
@@ -67,7 +68,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         holder.mTextViewCurrency.setText(currencyType);
         holder.mTextViewPrice.setText(totalPrice);
         holder.mTextViewCount.setText(totalCount+" Online Store(s)");
-        Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
+        Glide.with(mContext)
+                .load(imageUrl)
+                .fitCenter()
+                .into(holder.mImageView);
+
+
+        //Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
 
 
         holder.setItemClickListener(new RecyclerViewItemClickListener() {

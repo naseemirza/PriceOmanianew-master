@@ -67,11 +67,11 @@
         <activity android:name=".BottomBar.Activity4" />
 
         <activity android:name=".CardDetailsPkg.ColorActivity"
-            android:parentActivityName=".CardDetailsPkg.DialogActivity"/>
+            />
         <activity android:name=".CardDetailsPkg.StorageActivity"
-            android:parentActivityName=".CardDetailsPkg.DialogActivity"/>
+            />
         <activity android:name=".CardDetailsPkg.NetworkActivity"
-            android:parentActivityName=".CardDetailsPkg.DialogActivity"/>
+            />
 
     </application>
 
