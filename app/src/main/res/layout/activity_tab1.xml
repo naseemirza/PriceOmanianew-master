@@ -23,14 +23,12 @@
             android:layout_height="match_parent">
 
 
-
-
             <ImageView
                 android:id="@+id/cardimg"
-                android:layout_width="200dp"
-                android:scaleType="fitXY"
-                android:layout_height="260dp"
-                android:layout_centerHorizontal="true" />
+                android:layout_width="190dp"
+                android:layout_height="250dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitCenter" />
 
 
                 <!--<android.support.v4.view.ViewPager-->
@@ -63,7 +61,7 @@
                 <TextView
                     android:id="@+id/mobilenametext"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Mobile name"
@@ -91,7 +89,7 @@
                         android:layout_height="25dp"
                         android:layout_alignBottom="@+id/spacecraftImage"
                         android:layout_alignParentRight="true"
-                        android:layout_marginStart="65dp"
+                        android:layout_marginStart="50dp"
 
                         app:srb_borderColor="#898900"
                         app:srb_fillColor="#898900"
@@ -212,7 +210,7 @@
                     android:background="@color/green"
                     android:id="@+id/linearprice"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="45dp"
 
                     android:orientation="horizontal">
 
@@ -222,7 +220,7 @@
                         android:layout_height="35dp"
                         android:layout_marginLeft="4dp"
                         android:gravity="center_vertical"
-                        android:layout_marginStart="145dp"
+                        android:layout_marginStart="120dp"
                         android:clickable="false"
                         android:maxLines="1"
                         android:text="AED"
@@ -264,7 +262,7 @@
                 <LinearLayout
                     android:id="@+id/li1"
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
+                    android:layout_height="63dp"
                     android:background="@color/colorWhite"
                     android:orientation="horizontal">
 
@@ -301,10 +299,10 @@
 
                     <LinearLayout
                         android:id="@+id/li3"
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
+                        android:layout_width="140dp"
+                        android:layout_height="62dp"
                         android:layout_gravity="right"
-                        android:layout_marginStart="30dp"
+                        android:layout_marginStart="20dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -314,6 +312,7 @@
                             android:layout_height="50dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="10dp"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/souqimg" />
 
                     </LinearLayout>
@@ -322,91 +321,88 @@
 
                 <TextView
                     android:id="@+id/options"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
+                    android:layout_width="80dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="65dp"
                     android:text="+Options"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="15dp" />
 
 
-                    <RelativeLayout
+                <RelativeLayout
 
-                        android:id="@+id/linrinfo"
-                        android:layout_marginTop="110dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:background="@color/colorWhite"
-                        >
-
-
-                        <LinearLayout
-                            android:id="@+id/li121"
-                            android:layout_width="144dp"
-                            android:layout_height="65dp"
-                            android:layout_marginTop="20dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/pricetext"
-                                android:layout_width="match_parent"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="5dp"
-                                android:clickable="true"
-                                android:text="AED 2199.00"
-                                android:textColor="@color/purple"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="135dp"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="10dp"
-                                android:clickable="true"
-                                android:maxLines="1"
-                                android:text="Shipping costs varies" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linrtextmore"
-                            android:layout_width="100dp"
-                            android:layout_height="30dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_toRightOf="@+id/li121"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/texviewtmore"
-                                android:layout_width="95dp"
-                                android:layout_height="25dp"
-                                android:gravity="center"
-                                android:text="MoreInfo"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="15dp" />
-
-                        </LinearLayout>
+                    android:id="@+id/linrinfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="86dp"
+                    android:background="@color/colorWhite">
 
 
+                    <LinearLayout
+                        android:id="@+id/li121"
+                        android:layout_width="144dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/pricetext"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            android:text="AED 2199.00"
+                            android:textColor="@color/purple"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="135dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="10dp"
+                            android:clickable="true"
+                            android:maxLines="1"
+                            android:text="Shipping costs varies" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linrtextmore"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/li121"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/texviewtmore"
+                            android:layout_width="80dp"
+                            android:layout_height="25dp"
+
+                            android:text="MoreInfo"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="15dp" />
+
+                    </LinearLayout>
 
 
-                        <Button
-                            android:id="@+id/buttonsite"
-                            android:layout_width="90dp"
-                            android:layout_height="35dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="25dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_weight="5"
-                            android:background="@color/purple"
-                            android:text="Go to site"
-                            android:textColor="#fff" />
+                    <Button
+                        android:id="@+id/buttonsite"
+                        android:layout_width="90dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="5"
+                        android:background="@color/purple"
+                        android:text="Go to site"
+                        android:textColor="#fff" />
 
 
-                    </RelativeLayout>
+                </RelativeLayout>
 
 
 

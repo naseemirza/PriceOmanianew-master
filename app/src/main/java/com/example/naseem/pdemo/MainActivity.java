@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
         if(!isConnected(MainActivity.this)) buildDialog(MainActivity.this).show();
         else {
-            Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_main);
         }
 
@@ -315,6 +315,8 @@ public class MainActivity extends AppCompatActivity
             return false;
     }
 
+
+
     public AlertDialog.Builder buildDialog(Context c) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
@@ -374,7 +376,7 @@ public class MainActivity extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("TAg",error.getMessage());
                     }
                 });
@@ -424,7 +426,7 @@ public class MainActivity extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("TAg",error.getMessage());
                     }
                 });
@@ -473,7 +475,7 @@ public class MainActivity extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("TAg",error.getMessage());
                     }
                 });
@@ -523,7 +525,7 @@ public class MainActivity extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("TAg",error.getMessage());
                     }
                 });

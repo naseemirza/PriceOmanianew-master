@@ -66,12 +66,12 @@
             android:id="@+id/snap1"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="10dp"
             android:layout_below="@+id/re1"
             android:text="FEATURED PRODUCTS"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp" />
+            android:textSize="17dp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerview1"
@@ -91,7 +91,7 @@
             android:layout_below="@+id/recyclerview1"
             android:text="APPLE IPHONES"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp" />
+            android:textSize="17dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview2"
@@ -111,7 +111,7 @@
             android:layout_below="@+id/recyclerview2"
             android:text="CAMERAS"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp" />
+            android:textSize="17dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview3"
@@ -131,7 +131,7 @@
             android:layout_below="@+id/recyclerview3"
             android:text="TABLETS"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp" />
+            android:textSize="17dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview4"
