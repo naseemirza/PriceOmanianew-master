@@ -30,7 +30,6 @@ public class ChildActivity extends AppCompatActivity {
     ListView childListView;
     private String subCategoryId;
 
-    String child_list;
     public static List<Child> childList = new ArrayList<>();
 
     @Override
@@ -38,7 +37,7 @@ public class ChildActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child);
 
-        getSupportActionBar().setTitle("Sub_Categories");
+        getSupportActionBar().setTitle("Child_Categories");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         childListView = (ListView) findViewById(R.id.listview1);
@@ -50,7 +49,7 @@ public class ChildActivity extends AppCompatActivity {
             Toast.makeText(this, "Sorry Data Not Available", Toast.LENGTH_SHORT).show();
         }
 
-        Log.e("subId", subCategoryId);
+        //Log.e("subId", subCategoryId);
 
 
         loadItemList();
@@ -86,6 +85,18 @@ public class ChildActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+//                        if (childList.size() == 0) {
+//                            startActivity(new Intent(ChildActivity.this,GridActivity.class));
+//
+//                        }
+//                        else {
+//                            final ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
+//                            childListView.setAdapter(adapter);
+//                        }
+
+
+                        //Log.e("subId", String.valueOf(childList));
+
 
                         ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
                         childListView.setAdapter(adapter);
@@ -97,10 +108,19 @@ public class ChildActivity extends AppCompatActivity {
                                 Child itemId = (Child) child.getItemAtPosition(position);
                                 String categoryId2 = itemId.getId();
 
-                                Intent intent = new Intent(ChildActivity.this, Sub_ChildActivity.class);
-                                Log.e("subId", categoryId2);
-                                intent.putExtra("category_id", categoryId2);
-                                startActivity(intent);
+                                if (childList.size() == 0) {
+                                    startActivity(new Intent(ChildActivity.this,GridActivity.class));
+
+                                }
+                                else {
+                                    Intent intent = new Intent(ChildActivity.this, Sub_ChildActivity.class);
+                                    Log.e("subId", categoryId2);
+                                    intent.putExtra("category_id", categoryId2);
+                                    startActivity(intent);
+                                }
+
+
+
 
                             }
                         });
@@ -118,6 +138,13 @@ public class ChildActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        return true;
     }
 }
 

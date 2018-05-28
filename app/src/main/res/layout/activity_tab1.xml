@@ -532,62 +532,62 @@
             </android.support.v7.widget.RecyclerView>
 
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardviewText"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@+id/recyclerview"
-                android:layout_marginTop="10dp">
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:id="@+id/cardviewText"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_below="@+id/recyclerview"-->
+                <!--android:layout_marginTop="10dp">-->
 
-                <TextView
-                    android:layout_width="270dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="15dp"
-                    android:gravity="center|start"
-                    android:text="Popular Apple Products"
-                    android:textAllCaps="false"
-                    android:textSize="15dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="270dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="15dp"-->
+                    <!--android:gravity="center|start"-->
+                    <!--android:text="Popular Apple Products"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textSize="15dp" />-->
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="300dp"
-                    android:gravity="center"
-                    android:text=">"
-                    android:textSize="20dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="40dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="300dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text=">"-->
+                    <!--android:textSize="20dp" />-->
 
-            </android.support.v7.widget.CardView>
+            <!--</android.support.v7.widget.CardView>-->
 
 
-            <android.support.v7.widget.CardView
+            <!--<android.support.v7.widget.CardView-->
 
-                android:id="@+id/cardviewText1"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@+id/cardviewText">
+                <!--android:id="@+id/cardviewText1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:layout_below="@+id/cardviewText">-->
 
-                <TextView
-                    android:layout_width="270dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="15dp"
-                    android:gravity="center|start"
-                    android:text="Popular Apple Mobile Phones"
-                    android:textAllCaps="false"
-                    android:textSize="15dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="270dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="15dp"-->
+                    <!--android:gravity="center|start"-->
+                    <!--android:text="Popular Apple Mobile Phones"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textSize="15dp" />-->
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="300dp"
-                    android:gravity="center"
-                    android:text=">"
-                    android:textSize="20dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="40dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginStart="300dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text=">"-->
+                    <!--android:textSize="20dp" />-->
 
-            </android.support.v7.widget.CardView>
+            <!--</android.support.v7.widget.CardView>-->
 
 
 

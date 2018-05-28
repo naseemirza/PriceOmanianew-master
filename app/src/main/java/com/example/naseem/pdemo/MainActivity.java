@@ -92,47 +92,47 @@ public class MainActivity extends AppCompatActivity
         //bottombar
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(true);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.ic_arrow:
-
-                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                        startActivity(intent);
-
-                        break;
-
-                    case R.id.ic_android:
-                        Intent intent1 = new Intent(MainActivity.this, AutoEditTextActivity.class);
-                        startActivity(intent1);
-                        break;
-
-                    case R.id.ic_books:
-//                        Intent intent2 = new Intent(MainActivity.this, Activity2.class);
-//                        startActivity(intent2);
-                        break;
-
-                    case R.id.ic_center_focus:
-//                        Intent intent3 = new Intent(MainActivity.this, Activity3.class);
-//                        startActivity(intent3);
-                        break;
-
-                    case R.id.ic_backup:
-//                        Intent intent4 = new Intent(MainActivity.this,Activity4.class);
-//                        startActivity(intent4);
-                        break;
-                }
-
-                return false;
-            }
-        });
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
+//        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+//        Menu menu = bottomNavigationView.getMenu();
+//        MenuItem menuItem = menu.getItem(0);
+//        menuItem.setChecked(true);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.ic_arrow:
+//
+//                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//                        startActivity(intent);
+//
+//                        break;
+//
+//                    case R.id.ic_android:
+//                        Intent intent1 = new Intent(MainActivity.this, AutoEditTextActivity.class);
+//                        startActivity(intent1);
+//                        break;
+//
+//                    case R.id.ic_books:
+////                        Intent intent2 = new Intent(MainActivity.this, Activity2.class);
+////                        startActivity(intent2);
+//                        break;
+//
+//                    case R.id.ic_center_focus:
+////                        Intent intent3 = new Intent(MainActivity.this, Activity3.class);
+////                        startActivity(intent3);
+//                        break;
+//
+//                    case R.id.ic_backup:
+////                        Intent intent4 = new Intent(MainActivity.this,Activity4.class);
+////                        startActivity(intent4);
+//                        break;
+//                }
+//
+//                return false;
+//            }
+//        });
 
 
         //Snap 1

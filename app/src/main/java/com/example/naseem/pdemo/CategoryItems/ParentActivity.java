@@ -130,4 +130,11 @@ public class ParentActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        return true;
+    }
 }

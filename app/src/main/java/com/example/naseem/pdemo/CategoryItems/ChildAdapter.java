@@ -25,6 +25,8 @@ public class ChildAdapter extends ArrayAdapter<Child> {
         this.mCtx = mCtx;
     }
 
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //getting the layoutinflater
@@ -34,12 +36,15 @@ public class ChildAdapter extends ArrayAdapter<Child> {
         View listViewItem = inflater.inflate(R.layout.child_items, null, true);
         TextView textViewname = (TextView)listViewItem.findViewById(R.id.textViewname);
 
+
         Child child = childList.get(position);
 
         textViewname.setText(child.getName());
 
         return listViewItem;
     }
+
+
 
 
 }

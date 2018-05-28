@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.naseem.pdemo.R;
 import com.squareup.picasso.Picasso;
 
@@ -40,7 +41,12 @@ public class ParentAdapter extends ArrayAdapter<Parent> {
         TextView textViewname = (TextView)listViewItem.findViewById(R.id.textViewname);
         Parent hero = parentList.get(position);
 
-        Picasso.with(mCtx).load(hero.getImageUrl()).into(imageView);
+        Glide.with(mCtx)
+                .load(hero.getImageUrl())
+                .fitCenter()
+                .into(imageView);
+
+        //Picasso.with(mCtx).load(hero.getImageUrl()).into(imageView);
         textViewname.setText(hero.getName());
 
         //returning the listitem

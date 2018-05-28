@@ -20,6 +20,7 @@
         <ImageView
             android:id="@+id/imageViewName"
             android:layout_width="60dp"
+            android:scaleType="fitCenter"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:src="@mipmap/ic_launcher" />

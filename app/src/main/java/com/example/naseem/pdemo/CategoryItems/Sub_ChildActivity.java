@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,7 +38,7 @@ public class Sub_ChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sub__child);
 
         getSupportActionBar().setTitle("Sub_Categories");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         childListView = (ListView) findViewById(R.id.listview1);
@@ -81,10 +83,37 @@ public class Sub_ChildActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                       // Log.e("subId", String.valueOf(childList));
 
-                        ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
-                        childListView.setAdapter(adapter);
-                        childListView.setEmptyView(findViewById(R.id.empty));
+                        if (childList.size() == 0) {
+                            startActivity(new Intent(Sub_ChildActivity.this,GridActivity.class));
+
+                        }
+                        else {
+                            final ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
+                            childListView.setAdapter(adapter);
+                        }
+
+
+                       // final ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
+                       // childListView.setAdapter(adapter);
+
+
+                        childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                               // if (childList.size() == 0) {
+                                    startActivity(new Intent(Sub_ChildActivity.this,GridActivity.class));
+
+//                                }
+//                               else {
+//                                    final ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
+//                                childListView.setAdapter(adapter);
+//                            }
+                            }
+                        });
+                        //childListView.setEmptyView(findViewById(R.id.empty));
 
 
                     }
@@ -100,6 +129,13 @@ public class Sub_ChildActivity extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        return true;
     }
 }
 
