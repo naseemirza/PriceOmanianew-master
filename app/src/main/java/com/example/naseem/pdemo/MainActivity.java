@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+
     private Adapter mExampleAdapter1,mExampleAdapter2,mExampleAdapter3,mExampleAdapter4;
     private ArrayList<App> mExampleList1,mExampleList2,mExampleList3,mExampleList4;
     private RequestQueue mRequestQueue1,mRequestQueue2,mRequestQueue3,mRequestQueue4;
@@ -62,6 +64,19 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView mRecyclerview2;
     private RecyclerView mRecyclerview3;
     private RecyclerView mRecyclerview4;
+
+
+    // More Categorirs
+
+    private GridLayoutManager gridLayoutManager;
+    private static final String JSON_URL = "http://ae.priceomania.com/mobileappwebservices/getDynamicCategory";
+
+    private CatAdapter mExampleAdapter;
+    private ArrayList<CatModel> mExampleList;
+    private RequestQueue mRequestQueue;
+    private RecyclerView sRecyclerview;
+
+
 
     private EditText editText;
     public static String BACK_STACK_TAG = "tag";
@@ -135,6 +150,7 @@ public class MainActivity extends AppCompatActivity
 //        });
 
 
+
         //Snap 1
 
         mExampleList1 = new ArrayList<>();
@@ -183,6 +199,19 @@ public class MainActivity extends AppCompatActivity
         mRecyclerview4.setHasFixedSize(true);
 
         parseJSON4();
+
+
+        //morecategory
+
+        mExampleList = new ArrayList<>();
+        mRequestQueue = Volley.newRequestQueue(this);
+        sRecyclerview=(RecyclerView)findViewById(R.id.recyclerview5);
+        sRecyclerview.setNestedScrollingEnabled(false);
+        gridLayoutManager = new GridLayoutManager(this, 5, LinearLayoutManager.HORIZONTAL, false);
+        sRecyclerview.setLayoutManager(gridLayoutManager);
+        sRecyclerview.setHasFixedSize(true);
+
+        parseJSON();
 
        // AutoCompleteTextView
 
@@ -333,6 +362,52 @@ public class MainActivity extends AppCompatActivity
         });
 
         return builder;
+    }
+
+    private void parseJSON() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getDynamicCategory",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            Log.e("rootJsonArray",response);
+                            JSONArray rootJsonArray = new JSONArray(response);
+
+                            Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
+
+                            for (int i = 0; i < rootJsonArray.length(); i++) {
+                                JSONObject object = rootJsonArray.getJSONObject(i);
+
+                                mExampleList.add(new CatModel(object.optString("slug"),
+                                        object.optString("cat_name"),
+                                        object.optString("cat_img")));
+                            }
+
+                            Log.e("rootJsonArray",mExampleList.size()+"");
+
+                            mExampleAdapter = new CatAdapter(MainActivity.this, mExampleList);
+                            sRecyclerview.setAdapter(mExampleAdapter);
+                            mExampleAdapter.notifyDataSetChanged();
+                            sRecyclerview.setHasFixedSize(true);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("TAg",error.getMessage());
+                    }
+                });
+
+        mRequestQueue = Volley.newRequestQueue(this);
+        mRequestQueue.add(stringRequest);
     }
 
 

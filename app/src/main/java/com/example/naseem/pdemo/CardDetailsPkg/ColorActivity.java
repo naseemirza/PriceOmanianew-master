@@ -66,10 +66,6 @@ public class ColorActivity extends AppCompatActivity {
 
         loadItemList();
 
-
-
-
-
     }
 
     private void loadItemList() {

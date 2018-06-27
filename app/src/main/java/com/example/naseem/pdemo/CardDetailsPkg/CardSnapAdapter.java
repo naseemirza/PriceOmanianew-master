@@ -111,8 +111,8 @@ public class CardSnapAdapter extends RecyclerView.Adapter<CardSnapAdapter.ViewHo
             new GravitySnapHelper(snap.getGravity()).attachToRecyclerView(holder.recyclerview);
 
         }
-        holder.recyclerview.setAdapter(new CardAdapter(snap.getGravity()==Gravity.START||snap.getGravity()==Gravity.END
-                ||snap.getGravity()==Gravity.CENTER_HORIZONTAL,snap.getGravity()==Gravity.CENTER,snap.getApps()));
+//        holder.recyclerview.setAdapter(new CardAdapter(snap.getGravity()==Gravity.START||snap.getGravity()==Gravity.END
+//                ||snap.getGravity()==Gravity.CENTER_HORIZONTAL,snap.getGravity()==Gravity.CENTER,snap.getApps()));
 
 
 

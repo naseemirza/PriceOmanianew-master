@@ -16,45 +16,27 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/purple"
+            android:background="@color/green"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:weightSum="1">
 
             <EditText
                 android:id="@+id/etext"
                 android:layout_width="250dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="30dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="35dp"
                 android:layout_weight="0.54"
                 android:background="@color/colorWhite"
                 android:cursorVisible="false"
                 android:drawableLeft="@drawable/ic_search_black_24dp"
                android:paddingStart="10dp"
                 android:hint="   Search for products"
-
                 android:textColor="#2F2F2F"
                 android:textColorHint="#2F2F2F"
                 android:textSize="17dp" />
 
 
-            <!--<EditText-->
-                <!--android:id="@+id/editMobileNo"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="40dp"-->
-                <!--android:textColorHint="#000"-->
-                <!--android:layout_marginStart="40dp"-->
-                <!--android:layout_marginTop="1dp"-->
-                <!--android:hint="Search for products"-->
-                <!--android:ems="10"-->
-                <!--android:ellipsize="start"-->
-                <!--android:background="@color/colorWhite"-->
-                <!--android:drawableLeft="@drawable/ic_search_black_24dp"-->
-                <!--android:gravity="center"-->
-                <!--&gt;-->
-            <!--</EditText>-->
             </android.support.v7.widget.Toolbar>
-
-
 
 
     </android.support.design.widget.AppBarLayout>

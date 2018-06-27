@@ -26,33 +26,16 @@
             <ImageView
                 android:id="@+id/cardimg"
                 android:layout_width="190dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitCenter" />
 
 
-                <!--<android.support.v4.view.ViewPager-->
-                    <!--android:id="@+id/viewpager"-->
-                    <!--android:layout_width="wrap_content"-->
-
-                    <!--android:layout_height="170dp"></android.support.v4.view.ViewPager>-->
-
-
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/SliderDots"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:layout_marginTop="4dp"-->
-                    <!--android:gravity="center_horizontal"-->
-                    <!--android:orientation="horizontal"></LinearLayout>-->
-
-
             <LinearLayout
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="155dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/cardimg"
 
                 android:orientation="vertical">
@@ -61,36 +44,28 @@
                 <TextView
                     android:id="@+id/mobilenametext"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
                     android:text="Mobile name"
                     android:textSize="17dp"
                     android:textStyle="bold" />
 
-                <!--<TextView-->
-
-                <!--android:text="rating"-->
-                <!--android:id="@+id/ratingtext"-->
-
-
-                <!--android:gravity="center"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="25dp" />-->
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <com.iarcuschin.simpleratingbar.SimpleRatingBar
                         android:id="@+id/ratingBarID"
                         android:layout_width="140dp"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/spacecraftImage"
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="50dp"
-
                         app:srb_borderColor="#898900"
                         app:srb_fillColor="#898900"
                         app:srb_numberOfStars="5"
@@ -102,9 +77,8 @@
 
                     <TextView
                         android:layout_width="32dp"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="start|center"
-
                         android:gravity="start|center_vertical"
                         android:text="4.5"
                         android:textColor="#898900"
@@ -112,30 +86,29 @@
 
                     <TextView
                         android:layout_width="130dp"
-                        android:layout_height="25dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="start|center"
-
                         android:gravity="start|center_vertical"
                         android:text="(1055 ratings)"
-
                         android:textSize="15dp" />
 
 
                 </LinearLayout>
 
 
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:id="@+id/optioncard"
-                    android:layout_width="280dp"
-                    android:layout_height="40dp"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/buttob_border">
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/layoutborder"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/mcolor"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="start|center"
                         android:layout_marginStart="40dp"
                         android:gravity="center"
@@ -149,8 +122,20 @@
                         android:layout_width="5dp"
                         android:layout_height="20dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="98dp"
+                        android:layout_marginStart="10dp"
                         android:text=","
+                        android:textColor="@color/purple"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/mmemory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center"
+                        android:text="64 GB"
                         android:textColor="@color/purple"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -160,58 +145,131 @@
                         android:layout_width="5dp"
                         android:layout_height="20dp"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="165dp"
+                        android:layout_marginStart="10dp"
                         android:text=","
                         android:textColor="@color/purple"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
+
                     <TextView
                         android:id="@+id/mnetwork"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="start|center"
-                        android:layout_marginStart="175dp"
+                        android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:text="LTE"
                         android:textColor="@color/purple"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
+
                     <TextView
                         android:id="@+id/arrow"
-                        android:layout_width="20dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="end|center_vertical"
-
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginEnd="5dp"
+                        android:layout_marginStart="40dp"
                         android:text=">"
                         android:textColor="@color/purple"
-                        android:textSize="30dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/mmemory"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="start|center"
-                        android:layout_marginStart="105dp"
-                        android:gravity="center"
-                        android:text="64 GB"
-                        android:textColor="@color/purple"
-                        android:textSize="15dp"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
 
-                </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+
+                <!--<android.support.v7.widget.CardView-->
+                <!--android:id="@+id/optioncard"-->
+                <!--android:layout_width="280dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="7dp"-->
+                <!--android:background="@drawable/buttob_border">-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/mcolor"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start|center"-->
+                <!--android:layout_marginStart="40dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Black "-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="17dp"-->
+                <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/coma1"-->
+                <!--android:layout_width="5dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_gravity="start|center"-->
+                <!--android:layout_marginStart="98dp"-->
+                <!--android:text=","-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/coma2"-->
+                <!--android:layout_width="5dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_gravity="start|center"-->
+                <!--android:layout_marginStart="165dp"-->
+                <!--android:text=","-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/mnetwork"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start|center"-->
+                <!--android:layout_marginStart="175dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="LTE"-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/arrow"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="end|center_vertical"-->
+
+                <!--android:layout_marginEnd="5dp"-->
+                <!--android:text=">"-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="30dp"-->
+                <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/mmemory"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="start|center"-->
+                <!--android:layout_marginStart="105dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="64 GB"-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textStyle="bold" />-->
+
+
+                <!--</android.support.v7.widget.CardView>-->
 
 
                 <LinearLayout
-                    android:background="@color/green"
                     android:id="@+id/linearprice"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
 
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/green"
                     android:orientation="horizontal">
 
                     <TextView
@@ -219,29 +277,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
                         android:layout_marginLeft="4dp"
-                        android:gravity="center_vertical"
                         android:layout_marginStart="120dp"
                         android:clickable="false"
+                        android:gravity="center_vertical"
                         android:maxLines="1"
                         android:text="AED"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorWhite"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/pricetext1"
                         android:layout_width="wrap_content"
-                        android:gravity="center_vertical"
                         android:layout_height="35dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginStart="10dp"
-                        android:textColor="@color/colorWhite"
                         android:clickable="false"
+                        android:gravity="center_vertical"
                         android:maxLines="1"
                         android:text="Price"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite"
                         android:textSize="20dp" />
 
 
@@ -251,352 +308,41 @@
             </LinearLayout>
 
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/card1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linear"
-
-               >
-
-                <LinearLayout
-                    android:id="@+id/li1"
-                    android:layout_width="match_parent"
-                    android:layout_height="63dp"
-                    android:background="@color/colorWhite"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/li2"
-                        android:layout_width="190dp"
-                        android:layout_height="59dp"
-                        android:layout_gravity="top|start"
-                        android:background="@color/colorWhite"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/siteTextview"
-                            android:layout_width="match_parent"
-
-                            android:layout_height="25dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="10dp"
-                            android:gravity="start"
-                            android:text="Souq"
-                            android:textColor="#000"
-                            android:textSize="20dp" />
-
-                        <TextView
-                            android:id="@+id/mobilename"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-
-                            android:layout_marginStart="20dp"
-                            android:text="Apple iPhone" />
-
-                    </LinearLayout>
 
 
-                    <LinearLayout
-                        android:id="@+id/li3"
-                        android:layout_width="140dp"
-                        android:layout_height="62dp"
-                        android:layout_gravity="right"
-                        android:layout_marginStart="20dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageview"
-
-                            android:layout_width="140dp"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="10dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/souqimg" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/options"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="65dp"
-                    android:text="+Options"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15dp" />
-
-
-                <RelativeLayout
-
-                    android:id="@+id/linrinfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="86dp"
-                    android:background="@color/colorWhite">
-
-
-                    <LinearLayout
-                        android:id="@+id/li121"
-                        android:layout_width="144dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/pricetext"
-                            android:layout_width="match_parent"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="5dp"
-                            android:clickable="true"
-                            android:text="AED 2199.00"
-                            android:textColor="@color/purple"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="135dp"
-                            android:layout_height="25dp"
-                            android:layout_marginStart="10dp"
-                            android:clickable="true"
-                            android:maxLines="1"
-                            android:text="Shipping costs varies" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/linrtextmore"
-                        android:layout_width="100dp"
-                        android:layout_height="25dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_toRightOf="@+id/li121"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/texviewtmore"
-                            android:layout_width="80dp"
-                            android:layout_height="25dp"
-
-                            android:text="MoreInfo"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp" />
-
-                    </LinearLayout>
-
-
-                    <Button
-                        android:id="@+id/buttonsite"
-                        android:layout_width="90dp"
-                        android:layout_height="35dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="25dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="5"
-                        android:background="@color/purple"
-                        android:text="Go to site"
-                        android:textColor="#fff" />
-
-
-                </RelativeLayout>
-
-
-
-                    <LinearLayout
-                        android:id="@+id/expandable"
-                        android:layout_marginTop="180dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:background="#FFF"
-                        android:visibility="gone"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/lidelvry"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:text="Delivery"
-                                android:id="@+id/textdlvry"
-                                android:layout_width="80dp"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="20dp" />
-
-                            <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:gravity="start|center_vertical"
-                                android:text="within 4-13 working days" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:text="Warranty"
-                                android:id="@+id/textwrnty"
-                                android:layout_width="80dp"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="20dp"
-                                />
-
-                            <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:gravity="start|center_vertical"
-                                android:text="1 year since date of purchase" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:text="Shipping"
-                                android:id="@+id/textship"
-                                android:layout_width="80dp"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="20dp"
-                                />
-
-                            <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:text="Same Day in India/Noida for Orders before 6:30pm" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:text="Notes"
-                                android:id="@+id/textnotes"
-                                android:layout_width="80dp"
-                                android:layout_height="25dp"
-                                android:layout_marginStart="20dp"
-                                />
-
-                            <TextView
-                                android:layout_width="200dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-
-                                android:text="+2.5% fee for payment by creadit card, No Extra charge on COD, Prices includeVAT" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linrless"
-                            android:orientation="vertical"
-                            android:layout_width="80dp"
-                            android:layout_height="30dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginStart="280dp">
-                            <TextView
-                                android:text="LessInfo"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:id="@+id/lesstext"
-                                android:layout_width="70dp"
-                                android:layout_height="28dp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                android:layout_below="@+id/card1"
-                android:layout_marginTop="20dp"
+                android:id="@+id/siterecycl"
+
+                android:layout_below="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
 
 
-            <!--<android.support.v7.widget.CardView-->
-                <!--android:id="@+id/cardviewText"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="70dp"-->
-                <!--android:layout_below="@+id/recyclerview"-->
-                <!--android:layout_marginTop="10dp">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="270dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginStart="15dp"-->
-                    <!--android:gravity="center|start"-->
-                    <!--android:text="Popular Apple Products"-->
-                    <!--android:textAllCaps="false"-->
-                    <!--android:textSize="15dp" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="40dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginStart="300dp"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text=">"-->
-                    <!--android:textSize="20dp" />-->
-
-            <!--</android.support.v7.widget.CardView>-->
+            <TextView
+                android:id="@+id/similartext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/siterecycl"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
+                android:text="Similar Products"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp" />
 
 
-            <!--<android.support.v7.widget.CardView-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerviewsmlr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/similartext"
+                android:layout_marginTop="10dp">
 
-                <!--android:id="@+id/cardviewText1"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="70dp"-->
-                <!--android:layout_below="@+id/cardviewText">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="270dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginStart="15dp"-->
-                    <!--android:gravity="center|start"-->
-                    <!--android:text="Popular Apple Mobile Phones"-->
-                    <!--android:textAllCaps="false"-->
-                    <!--android:textSize="15dp" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="40dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginStart="300dp"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text=">"-->
-                    <!--android:textSize="20dp" />-->
-
-            <!--</android.support.v7.widget.CardView>-->
-
-
-
+            </android.support.v7.widget.RecyclerView>
         </RelativeLayout>
-
-
-
     </ScrollView>
-
-
-
 </android.support.v4.widget.NestedScrollView>

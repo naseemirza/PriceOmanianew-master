@@ -1,8 +1,12 @@
 package com.example.naseem.pdemo.CategoryItems;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,10 +31,12 @@ import java.util.List;
 public class ChildActivity extends AppCompatActivity {
 
     private static final String JSON_URL = "http://ae.priceomania.com/mobileappwebservices/getchildcategory?catId=14";
-    ListView childListView;
     private String subCategoryId;
 
-    public static List<Child> childList = new ArrayList<>();
+    private ChildAdapter mExampleAdapter;
+    private ArrayList<Child> mExampleList;
+    private RequestQueue mRequestQueue;
+    private RecyclerView sRecyclerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,113 +46,75 @@ public class ChildActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Child_Categories");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        childListView = (ListView) findViewById(R.id.listview1);
-        childList = new ArrayList<>();
-        Intent intent = getIntent();
-        if (intent.hasExtra("category_id")) {
-            subCategoryId = intent.getStringExtra("category_id");
-        } else {
-            Toast.makeText(this, "Sorry Data Not Available", Toast.LENGTH_SHORT).show();
-        }
+        SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-        //Log.e("subId", subCategoryId);
+        subCategoryId=pref.getString("pid","");
 
 
-        loadItemList();
+        Log.e("responce",subCategoryId);
+
+        mExampleList = new ArrayList<>();
+        sRecyclerview=(RecyclerView)findViewById(R.id.plist);
+        sRecyclerview.setNestedScrollingEnabled(false);
+        sRecyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        mRequestQueue = Volley.newRequestQueue(this);
+        sRecyclerview.setHasFixedSize(true);
+
+        parseJSON1();
     }
 
-    private void loadItemList() {
+    private void parseJSON1() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getchildcategory?catId=" + subCategoryId,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getchildcategory?catId="+subCategoryId,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        Log.e("response", response);
+                        Log.e("responce",response );
+
 
                         try {
+
                             JSONObject rootJsonObject = new JSONObject(response);
-                            String  id = rootJsonObject.getString("category_id");
-                            Log.e("Id", id);
 
                             JSONArray subCategoryArray = rootJsonObject.getJSONArray("child_category");
-                            Log.e("subCategoryArray", subCategoryArray.length() + "");
+                            //Log.e("subCategoryArray", subCategoryArray.length() + "");
 
                             for (int i = 0; i < subCategoryArray.length(); i++) {
+                                JSONObject object = subCategoryArray.getJSONObject(i);
 
-                                JSONObject detailsObject = subCategoryArray.getJSONObject(i);
-                                childList.add(new Child(detailsObject.optString("category_id"),
-                                        detailsObject.optString("category_name"),
-                                        detailsObject.optString("category_image")));
-
-
+                                mExampleList.add(new Child(object.optString("category_id"),
+                                        object.optString("category_name"),
+                                        object.optString("category_image"),
+                                        object.optString("child_category_type")));
                             }
+
+                            Log.e("rootJsonArray", String.valueOf(mExampleList));
+
+                            mExampleAdapter = new ChildAdapter(ChildActivity.this, mExampleList);
+                            sRecyclerview.setAdapter(mExampleAdapter);
+                            mExampleAdapter.notifyDataSetChanged();
+                            sRecyclerview.setHasFixedSize(true);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-//                        if (childList.size() == 0) {
-//                            startActivity(new Intent(ChildActivity.this,GridActivity.class));
-//
-//                        }
-//                        else {
-//                            final ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
-//                            childListView.setAdapter(adapter);
-//                        }
-
-
-                        //Log.e("subId", String.valueOf(childList));
-
-
-                        ChildAdapter adapter = new ChildAdapter(childList, getApplicationContext());
-                        childListView.setAdapter(adapter);
-
-                        childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> child, View view, int position, long id) {
-
-                                Child itemId = (Child) child.getItemAtPosition(position);
-                                String categoryId2 = itemId.getId();
-
-                                if (childList.size() == 0) {
-                                    startActivity(new Intent(ChildActivity.this,GridActivity.class));
-
-                                }
-                                else {
-                                    Intent intent = new Intent(ChildActivity.this, Sub_ChildActivity.class);
-                                    Log.e("subId", categoryId2);
-                                    intent.putExtra("category_id", categoryId2);
-                                    startActivity(intent);
-                                }
-
-
-
-
-                            }
-                        });
-
-
 
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Log.e("TAg",error.getMessage());
                     }
                 });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
-        return true;
+        mRequestQueue = Volley.newRequestQueue(ChildActivity.this);
+        mRequestQueue.add(stringRequest);
     }
 }
+
 
 
 

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,9 +29,10 @@
             android:layout_height="match_parent">
 
     <RelativeLayout
-  android:id="@+id/re"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:id="@+id/re"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
             <RelativeLayout android:id="@+id/re1"
                 android:background="#DFDFDF"
@@ -66,12 +68,13 @@
             android:id="@+id/snap1"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:paddingTop="3dp"
             android:layout_below="@+id/re1"
-            android:text="FEATURED PRODUCTS"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17dp" />
+            android:text="Featured Products"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerview1"
@@ -88,10 +91,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:paddingTop="3dp"
             android:layout_below="@+id/recyclerview1"
-            android:text="APPLE IPHONES"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17dp" />
+            android:text="Apple iPhones"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview2"
@@ -108,10 +112,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:paddingTop="3dp"
             android:layout_below="@+id/recyclerview2"
-            android:text="CAMERAS"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17dp" />
+            android:text="Cameras"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview3"
@@ -128,10 +133,11 @@
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:paddingTop="3dp"
             android:layout_below="@+id/recyclerview3"
-            android:text="TABLETS"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17dp" />
+            android:text="Tablets"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview4"
@@ -143,6 +149,40 @@
         </android.support.v7.widget.RecyclerView>
 
 
+
+        <TextView
+            android:id="@+id/snap5"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_below="@+id/recyclerview4"
+            android:paddingTop="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Categories"
+            android:textColor="@color/colorBlack"
+            android:textSize="15dp" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/snap5"
+            android:layout_marginBottom="20dp"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="4dp"
+            card_view:cardElevation="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview5"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </android.support.v7.widget.CardView>
 
             </RelativeLayout>
 
