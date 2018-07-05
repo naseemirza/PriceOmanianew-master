@@ -34,6 +34,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -169,6 +170,7 @@ public class CardDetails extends AppCompatActivity {
         String pid;
 
 
+
         //similar products
 
         private CardAdapter mExampleAdapter1;
@@ -202,21 +204,10 @@ public class CardDetails extends AppCompatActivity {
                 View rootView = inflater.inflate(R.layout.activity_tab1, container, false);
 
 
-                //similar product
 
-                mExampleList1 = new ArrayList<>();
-                mRequestQueue1 = Volley.newRequestQueue(getActivity());
-
-                mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
-                mRecyclerview1.setNestedScrollingEnabled(false);
-                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-                mRecyclerview1.setHasFixedSize(true);
-
-                parseJSON1();
-
-                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
-                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
-                textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
+//                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
+//                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
+//                textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
 
                 Intent intent = getActivity().getIntent();
                 Bundle b = intent.getExtras();
@@ -336,7 +327,21 @@ public class CardDetails extends AppCompatActivity {
                 parseJSON();
 
 
+                //similar product
+
+                mExampleList1 = new ArrayList<>();
+                mRequestQueue1 = Volley.newRequestQueue(getActivity());
+
+                mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
+                mRecyclerview1.setNestedScrollingEnabled(false);
+                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview1.setHasFixedSize(true);
+                parseJSON1();
+
+
                 //CardPager cardPager = new CardPager(this.getActivity());
+
+
 
 
                 return rootView;
@@ -409,10 +414,14 @@ public class CardDetails extends AppCompatActivity {
 
         private void parseJSON() {
 
+
+
             StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getCompareProductData?pid="+pid,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
+
+
 
                             Log.e("responce",response );
 
@@ -468,19 +477,23 @@ public class CardDetails extends AppCompatActivity {
 
         private void parseJSON1() {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getfeaturedproducts",
+
+
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getrelatedproducts?prod_id="+pid,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
+
                             try {
-                                Log.e("rootJsonArray",response);
-                                JSONArray rootJsonArray = new JSONArray(response);
 
-                                Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
+                                JSONObject rootJsonObject = new JSONObject(response);
 
-                                for (int i = 0; i < rootJsonArray.length(); i++) {
-                                    JSONObject object = rootJsonArray.getJSONObject(i);
+                                JSONArray subCategoryArray = rootJsonObject.getJSONArray("relatedproducts");
+                                //Log.e("subCategoryArray", subCategoryArray.length() + "");
+
+                                for (int i = 0; i < subCategoryArray.length(); i++) {
+                                    JSONObject object = subCategoryArray.getJSONObject(i);
 
                                     mExampleList1.add(new CardDetailsApp(object.optString("id"),
                                             object.optString("product_image"),
@@ -489,6 +502,23 @@ public class CardDetails extends AppCompatActivity {
                                             object.optString("price"),
                                             object.optString("store_count")));
                                 }
+
+//                            try {
+//                                Log.e("rootJsonArray",response);
+//                                JSONArray rootJsonArray = new JSONArray(response);
+//
+//                                Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
+//
+//                                for (int i = 0; i < rootJsonArray.length(); i++) {
+//                                    JSONObject object = rootJsonArray.getJSONObject(i);
+//
+//                                    mExampleList1.add(new CardDetailsApp(object.optString("id"),
+//                                            object.optString("product_image"),
+//                                            object.optString("modelno"),
+//                                            object.optString("currency_type"),
+//                                            object.optString("price"),
+//                                            object.optString("store_count")));
+//                                }
 
                                 Log.e("rootJsonArray",mExampleList1.size()+"");
 

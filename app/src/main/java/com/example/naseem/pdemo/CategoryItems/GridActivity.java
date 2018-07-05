@@ -3,6 +3,7 @@ package com.example.naseem.pdemo.CategoryItems;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,10 +44,14 @@ public class GridActivity extends AppCompatActivity {
     String pid;
     private String Prdname;
 
+    RelativeLayout relativeLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
+
+        relativeLayout=(RelativeLayout)findViewById(R.id.reltvlayout);
 
         SharedPreferences pref = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
@@ -72,10 +80,16 @@ public class GridActivity extends AppCompatActivity {
 
     private void parseJSON() {
 
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getproductlisting?cat_id="+pid,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+
+                        progressBar.setVisibility(View.INVISIBLE);
 
                         Log.e("responce",response );
 
@@ -99,12 +113,14 @@ public class GridActivity extends AppCompatActivity {
 
                             }
 
-                            Log.e("rootJsonArray", String.valueOf(mExampleList));
 
-                            mExampleAdapter = new GridAdapter(GridActivity.this, mExampleList);
-                            sRecyclerview.setAdapter(mExampleAdapter);
-                            mExampleAdapter.notifyDataSetChanged();
-                            sRecyclerview.setHasFixedSize(true);
+
+                                Log.e("rootJsonArray", String.valueOf(mExampleList));
+
+                                mExampleAdapter = new GridAdapter(GridActivity.this, mExampleList);
+                                sRecyclerview.setAdapter(mExampleAdapter);
+                                mExampleAdapter.notifyDataSetChanged();
+                                sRecyclerview.setHasFixedSize(true);
 
 
                         } catch (JSONException e) {

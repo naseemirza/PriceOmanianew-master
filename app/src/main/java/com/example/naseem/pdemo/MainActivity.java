@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -336,10 +337,15 @@ public class MainActivity extends AppCompatActivity
 
     private void parseJSON1() {
 
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getfeaturedproducts",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        progressBar.setVisibility(View.INVISIBLE);
 
                         try {
                             Log.e("rootJsonArray",response);

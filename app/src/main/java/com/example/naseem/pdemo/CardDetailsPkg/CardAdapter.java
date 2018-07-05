@@ -66,27 +66,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             @Override
             public void onClick(View view, int position) {
 
-//                String prd_id=app.getmID().toString();
-//                String prd_name=app.getmName().toString();
-//                String prd_image=app.getmImageUrl().toString();
-//                String prd_crny=app.getmCurrency().toString();
-//                String prd_price=app.getmPrice().toString();
-//
-//                Log.e("responce",prd_id);
-//
-//                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//                SharedPreferences.Editor edit = pref.edit();
-//
-//                edit.putString("usermessage",prd_id);
-//                edit.putString("price",prd_price);
-//                edit.putString("currency",prd_crny);
-//                edit.putString("name",prd_name);
-//                edit.putString("cardimage",prd_image);
-//
-//
-//                edit.commit();
-//                Intent intent = new Intent(view.getContext(), CardDetails.class);
-//                view.getContext().startActivity(intent);
+                String prd_id=app.getmID().toString();
+                String prd_name=app.getmName().toString();
+                String prd_image=app.getmImageUrl().toString();
+                String prd_crny=app.getmCurrency().toString();
+                String prd_price=app.getmPrice().toString();
+
+                Log.e("responce",prd_id);
+
+                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = pref.edit();
+
+                edit.putString("usermessage",prd_id);
+                edit.putString("price",prd_price);
+                edit.putString("currency",prd_crny);
+                edit.putString("name",prd_name);
+                edit.putString("cardimage",prd_image);
+
+
+                edit.commit();
+                Intent intent = new Intent(view.getContext(), CardDetails.class);
+                view.getContext().startActivity(intent);
 
 
             }

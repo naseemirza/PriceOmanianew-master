@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -60,10 +61,14 @@ public class ParentActivity extends AppCompatActivity {
 
     private void parseJSON1() {
 
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getparentcategory",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressBar.setVisibility(View.INVISIBLE);
 
                         try {
                             Log.e("rootJsonArray",response);

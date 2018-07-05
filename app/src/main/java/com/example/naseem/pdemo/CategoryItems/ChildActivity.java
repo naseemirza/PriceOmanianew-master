@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,10 +74,15 @@ public class ChildActivity extends AppCompatActivity {
 
     private void parseJSON1() {
 
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getchildcategory?catId="+subCategoryId,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        progressBar.setVisibility(View.INVISIBLE);
 
                         Log.e("responce",response );
 
