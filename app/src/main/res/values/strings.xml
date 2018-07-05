@@ -32,4 +32,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_card_details">CardDetails</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="productdesc">The Apple iPhone 7 Plus is the latest single SIM smartphone by Apple
+                       It is available in five different color variants for example, Jet Black, Silver, Gold, Black and Rose Gold.
+                       So, you can select any of them that matches your style perfectly.
+      </string>
+    <string name="proddesc1">As compared to Apple iPhone 6, this phone comes well equipped
+        with an impressive 5.5 inch retina HD display in the resolution of 1080 by 1920 pixels
+        which is the most colorful and brightest display yet. Whether you are viewing live photographs
+        that you click in tropic zone or checking out the dress photos, you will get a true representation.
+        Its retina HD display is integrated with 3D Touch so you can easily interact with Mail, Calendar,
+        Messages, and apps in a great way. If you are watching videos, viewing images or reading an e-book,
+        you will have a great visual experience. Plus, it will add life to all of your stuff, whether
+        it is a photo, video or game.</string>
+    <string name="proddesc2">Advanced Dual Cameras.\n
+                             Brilliant 5.5 Inches Display similar to OnePlus 5.\n
+                             Best-in-class Stereo Speakers.\n
+                             New A10 Fusion Chip.\n
+                             Durable 2900mAh Non-removable Battery.</string>
+
 </resources>

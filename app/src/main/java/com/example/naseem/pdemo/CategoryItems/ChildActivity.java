@@ -3,14 +3,18 @@ package com.example.naseem.pdemo.CategoryItems;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,17 +42,21 @@ public class ChildActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private RecyclerView sRecyclerview;
 
+    private String Prdname;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child);
 
-        getSupportActionBar().setTitle("Child_Categories");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
         subCategoryId=pref.getString("pid","");
+        Prdname=pref.getString("pname","");
+
+        getSupportActionBar().setTitle(Prdname);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         Log.e("responce",subCategoryId);

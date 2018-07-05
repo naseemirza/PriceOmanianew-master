@@ -28,28 +28,7 @@
             android:id="@+id/nav_category"
             android:icon="@drawable/categories"
             android:title="Categories" />
-        <item
-            android:id="@+id/nav_offer"
-            android:icon="@drawable/offer"
-            android:title="Offer" />
-        <item
-            android:id="@+id/nav_store"
-            android:icon="@drawable/stores"
-            android:title="Stores" />
 
-
-        <item
-            android:id="@+id/nav_country"
-            android:icon="@drawable/country"
-            android:title="Country" />
-        <item
-            android:id="@+id/nav_language"
-            android:icon="@drawable/language"
-            android:title="Language" />
-        <item
-            android:id="@+id/nav_rate"
-            android:icon="@drawable/rate_our_app"
-            android:title="Rate Our App" />
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/send_us_feedback"

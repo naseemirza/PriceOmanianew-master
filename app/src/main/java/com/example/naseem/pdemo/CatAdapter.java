@@ -1,7 +1,10 @@
 package com.example.naseem.pdemo;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
+import com.example.naseem.pdemo.CategoryItems.GridActivity;
 
 import java.util.ArrayList;
 
@@ -17,7 +21,7 @@ import java.util.ArrayList;
  * Created by User on 05-Jun-18.
  */
 
-public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
+public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>  {
 
     private ArrayList<CatModel> glist;
     private Context context;
@@ -51,22 +55,26 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
                 .fitCenter()
                 .into(holder.catimage);
 
-//        holder.setItemClickListener(new RecyclerViewItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                String plistid=app.getId().toString();
-//                Log.e("responce",plistid);
-//
-//                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//                SharedPreferences.Editor edit = pref.edit();
-//                edit.putString("pid",plistid);
-//
-//                edit.commit();
-//                Intent intent = new Intent(view.getContext(), ChildActivity.class);
-//                view.getContext().startActivity(intent);
-//
-//            }
-//        });
+        holder.setItemClickListener(new RecyclerViewItemClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+                String clistid=app.getId().toString();
+                String prdname=app.getName().toString();
+                Log.e("responce",clistid);
+
+                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = pref.edit();
+                edit.putString("cid", clistid);
+                edit.putString("pname",prdname);
+
+                edit.commit();
+
+                Intent intent = new Intent(view.getContext(), GridActivity.class);
+                view.getContext().startActivity(intent);
+
+            }
+        });
 
     }
 

@@ -27,21 +27,11 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
     private List<App> mApps;
-    private boolean mHorizontal;
-    private boolean mPager;
     private Context mContext;
 
-//    ImageLoader imageLoader;
-//
-//    Context c;
-
-    //,boolean horizontal,boolean pager, after context
     public Adapter(Context context,List<App> apps){
         mContext=context;
         mApps=apps;
-//        mHorizontal=horizontal;
-//        mPager=pager;
-
     }
 
 
@@ -72,9 +62,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
                 .load(imageUrl)
                 .fitCenter()
                 .into(holder.mImageView);
-
-
-        //Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
 
 
         holder.setItemClickListener(new RecyclerViewItemClickListener() {

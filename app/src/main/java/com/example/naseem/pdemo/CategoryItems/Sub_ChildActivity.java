@@ -39,19 +39,20 @@ public class Sub_ChildActivity extends AppCompatActivity {
     private ArrayList<SubChild> mExampleList;
     private RequestQueue mRequestQueue;
     private RecyclerView sRecyclerview;
-
+    private String Prdname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub__child);
 
-        getSupportActionBar().setTitle("Sub_Categories");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         subCategoryId1=pref.getString("cid","");
+        Prdname=pref.getString("pname","");
 
+        getSupportActionBar().setTitle(Prdname);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Log.e("responce",subCategoryId1);
 
@@ -87,7 +88,8 @@ public class Sub_ChildActivity extends AppCompatActivity {
 
                                 mExampleList.add(new SubChild(object.optString("category_id"),
                                         object.optString("category_name"),
-                                        object.optString("category_image")));
+                                        object.optString("category_image"),
+                                        object.optString("child_category_type")));
                             }
 
                             Log.e("rootJsonArray", String.valueOf(mExampleList));

@@ -19,7 +19,7 @@ public class TabActivity1 extends AppCompatActivity {
 
 
 
-        ratingBar = (SimpleRatingBar) findViewById(R.id.ratingBarID);
+        //ratingBar = (SimpleRatingBar) findViewById(R.id.ratingBarID);
 //        buttonSite=(Button)findViewById(R.id.buttonsite);
 //        buttonSite.setOnClickListener(new View.OnClickListener() {
 //            @Override

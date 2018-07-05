@@ -2,10 +2,13 @@ package com.example.naseem.pdemo.CategoryItems;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
@@ -42,16 +45,38 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
         final SubChild app=schildList.get(position);
 
 
+        // arrow in list
+
+        String catgType=app.getCateg_type();
+        Log.e("responce",catgType);
+
+        if (catgType.equals("Brand"))
+        {
+            holder.arrowimage.setVisibility(View.GONE);
+        }
+        if (catgType.equals("Category"))
+        {
+            holder.arrowimage.setVisibility(View.VISIBLE);
+        }
 
         String Pname = app.getName();
         // String imageurl = app.getImageUrl();
-
 
         holder.mTextViewName.setText(Pname);
 
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
+
+                String prd_id=app.getId().toString();
+                String Prdname=app.getName().toString();
+                Log.e("responce",prd_id);
+                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = pref.edit();
+
+                edit.putString("cid",prd_id);
+                edit.putString("pname",Prdname);
+                edit.commit();
 
                 Intent intent = new Intent(view.getContext(), GridActivity.class);
                 view.getContext().startActivity(intent);
@@ -78,6 +103,7 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
 
         //public ImageView mImageView;
         public TextView mTextViewName;
+        public ImageView arrowimage;
 
 
         private RecyclerViewItemClickListener itemClickListener;
@@ -88,6 +114,7 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
             super(itemView);
             //mImageView=(ImageView)itemView.findViewById(R.id.imageViewName);
             mTextViewName = (TextView) itemView.findViewById(R.id.textViewname);
+            arrowimage=(ImageView)itemView.findViewById(R.id.arrow);
             itemView.setOnClickListener(this);
 
 

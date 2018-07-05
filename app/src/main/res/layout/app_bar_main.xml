@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context="com.example.naseem.pdemo.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -16,23 +18,28 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/green"
+            app:contentInsetStartWithNavigation="-5dp"
+            android:background="@color/purple"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             android:weightSum="1">
 
             <EditText
                 android:id="@+id/etext"
-                android:layout_width="250dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="35dp"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="-10dp"
                 android:layout_weight="0.54"
-                android:background="@color/colorWhite"
+                android:background="@drawable/edittextcorners"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+
                 android:cursorVisible="false"
                 android:drawableLeft="@drawable/ic_search_black_24dp"
-               android:paddingStart="10dp"
-                android:hint="   Search for products"
+                android:hint=" Search for products..."
+                android:paddingStart="10dp"
                 android:textColor="#2F2F2F"
-                android:textColorHint="#2F2F2F"
+                android:textColorHint="#999999"
                 android:textSize="17dp" />
 
 

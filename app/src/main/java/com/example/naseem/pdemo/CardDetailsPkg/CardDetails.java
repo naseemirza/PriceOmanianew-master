@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,8 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -66,6 +69,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 public class CardDetails extends AppCompatActivity {
@@ -73,60 +77,25 @@ public class CardDetails extends AppCompatActivity {
     private PlaceholderFragment.SectionsPagerAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
+    TextView PrdTextName;
+    String prdname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_details);
 
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
-//        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-//        Menu menu = bottomNavigationView.getMenu();
-//        MenuItem menuItem = menu.getItem(0);
-//        menuItem.setChecked(true);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.ic_arrow:
-//
-//                        Intent intent = new Intent(CardDetails.this, MainActivity.class);
-//                        startActivity(intent);
-//                        break;
-//
-//                    case R.id.ic_android:
-//                        Intent intent1 = new Intent(CardDetails.this, AutoEditTextActivity.class);
-//                        startActivity(intent1);
-//                        break;
-//
-//                    case R.id.ic_books:
-//                        Intent intent2 = new Intent(CardDetails.this, Activity2.class);
-//                        startActivity(intent2);
-//                        break;
-//
-//                    case R.id.ic_center_focus:
-//                        Intent intent3 = new Intent(CardDetails.this, Activity3.class);
-//                        startActivity(intent3);
-//                        break;
-//
-//                    case R.id.ic_backup:
-//                        Intent intent4 = new Intent(CardDetails.this,Activity4.class);
-//                        startActivity(intent4);
-//                        break;
-//                }
-//
-//                return false;
-//            }
-//        });
-
         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        SharedPreferences pref = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
+        PrdTextName=(TextView)findViewById(R.id.prdnametext);
+        prdname = pref.getString("name", "");
+        PrdTextName.setText(prdname);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
@@ -162,9 +131,6 @@ public class CardDetails extends AppCompatActivity {
     }
 
     public static class PlaceholderFragment extends Fragment {
-
-
-        Button buttonSite, buttonSite1;
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -203,10 +169,20 @@ public class CardDetails extends AppCompatActivity {
         String pid;
 
 
+        //similar products
+
         private CardAdapter mExampleAdapter1;
         private ArrayList<CardDetailsApp> mExampleList1;
         private RequestQueue mRequestQueue1;
         private RecyclerView mRecyclerview1;
+
+
+        //product faqs
+
+        ExpandableListView expandableListView;
+        ExpandableListAdapter expandableListAdapter;
+        List<String> expandableListTitle;
+        HashMap<String, List<String>> expandableListDetail;
 
 
 
@@ -231,9 +207,9 @@ public class CardDetails extends AppCompatActivity {
                 mExampleList1 = new ArrayList<>();
                 mRequestQueue1 = Volley.newRequestQueue(getActivity());
 
-                mRecyclerview1=(RecyclerView)rootView.findViewById(R.id.recyclerviewsmlr);
+                mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
                 mRecyclerview1.setNestedScrollingEnabled(false);
-                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 mRecyclerview1.setHasFixedSize(true);
 
                 parseJSON1();
@@ -242,45 +218,44 @@ public class CardDetails extends AppCompatActivity {
                 textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
                 textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
 
-                Intent intent=getActivity().getIntent();
+                Intent intent = getActivity().getIntent();
                 Bundle b = intent.getExtras();
 
-                if(b!=null)
-                {
-                    String color =(String) b.get("color");
+                if (b != null) {
+                    String color = (String) b.get("color");
                     textViewclr.setText(color);
-                    String strg =(String) b.get("storage");
+                    String strg = (String) b.get("storage");
                     textViewstrg.setText(strg);
-                    String ntwk =(String) b.get("network");
+                    String ntwk = (String) b.get("network");
                     textViewntwk.setText(ntwk);
 
                 }
 
 
-                textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
+                //textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
                 textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
                 textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
                 imageView = (ImageView) rootView.findViewById(R.id.cardimg);
 
                 SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-                ustring=pref.getString("usermessage","");
-                mname=pref.getString("name","");
-                mcrncy=pref.getString("currency","");
-                mprice=pref.getString("price","");
-                mimage=pref.getString("cardimage","");
+                ustring = pref.getString("usermessage", "");
+                mname = pref.getString("name", "");
+                mcrncy = pref.getString("currency", "");
+                mprice = pref.getString("price", "");
+                mimage = pref.getString("cardimage", "");
 
                 Glide.with(getActivity())
                         .load(mimage)
                         .fitCenter()
                         .into(imageView);
 
-               // Picasso.with(getActivity()).load(mimage).fit().centerInside().into(imageView);
-                textViewname.setText(mname);
+                // Picasso.with(getActivity()).load(mimage).fit().centerInside().into(imageView);
+                //textViewname.setText(mname);
                 textViewprice.setText(mprice);
                 textViewcurncy.setText(mcrncy);
 
-               //moreinfo
+                //moreinfo
 
 //                mLinearLayoutLess = (LinearLayout) rootView.findViewById(R.id.linrless);
 //                mLinearLayoutDetalis = (LinearLayout) rootView.findViewById(R.id.expandable);
@@ -319,8 +294,7 @@ public class CardDetails extends AppCompatActivity {
 //                });
 
 
-
-                dialogbutton = (LinearLayout) rootView.findViewById(R.id.optioncard);
+//                dialogbutton = (LinearLayout) rootView.findViewById(R.id.optioncard);
 //                dialogbutton.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {
@@ -347,20 +321,19 @@ public class CardDetails extends AppCompatActivity {
 
                 //moresites
 
-                pid=pref.getString("usermessage","");
+                pid = pref.getString("usermessage", "");
 
-                // Log.e("responce",pid);
+                 Log.e("responce",pid);
 
 
                 mExampleList = new ArrayList<>();
-                sRecyclerview=(RecyclerView)rootView.findViewById(R.id.siterecycl);
+                sRecyclerview = (RecyclerView) rootView.findViewById(R.id.siterecycl);
                 sRecyclerview.setNestedScrollingEnabled(false);
-                sRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+                sRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                 mRequestQueue = Volley.newRequestQueue(getActivity());
                 sRecyclerview.setHasFixedSize(true);
 
                 parseJSON();
-
 
 
                 //CardPager cardPager = new CardPager(this.getActivity());
@@ -372,7 +345,54 @@ public class CardDetails extends AppCompatActivity {
                 return rootView;
             } else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3) {
                 View rootView = inflater.inflate(R.layout.activity_tab3, container, false);
+
+                expandableListView = (ExpandableListView)rootView.findViewById(R.id.expandableListView);
+                expandableListDetail = ExpandableListDataPump.getData();
+                expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+                expandableListAdapter = new CustomExpandableListAdapter(getActivity(), expandableListTitle, expandableListDetail);
+                expandableListView.setAdapter(expandableListAdapter);
+                expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+                    @Override
+                    public void onGroupExpand(int groupPosition) {
+//                        Toast.makeText(getActivity().getApplicationContext(),
+//                                expandableListTitle.get(groupPosition) + " List Expanded.",
+//                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+                    @Override
+                    public void onGroupCollapse(int groupPosition) {
+//                        Toast.makeText(getActivity().getApplicationContext(),
+//                                expandableListTitle.get(groupPosition) + " List Collapsed.",
+//                                Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+                expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                    @Override
+                    public boolean onChildClick(ExpandableListView parent, View v,
+                                                int groupPosition, int childPosition, long id) {
+//                        Toast.makeText(
+//                                getActivity().getApplicationContext(),
+//                                expandableListTitle.get(groupPosition)
+//                                        + " -> "
+//                                        + expandableListDetail.get(
+//                                        expandableListTitle.get(groupPosition)).get(
+//                                        childPosition), Toast.LENGTH_SHORT
+//                        ).show();
+                        return false;
+                    }
+                });
                 return rootView;
+
+
+
+
+
             } else {
 
                 View rootView = inflater.inflate(R.layout.fragment_card_details, container, false);
@@ -422,6 +442,7 @@ public class CardDetails extends AppCompatActivity {
                                 sRecyclerview.setAdapter(mExampleAdapter);
                                 mExampleAdapter.notifyDataSetChanged();
                                 sRecyclerview.setHasFixedSize(true);
+
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.example.naseem.pdemo;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -55,7 +57,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-
     private Adapter mExampleAdapter1,mExampleAdapter2,mExampleAdapter3,mExampleAdapter4;
     private ArrayList<App> mExampleList1,mExampleList2,mExampleList3,mExampleList4;
     private RequestQueue mRequestQueue1,mRequestQueue2,mRequestQueue3,mRequestQueue4;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity
     private RequestQueue mRequestQueue;
     private RecyclerView sRecyclerview;
 
-
+    //private GridView gridView;
 
     private EditText editText;
     public static String BACK_STACK_TAG = "tag";
@@ -102,53 +103,6 @@ public class MainActivity extends AppCompatActivity
             //Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_main);
         }
-
-
-        //bottombar
-
-
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
-//        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-//        Menu menu = bottomNavigationView.getMenu();
-//        MenuItem menuItem = menu.getItem(0);
-//        menuItem.setChecked(true);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.ic_arrow:
-//
-//                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-//                        startActivity(intent);
-//
-//                        break;
-//
-//                    case R.id.ic_android:
-//                        Intent intent1 = new Intent(MainActivity.this, AutoEditTextActivity.class);
-//                        startActivity(intent1);
-//                        break;
-//
-//                    case R.id.ic_books:
-////                        Intent intent2 = new Intent(MainActivity.this, Activity2.class);
-////                        startActivity(intent2);
-//                        break;
-//
-//                    case R.id.ic_center_focus:
-////                        Intent intent3 = new Intent(MainActivity.this, Activity3.class);
-////                        startActivity(intent3);
-//                        break;
-//
-//                    case R.id.ic_backup:
-////                        Intent intent4 = new Intent(MainActivity.this,Activity4.class);
-////                        startActivity(intent4);
-//                        break;
-//                }
-//
-//                return false;
-//            }
-//        });
-
 
 
         //Snap 1
@@ -203,12 +157,14 @@ public class MainActivity extends AppCompatActivity
 
         //morecategory
 
+
         mExampleList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
         sRecyclerview=(RecyclerView)findViewById(R.id.recyclerview5);
         sRecyclerview.setNestedScrollingEnabled(false);
-        gridLayoutManager = new GridLayoutManager(this, 5, LinearLayoutManager.HORIZONTAL, false);
-        sRecyclerview.setLayoutManager(gridLayoutManager);
+
+        //gridLayoutManager = new GridLayoutManager(this,  10, LinearLayoutManager.HORIZONTAL, false);
+        sRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
         sRecyclerview.setHasFixedSize(true);
 
         parseJSON();
@@ -228,33 +184,9 @@ public class MainActivity extends AppCompatActivity
         textViewprice=(TextView)findViewById(R.id.onlinestoreTextview2);
         textviewname=(TextView)findViewById(R.id.nameTextview);
 
-//        mRecyclerview = (RecyclerView) findViewById(R.id.recyclerview);
-//        mRecyclerview.setNestedScrollingEnabled(false);
-//
-//
-//        mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-//
-//        mRecyclerview.setAdapter(mAdapter);
-//        mRecyclerview.setHasFixedSize(true);
-
-//  mRecyclerview.addOnItemTouchListener(new CustomRVItemTouchListener(this, mRecyclerview, new RecyclerViewItemClickListener() {
-//      @Override
-//      public void onClick(View view, int position) {
-//
-//          startActivity(new Intent(MainActivity.this,CardDetails.class));
-//      }
-//  }));
-
-//        if (savedInstanceState == null) {
-//            mHorizontal = true;
-//
-//        } else {
-//            mHorizontal = savedInstanceState.getBoolean(ORIENTATION);
-//        }
-       // setupAdapter();
-
 
         //viewpager
+
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
         MyCustomPagerAdapter myCustomPagerAdapter = new MyCustomPagerAdapter(this);
@@ -309,15 +241,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -380,7 +303,7 @@ public class MainActivity extends AppCompatActivity
                             for (int i = 0; i < rootJsonArray.length(); i++) {
                                 JSONObject object = rootJsonArray.getJSONObject(i);
 
-                                mExampleList.add(new CatModel(object.optString("slug"),
+                                mExampleList.add(new CatModel(object.optString("category_id"),
                                         object.optString("cat_name"),
                                         object.optString("cat_img")));
                             }
@@ -611,110 +534,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putBoolean(ORIENTATION, mHorizontal);
-//    }
-
-//    private void setupAdapter() {
-//        List<App> apps = getApps();
-//        List<App> apps1 = getApps1();
-//        List<App> apps2 = getApps2();
-//        List<App> apps3 = getApps3();
-//
-//
-//        SnapAdapter snapAdapter = new SnapAdapter();
-//        if (mHorizontal) {
-//            snapAdapter.addSnap(new Snap(Gravity.CENTER_HORIZONTAL, "FEATURED PRODUCTS", apps));
-//            // snapAdapter.addSnap(new Snap(Gravity.START,"APPLE IPHONES",apps));
-//            snapAdapter.addSnap(new Snap(Gravity.START, "APPLE IPHONES", apps1));
-//            snapAdapter.addSnap(new Snap(Gravity.END, "CAMERAS", apps2));
-//            snapAdapter.addSnap(new Snap(Gravity.END, "TABLETS", apps3));
-//
-//            //snapAdapter.addSnap(new Snap(Gravity.CENTER,"Apple Products",apps));
-//        } else {
-//
-//            snapAdapter.addSnap(new Snap(Gravity.CENTER_VERTICAL, "Apple Products", apps));
-//            snapAdapter.addSnap(new Snap(Gravity.TOP, "Apple Products", apps));
-//            snapAdapter.addSnap(new Snap(Gravity.BOTTOM, "Apple Products", apps));
-//        }
-//        mRecyclerview.setAdapter(snapAdapter);
-//
-//    }
-
-
-//    private List<App> getApps() {
-//        List<App> apps = new ArrayList<>();
-//
-//        apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 18190.00", "38 Online Store(s)", R.drawable.canon));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 18190.00", "38 Online Store(s)", R.drawable.canon));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 18190.00", "38 Online Store(s)", R.drawable.canon));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 1125.60", "38 Online Store(s)", R.drawable.microlumia));
-//        apps.add(new App("Apple iPhone 7 plus", "AED 2199.00", "38 Online Store(s)", R.drawable.apple7plus));
-//
-//        return apps;
-//    }
-
-
-//    private List<App> getApps1() {
-//        List<App> apps1 = new ArrayList<>();
-//
-//        apps1.add(new App("Apple IPhone X", "AED 2199.00", "10 Online Store(s)", R.drawable.appleiphone));
-//        apps1.add(new App("iPhone 7 Plus-32 Gb,Gold", "AED 34229.00", "16 Online Store(s)", R.drawable.newmobile));
-//        apps1.add(new App("Apple iPhone 6,32 GB", "AED 5110.60", "18 Online Store(s)", R.drawable.appleiphone6));
-//        apps1.add(new App("Apple IPhone X", "AED 2199.00", "10 Online Store(s)", R.drawable.appleiphone));
-//        apps1.add(new App("iPhone 7 Plus-32 Gb,Gold", "AED 34229.00", "16 Online Store(s)", R.drawable.newmobile));
-//        apps1.add(new App("Apple iPhone 6,32 GB", "AED 5110.60", "18 Online Store(s)", R.drawable.appleiphone6));
-//        apps1.add(new App("Apple IPhone X", "AED 2199.00", "10 Online Store(s)", R.drawable.appleiphone));
-//        apps1.add(new App("iPhone 7 Plus-32 Gb,Gold", "AED 34229.00", "16 Online Store(s)", R.drawable.newmobile));
-//        apps1.add(new App("Apple iPhone 6,32 GB", "AED 5110.60", "18 Online Store(s)", R.drawable.appleiphone6));
-//
-//        return apps1;
-//    }
-//
-//
-//    private List<App> getApps2() {
-//        List<App> apps2 = new ArrayList<>();
-//
-//        apps2.add(new App("Canon EOS 6D ", "AED 6089.00", "4 Online Store(s)", R.drawable.canon1));
-//        apps2.add(new App("Canon EOS 800D", "AED 34229.00", "4 Online Store(s)", R.drawable.camera));
-//        apps2.add(new App("Canon GIX ll", "AED 1795.60", "4 Online Store(s)", R.drawable.canon));
-//        apps2.add(new App("Canon EOS 6D ", "AED 6089.00", "4 Online Store(s)", R.drawable.canon1));
-//        apps2.add(new App("Canon EOS 800D", "AED 34229.00", "4 Online Store(s)", R.drawable.camera));
-//        apps2.add(new App("Canon GIX ll", "AED 1795.60", "4 Online Store(s)", R.drawable.canon));
-//        apps2.add(new App("Canon EOS 6D ", "AED 6089.00", "4 Online Store(s)", R.drawable.canon1));
-//        apps2.add(new App("Canon EOS 800D", "AED 34229.00", "4 Online Store(s)", R.drawable.camera));
-//        apps2.add(new App("Canon GIX ll", "AED 1795.60", "4 Online Store(s)", R.drawable.canon));
-//
-//        return apps2;
-//    }
-//
-//
-//    private List<App> getApps3() {
-//        List<App> apps3 = new ArrayList<>();
-//
-//        apps3.add(new App("Apple Ipad Mini 3", "AED 1060.00", "15 Online Store(s)", R.drawable.applemini1));
-//        apps3.add(new App("Apple iPad Mini 3 Tablet-7.9", "AED 1049.00", "17 Online Store(s)", R.drawable.applimini11));
-//        apps3.add(new App("Apple iPad Mini 2", "AED 1179.60", "22 Online Store(s)", R.drawable.applemini));
-//        apps3.add(new App("Canon EOS 6D ", "AED 6089.00", "4 Online Store(s)", R.drawable.canon1));
-//        apps3.add(new App("Apple Ipad Mini 3", "AED 1060.00", "15 Online Store(s)", R.drawable.applemini1));
-//        apps3.add(new App("Apple iPad Mini 3 Tablet-7.9", "AED 1049.00", "17 Online Store(s)", R.drawable.applimini11));
-//        apps3.add(new App("Apple iPad Mini 2", "AED 1179.60", "22 Online Store(s)", R.drawable.applemini));
-//        apps3.add(new App("Apple Ipad Mini 3", "AED 1060.00", "15 Online Store(s)", R.drawable.applemini1));
-//        apps3.add(new App("Apple iPad Mini 3 Tablet-7.9", "AED 1049.00", "17 Online Store(s)", R.drawable.applimini11));
-//        apps3.add(new App("Apple iPad Mini 2", "AED 1179.60", "22 Online Store(s)", R.drawable.applemini));
-//
-//        return apps3;
-//    }
-//
-
-
 
     public class MyTimerTask extends TimerTask {
         @Override
@@ -730,6 +549,18 @@ public class MainActivity extends AppCompatActivity
                     }
                     else if(viewPager.getCurrentItem()==2){
                         viewPager.setCurrentItem(3);
+                    }
+                    else if(viewPager.getCurrentItem()==3){
+                        viewPager.setCurrentItem(4);
+                    }
+                    else if(viewPager.getCurrentItem()==4){
+                        viewPager.setCurrentItem(5);
+                    }
+                    else if(viewPager.getCurrentItem()==5){
+                        viewPager.setCurrentItem(6);
+                    }
+                    else if(viewPager.getCurrentItem()==6){
+                        viewPager.setCurrentItem(7);
                     }
                     else {
                         viewPager.setCurrentItem(0);
@@ -761,9 +592,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -795,22 +623,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_myad) {
 
         } else if (id == R.id.nav_category) {
-            startActivity(new Intent(MainActivity.this,ParentActivity.class));
-
-
-
-
-        }else if (id == R.id.nav_offer) {
-
-        }else if (id == R.id.nav_store) {
-
-        }else if (id == R.id.nav_country) {
-
-        }else if (id == R.id.nav_language) {
-
-        }else if (id == R.id.nav_rate) {
-
+            startActivity(new Intent(MainActivity.this, ParentActivity.class));
         }
+
         else if (id == R.id.nav_feedback) {
 
         }

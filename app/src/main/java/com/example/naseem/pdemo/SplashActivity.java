@@ -1,8 +1,10 @@
 package com.example.naseem.pdemo;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -25,9 +27,16 @@ public class SplashActivity extends AppCompatActivity {
 
         Animation animation= AnimationUtils.loadAnimation(this, R.anim.alpha);
         animation.reset();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         LinearLayout l= (LinearLayout) findViewById(R.id.lin_lay);
         l.clearAnimation();
         l.startAnimation(animation);
+
+
+
+
+
 
         animation=AnimationUtils.loadAnimation(this,R.anim.translate);
         animation.reset();
@@ -49,6 +58,8 @@ public class SplashActivity extends AppCompatActivity {
                     Intent intent = new Intent(SplashActivity.this,
                             MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+
                     startActivity(intent);
                     SplashActivity.this.finish();
                 } catch (InterruptedException e) {

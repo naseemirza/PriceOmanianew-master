@@ -66,6 +66,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
             @Override
             public void onClick(View view, int position) {
                 String clistid=app.getId().toString();
+                String Prdname=app.getName().toString();
                 Log.e("responce",clistid);
 
 
@@ -73,6 +74,7 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
                     SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                     SharedPreferences.Editor edit = pref.edit();
                     edit.putString("cid", clistid);
+                    edit.putString("pname",Prdname);
                     edit.apply();
 
                     Intent intent = new Intent(view.getContext(), Sub_ChildActivity.class);
@@ -81,6 +83,13 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
 
                 }
                 else {
+                    SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edit = pref.edit();
+                    edit.putString("cid", clistid);
+                    edit.putString("pname",Prdname);
+
+                    edit.commit();
+
                     Intent intent = new Intent(view.getContext(), GridActivity.class);
                     view.getContext().startActivity(intent);
                 }

@@ -50,7 +50,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ViewHolder
 
 
 
-        String Pname = app.getName();
+        final String Pname = app.getName();
         String imageurl = app.getImageUrl();
 
 
@@ -65,11 +65,13 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ViewHolder
             @Override
             public void onClick(View view, int position) {
                 String plistid=app.getId().toString();
-                Log.e("responce",plistid);
+                String Pdname=app.getName().toString();
+                Log.e("responce",Pdname);
 
                 SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
                 edit.putString("pid",plistid);
+                edit.putString("pname",Pdname);
 
                 edit.commit();
                 Intent intent = new Intent(view.getContext(), ChildActivity.class);

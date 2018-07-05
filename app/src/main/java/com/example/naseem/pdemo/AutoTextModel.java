@@ -1,10 +1,11 @@
-package com.example.naseem.pdemo.CategoryItems;
+package com.example.naseem.pdemo;
 
 /**
- * Created by User on 23-May-18.
+ * Created by User on 04-Jul-18.
  */
 
-public class GridModel {
+public class AutoTextModel {
+
     private String mID;
     private String mImageUrl;
     private String mName;
@@ -14,10 +15,10 @@ public class GridModel {
 
     String image_path = "http://ae.priceomania.com/backend/ProductImage/";
 
-    public GridModel(String mID, String mName,String mImageUrl, String mCurrency, String mPrice, String mCount) {
+    public AutoTextModel(String mID, String mImageUrl, String mName, String mCurrency, String mPrice, String mCount) {
         this.mID = mID;
+        this.mImageUrl = image_path+mImageUrl;
         this.mName = mName;
-        this.mImageUrl =image_path+mImageUrl;
         this.mCurrency = mCurrency;
         this.mPrice = mPrice;
         this.mCount = mCount;
@@ -70,4 +71,6 @@ public class GridModel {
     public void setmCount(String mCount) {
         this.mCount = mCount;
     }
+
+
 }
