@@ -80,6 +80,7 @@ public class CardDetails extends AppCompatActivity {
     private ViewPager mViewPager;
     TextView PrdTextName;
     String prdname;
+    String Tcount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +96,10 @@ public class CardDetails extends AppCompatActivity {
         PrdTextName=(TextView)findViewById(R.id.prdnametext);
         prdname = pref.getString("name", "");
         PrdTextName.setText(prdname);
+
+        Tcount=pref.getString("totalcount","");
+
+
 
          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -654,7 +659,7 @@ public class CardDetails extends AppCompatActivity {
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "38 Online Store(s)";
+                        return "Online Store(s)";
                     case 1:
                         return "Description";
                     case 2:

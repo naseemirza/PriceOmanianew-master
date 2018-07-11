@@ -34,8 +34,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         mApps=apps;
     }
 
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -73,6 +71,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
                 String prd_image=app.getmImageUrl().toString();
                 String prd_crny=app.getmCurrency().toString();
                 String prd_price=app.getmPrice().toString();
+                String prd_count=app.getmCount().toString();
 
                 Log.e("responce",prd_id);
 
@@ -84,6 +83,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
                 edit.putString("currency",prd_crny);
                 edit.putString("name",prd_name);
                 edit.putString("cardimage",prd_image);
+                edit.putString("totalcount",prd_count);
 
 
                 edit.commit();
