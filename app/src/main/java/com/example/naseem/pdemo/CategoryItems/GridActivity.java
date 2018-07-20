@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -51,6 +52,8 @@ public class GridActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
 
+
+
         relativeLayout=(RelativeLayout)findViewById(R.id.reltvlayout);
 
         SharedPreferences pref = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -62,6 +65,20 @@ public class GridActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Log.e("responce",pid);
 
+//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        getSupportActionBar().setDisplayShowCustomEnabled(true);
+//        getSupportActionBar().setTitle(Prdname);
+//        getSupportActionBar().setCustomView(R.layout.gridtitlebar);
+//        View view =getSupportActionBar().getCustomView();
+//
+//        ImageButton imageButton= (ImageButton)view.findViewById(R.id.action_bar_back);
+//
+//        imageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
 
         mExampleList = new ArrayList<>();
@@ -70,6 +87,10 @@ public class GridActivity extends AppCompatActivity {
         sRecyclerview.setNestedScrollingEnabled(false);
 
         sRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
+       // sRecyclerview.addItemDecoration(new DividerItemDecoration(GridActivity.this, DividerItemDecoration.VERTICAL));
+        //sRecyclerview.addItemDecoration(new DividerItemDecoration(GridActivity.this, DividerItemDecoration.HORIZONTAL));
+//        sRecyclerview.addItemDecoration(
+//                new DividerItemDecoration(GridActivity.this, R.drawable.dividers));
         sRecyclerview.setHasFixedSize(true);
 
 
@@ -83,7 +104,7 @@ public class GridActivity extends AppCompatActivity {
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getproductlisting?cat_id="+pid,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getproductlisting?cat_id="+pid,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -113,11 +134,10 @@ public class GridActivity extends AppCompatActivity {
 
                             }
 
-
-
                                 Log.e("rootJsonArray", String.valueOf(mExampleList));
 
                                 mExampleAdapter = new GridAdapter(GridActivity.this, mExampleList);
+
                                 sRecyclerview.setAdapter(mExampleAdapter);
                                 mExampleAdapter.notifyDataSetChanged();
                                 sRecyclerview.setHasFixedSize(true);

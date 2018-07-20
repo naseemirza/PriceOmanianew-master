@@ -51,7 +51,7 @@ public class AutoEditTextActivity extends Activity {
 
     CardView cardView1;
 
-    private String MORE_SITE_URL="http://ae.priceomania.com/assets/search/compare.json";
+    private String MORE_SITE_URL="https://ae.priceomania.com/assets/search/compare.json";
 
     private AutoTextAdapter mExampleAdapter;
     private ArrayList<AutoTextModel> mExampleList;
@@ -95,7 +95,7 @@ public class AutoEditTextActivity extends Activity {
 
     private void parseJSON() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/assets/search/compare.json",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/assets/search/compare.json",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

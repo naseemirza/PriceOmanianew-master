@@ -110,7 +110,7 @@ public class StorageActivity extends AppCompatActivity {
 
     private void loadItemList() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getStorage?pid=" +ustring ,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getStorage?pid=" +ustring ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

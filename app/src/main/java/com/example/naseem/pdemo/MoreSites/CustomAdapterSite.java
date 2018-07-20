@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
 import com.example.naseem.pdemo.R;
 
@@ -75,6 +76,7 @@ public class CustomAdapterSite extends RecyclerView.Adapter<CustomAdapterSite.Vi
         Glide.with(mContext)
                 .load(imageUrl)
                 .fitCenter()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.mImageViewsite);
 
     }

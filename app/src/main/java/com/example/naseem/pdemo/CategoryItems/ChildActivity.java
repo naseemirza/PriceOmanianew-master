@@ -77,7 +77,7 @@ public class ChildActivity extends AppCompatActivity {
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getchildcategory?catId="+subCategoryId,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getchildcategory?catId="+subCategoryId,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

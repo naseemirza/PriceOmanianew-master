@@ -45,6 +45,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.naseem.pdemo.Adapter;
 import com.example.naseem.pdemo.App;
 import com.example.naseem.pdemo.AutoEditTextActivity;
@@ -166,7 +167,7 @@ public class CardDetails extends AppCompatActivity {
 
         // more sites
 
-        private String MORE_SITE_URL="http://ae.priceomania.com/mobileappwebservices/getCompareProductData?pid=";
+        private String MORE_SITE_URL="https://ae.priceomania.com/mobileappwebservices/getCompareProductData?pid=";
 
         private CustomAdapterSite mExampleAdapter;
         private ArrayList<CardModel> mExampleList;
@@ -243,6 +244,7 @@ public class CardDetails extends AppCompatActivity {
 
                 Glide.with(getActivity())
                         .load(mimage)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .fitCenter()
                         .into(imageView);
 
@@ -421,7 +423,7 @@ public class CardDetails extends AppCompatActivity {
 
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getCompareProductData?pid="+pid,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getCompareProductData?pid="+pid,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -484,7 +486,7 @@ public class CardDetails extends AppCompatActivity {
 
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getrelatedproducts?prod_id="+pid,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getrelatedproducts?prod_id="+pid,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
 import com.example.naseem.pdemo.R;
 import com.squareup.picasso.Picasso;
@@ -58,6 +59,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ViewHolder
 
         Glide.with(mCtx)
                 .load(imageurl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(holder.mImageView);
 

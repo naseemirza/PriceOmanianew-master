@@ -112,7 +112,7 @@ public class NetworkActivity extends AppCompatActivity {
 
     private void loadItemList() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getNetwork?pid=" +ustring ,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getNetwork?pid=" +ustring ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.naseem.pdemo.CardDetailsPkg.CardDetails;
 import com.example.naseem.pdemo.CardDetailsPkg.RecyclerViewItemClickListener;
 import com.example.naseem.pdemo.R;
@@ -58,6 +59,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ViewHolder> {
         holder.mTextViewCount.setText(totalCount+" Online Store(s)");
         Glide.with(mContext)
                 .load(imageUrl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .fitCenter()
                 .into(holder.mImageView);
 

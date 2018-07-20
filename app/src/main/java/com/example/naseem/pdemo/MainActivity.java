@@ -5,11 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,11 +27,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     // More Categorirs
 
     private GridLayoutManager gridLayoutManager;
-    private static final String JSON_URL = "http://ae.priceomania.com/mobileappwebservices/getDynamicCategory";
+    private static final String JSON_URL = "https://ae.priceomania.com/mobileappwebservices/getDynamicCategory";
 
     private CatAdapter mExampleAdapter;
     private ArrayList<CatModel> mExampleList;
@@ -98,6 +102,41 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.content_main);
+//
+//                        if(!isConnected(MainActivity.this)){
+//                            Snackbar snackbar = Snackbar
+//                                    .make(relativeLayout, "No internet connection!", Snackbar.LENGTH_LONG)
+//                                    .setAction("Retry", new View.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(View view) {
+//                                            isConnected(MainActivity.this);
+//                                        }
+//                                    });
+//                            // Changing message text color
+//                            snackbar.setActionTextColor(Color.WHITE);
+//
+//                            // Changing snackbar background color
+//                            ViewGroup group = (ViewGroup) snackbar.getView();
+//                            group.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimary));
+//
+//                            // Changing action button text color
+//                            View sbView = snackbar.getView();
+//                            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+//                            textView.setTextColor(Color.RED);
+//
+//                            snackbar.show();
+//                        }
+//
+//
+//                        else {
+//
+//                            setContentView(R.layout.activity_main);
+//                        }
+
+
+
 
         if(!isConnected(MainActivity.this)) buildDialog(MainActivity.this).show();
         else {
@@ -269,7 +308,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     public AlertDialog.Builder buildDialog(Context c) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
@@ -290,7 +328,7 @@ public class MainActivity extends AppCompatActivity
 
     private void parseJSON() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getDynamicCategory",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getDynamicCategory",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -340,7 +378,7 @@ public class MainActivity extends AppCompatActivity
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getfeaturedproducts",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getfeaturedproducts",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -391,7 +429,7 @@ public class MainActivity extends AppCompatActivity
 
     private void parseJSON2() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getMobiles",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getMobiles",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -441,7 +479,7 @@ public class MainActivity extends AppCompatActivity
 
     private void parseJSON3() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getCamera",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getCamera",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -491,7 +529,7 @@ public class MainActivity extends AppCompatActivity
 
     private void parseJSON4() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://ae.priceomania.com/mobileappwebservices/getTablets",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getTablets",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -600,7 +638,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+//        noinspection SimplifiableIfStatement
 //        if (id == R.id.action_settings) {
 //            return true;
 //        }
@@ -615,26 +653,31 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_login) {
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-
-
-            // Handle the camera action
-        } else if (id == R.id.nav_wallet) {
-
-        } else if (id == R.id.nav_favorite) {
-
-        } else if (id == R.id.nav_history) {
-
-        } else if (id == R.id.nav_myad) {
-
-        } else if (id == R.id.nav_category) {
+        if (id == R.id.nav_category) {
             startActivity(new Intent(MainActivity.this, ParentActivity.class));
         }
 
-        else if (id == R.id.nav_feedback) {
-
-        }
+//        if (id == R.id.nav_login) {
+//            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+//
+//
+//            // Handle the camera action
+//        } else if (id == R.id.nav_wallet) {
+//
+//        } else if (id == R.id.nav_favorite) {
+//
+//        } else if (id == R.id.nav_history) {
+//
+//        } else if (id == R.id.nav_myad) {
+//
+//        }
+//        else if (id == R.id.nav_category) {
+//            startActivity(new Intent(MainActivity.this, ParentActivity.class));
+//        }
+//
+//        else if (id == R.id.nav_feedback) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
