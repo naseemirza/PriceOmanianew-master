@@ -4,12 +4,12 @@
     android:id="@+id/activity_tab2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context="com.example.naseem.pdemo.CardDetailsPkg.TabActivity2">
+    tools:context="thinkbiz.solutions.tbs.com.CardDetailsPkg.TabActivity2">
 
 
     <ScrollView
         android:id="@+id/scrolview"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
        android:layout_marginStart="20dp"
         android:layout_marginEnd="151dp"
-        android:textSize="15dp"
+        android:textSize="14dp"
         android:textAllCaps="false"
         android:textColor="@color/colorBlack"
         android:layout_marginTop="20dp"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:paddingEnd="15dp"
         android:textColor="#545454"
-        android:textSize="12sp"
+        android:textSize="12dp"
         android:lineSpacingExtra="3sp"
         tools:ignore="RtlCompat"
         android:layout_alignStart="@+id/textView4"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="151dp"
-        android:textSize="12dp"
+        android:textSize="14dp"
         android:textAllCaps="false"
         android:textColor="@color/colorBlack"
         android:layout_below="@+id/textView5"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:paddingEnd="15dp"
         android:textColor="#545454"
-        android:textSize="12sp"
+        android:textSize="12dp"
         android:lineSpacingExtra="3sp"
         tools:ignore="RtlCompat"
         android:layout_alignStart="@+id/textView4"
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="151dp"
-                android:textSize="12dp"
+                android:textSize="14dp"
                 android:textAllCaps="false"
                 android:textColor="@color/colorBlack"
                 android:layout_below="@+id/textView1"
@@ -91,8 +91,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
                 android:textColor="#545454"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:lineSpacingExtra="3sp"
                 tools:ignore="RtlCompat"
                 android:layout_alignStart="@+id/textView4"

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.naseem.pdemo.MainActivity"
+    tools:context="com.example.tbs.com.thinkbiz.example.tbs.com.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -20,7 +20,7 @@
         android:background="@color/gray"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.example.naseem.priceomania1.ScrollingActivity"
+        tools:context="com.example.tbs.priceomania1.ScrollingActivity"
         tools:showIn="@layout/app_bar_main">
 
         <ScrollView
@@ -182,7 +182,6 @@
             android:layout_height="match_parent">
 
 
-
               <!--Categories-->
 
             <android.support.v7.widget.RecyclerView
@@ -198,17 +197,7 @@
 
             </RelativeLayout>
 
-
-
         </ScrollView>
-
-
-
-
     </android.support.v4.widget.NestedScrollView>
-
-
-
-
 
 </RelativeLayout>

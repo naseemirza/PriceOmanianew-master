@@ -5,7 +5,7 @@
     android:id="@+id/reltvlayout"
     android:layout_height="match_parent"
     android:background="@color/gray"
-    tools:context="com.example.naseem.pdemo.CategoryItems.GridActivity">
+    tools:context="thinkbiz.solutions.tbs.com.CategoryItems.GridActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview5"

@@ -9,7 +9,7 @@
     android:background="#ffff"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.naseem.pdemo.CardDetailsPkg.TabActivity1"
+    tools:context="com.example.tbs.com.thinkbiz.example.tbs.com.CardDetailsPkg.TabActivity1"
      >
 
     <ScrollView
@@ -341,6 +341,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
+
                 android:layout_below="@+id/similartext"
                 android:layout_marginTop="10dp">
 

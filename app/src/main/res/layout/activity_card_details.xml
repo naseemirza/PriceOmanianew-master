@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.naseem.pdemo.CardDetailsPkg.CardDetails">
+    tools:context="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -42,7 +42,7 @@
             android:id="@+id/tabs"
             style="@style/MyCustomTabLayout"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="#ffff"
             app:tabIndicatorColor="@color/green" />

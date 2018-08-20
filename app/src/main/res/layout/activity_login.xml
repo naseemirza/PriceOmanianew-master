@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 android:background="#61aa8f"
-    tools:context="com.example.naseem.pdemo.LoginActivity">
+    tools:context="com.example.tbs.com.thinkbiz.example.tbs.com.LoginActivity">
 
     <EditText
         android:layout_width="wrap_content"

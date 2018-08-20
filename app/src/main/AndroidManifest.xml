@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.naseem.pdemo">
+    package="thinkbiz.solutions.tbs.com">
+
+    <!--package="com.example.tbs.com"-->
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name="thinkbiz.solutions.tbs.com.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,56 +26,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="thinkbiz.solutions.tbs.com.LoginActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity" />
         <activity
-            android:name=".SignupActivity"
-            android:parentActivityName=".LoginActivity" />
+            android:name="thinkbiz.solutions.tbs.com.SignupActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.LoginActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="thinkbiz.solutions.tbs.com.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CardDetailsPkg.CardDetails"
+            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails"
             android:label=""
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CardDetailsPkg.GotoSIte"
-            android:parentActivityName=".CardDetailsPkg.CardDetails" />
+            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.GotoSIte"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails" />
         <activity
-            android:name=".CardDetailsPkg.DialogActivity"
-            android:parentActivityName=".CardDetailsPkg.CardDetails" />
+            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.DialogActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails" />
         <activity
-            android:name=".CardDetailsPkg.SeeAllOptions"
-            android:parentActivityName=".CardDetailsPkg.DialogActivity" />
+            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.SeeAllOptions"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.DialogActivity" />
         <activity
-            android:name=".AutoEditTextActivity"
-            android:parentActivityName=".MainActivity"
+            android:name="thinkbiz.solutions.tbs.com.AutoEditTextActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CategoryItems.ParentActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="thinkbiz.solutions.tbs.com.CategoryItems.ParentActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity" />
         <activity
-            android:name=".CategoryItems.ChildActivity"
-            android:parentActivityName=".CategoryItems.ParentActivity" />
+            android:name="thinkbiz.solutions.tbs.com.CategoryItems.ChildActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CategoryItems.ParentActivity" />
         <activity
-            android:name=".CategoryItems.Sub_ChildActivity"
-            android:parentActivityName=".CategoryItems.ChildActivity" />
+            android:name="thinkbiz.solutions.tbs.com.CategoryItems.Sub_ChildActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CategoryItems.ChildActivity" />
         <activity
-            android:name=".Options.MoreOptionActivity"
-            android:parentActivityName=".CardDetailsPkg.CardDetails" />
-        <activity android:name=".BottomBar.Activity1" />
-        <activity android:name=".BottomBar.Activity2" />
-        <activity android:name=".BottomBar.Activity3" />
-        <activity android:name=".BottomBar.Activity4" />
-        <activity android:name=".CardDetailsPkg.ColorActivity" />
-        <activity android:name=".CardDetailsPkg.StorageActivity" />
-        <activity android:name=".CardDetailsPkg.NetworkActivity" />
-        <activity android:name=".CategoryItems.GridActivity"
-            android:parentActivityName=".CategoryItems.ChildActivity"></activity>
+            android:name="thinkbiz.solutions.tbs.com.Options.MoreOptionActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails" />
+        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity1" />
+        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity2" />
+        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity3" />
+        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity4" />
+        <activity android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.ColorActivity" />
+        <activity android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.StorageActivity" />
+        <activity android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.NetworkActivity" />
+        <activity android:name="thinkbiz.solutions.tbs.com.CategoryItems.GridActivity"
+            android:parentActivityName="thinkbiz.solutions.tbs.com.CategoryItems.ChildActivity"></activity>
     </application>
-
 </manifest>
