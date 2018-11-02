@@ -7,7 +7,7 @@ package thinkbiz.solutions.tbs.com;
 public class CatModel {
     String id;
     String name, imageUrl;
-    String image_path="http://ae.priceomania.com/mobileAppImage/categoryIcon/";
+    String image_path="https://ae.priceomania.com/mobileAppImage/categoryIcon/flat-icon/";
 
     public CatModel(String id, String name, String imageUrl) {
         this.id = id;

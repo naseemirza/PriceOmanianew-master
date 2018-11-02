@@ -76,7 +76,7 @@ public class ParentActivity extends AppCompatActivity {
                             for (int i = 0; i < rootJsonArray.length(); i++) {
                                 JSONObject object = rootJsonArray.getJSONObject(i);
 
-                                mExampleList.add(new Parent(object.optString("category_id"),
+                                mExampleList.add(new Parent(object.optString("id"),
                                         object.optString("category_name"),
                                         object.optString("category_image")));
                             }

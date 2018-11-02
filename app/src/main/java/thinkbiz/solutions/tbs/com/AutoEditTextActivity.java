@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -36,22 +37,20 @@ public class AutoEditTextActivity extends Activity {
 
     CardView cardView1;
 
-    private String MORE_SITE_URL="https://ae.priceomania.com/assets/search/compare.json";
-
     private AutoTextAdapter mExampleAdapter;
     private ArrayList<AutoTextModel> mExampleList;
     private RequestQueue mRequestQueue;
     private RecyclerView sRecyclerview;
     String pid;
 
-    EditText editTextSearch;
+    AutoCompleteTextView editTextSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_edit_text);
 
-        editTextSearch=(EditText)findViewById(R.id.autoCompleteTextView1);
+        editTextSearch=(AutoCompleteTextView)findViewById(R.id.autoCompleteTextView1);
 
         imageview = (ImageView)findViewById(R.id.imageView1);
         imageview.setVisibility(View.GONE);
@@ -62,7 +61,8 @@ public class AutoEditTextActivity extends Activity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AutoEditTextActivity.this,MainActivity.class));
+                finish();
+                //startActivity(new Intent(AutoEditTextActivity.this,MainActivity.class));
             }
         });
 
@@ -99,7 +99,9 @@ public class AutoEditTextActivity extends Activity {
                                         object.optString("modelName"),
                                         object.optString("currency"),
                                         object.optString("price"),
-                                        object.optString("store_count")));
+                                        object.optString("store_count"),
+                                        object.optString("slug"),
+                                        object.optString("slug_suffix")));
                             }
 
                             Log.e("rootJsonArray",mExampleList.size()+"");
@@ -109,9 +111,9 @@ public class AutoEditTextActivity extends Activity {
                             mExampleAdapter.notifyDataSetChanged();
                             sRecyclerview.setHasFixedSize(true);
                             sRecyclerview.setVisibility(View.GONE);
-                            //filters
 
-                            editTextSearch=(EditText)findViewById(R.id.autoCompleteTextView1);
+                            //filters
+                            editTextSearch=(AutoCompleteTextView)findViewById(R.id.autoCompleteTextView1);
 
                             editTextSearch.addTextChangedListener(new TextWatcher() {
                                 @Override
@@ -119,27 +121,35 @@ public class AutoEditTextActivity extends Activity {
 
                                     imageview.setVisibility(View.VISIBLE);
                                     sRecyclerview.setVisibility(View.VISIBLE);
-
-                                  // mExampleAdapter.getFilter().filter(s.toString());
-
                                     sRecyclerview.setAdapter(mExampleAdapter);
-
                                 }
 
                                 @Override
                                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+                                    if (charSequence.toString().trim().length()==0){
+                                        editTextSearch.getText().clear();
+                                        imageview.setVisibility(View.GONE);
+                                        sRecyclerview.setVisibility(View.GONE);
+                                        cardView1.setVisibility(View.GONE);
+                                    }
+                                    else {
+                                        imageview.setVisibility(View.VISIBLE);
+                                        sRecyclerview.setVisibility(View.VISIBLE);
+                                        // mExampleAdapter.getFilter().filter(s.toString());
+                                        sRecyclerview.setAdapter(mExampleAdapter);
+                                    }
+
                                 }
 
                                 @Override
                                 public void afterTextChanged(Editable editable) {
-                                    //after the change calling the method and passing the search input
                                     filter(editable.toString());
+
                                 }
                             });
 
                             imageview.setOnClickListener(new View.OnClickListener() {
-//
                                 @Override
                                 public void onClick(View v) {
 
@@ -147,9 +157,6 @@ public class AutoEditTextActivity extends Activity {
                                     imageview.setVisibility(View.GONE);
                                     sRecyclerview.setVisibility(View.GONE);
                                     cardView1.setVisibility(View.GONE);
-
-
-
                                 }
                             });
 
@@ -172,17 +179,19 @@ public class AutoEditTextActivity extends Activity {
         mRequestQueue.add(stringRequest);
     }
 
-
     private void filter(String text) {
         ArrayList<AutoTextModel> filterdNames = new ArrayList<>();
 
         for (AutoTextModel s : mExampleList) {
-            if (s.getmName().toLowerCase().contains(text)) {
+
+            //s.toLowerCase().contains(text.toLowerCase())
+            //s.getmName().contains(text)
+            if (s.getmName().toLowerCase().contains(text.toLowerCase())) {
                 filterdNames.add(s);
             }
+
         }
         mExampleAdapter.filterList(filterdNames);
     }
-
 
 }

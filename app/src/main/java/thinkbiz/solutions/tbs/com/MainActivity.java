@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity
 
     // More Categorirs
 
-    private GridLayoutManager gridLayoutManager;
-    private static final String JSON_URL = "https://ae.priceomania.com/mobileappwebservices/getDynamicCategory";
-
     private CatAdapter mExampleAdapter;
     private ArrayList<CatModel> mExampleList;
     private RequestQueue mRequestQueue;
@@ -71,13 +68,8 @@ public class MainActivity extends AppCompatActivity
     //private GridView gridView;
 
     private EditText editText;
-    public static String BACK_STACK_TAG = "tag";
-
-    public static final String ORIENTATION = "orientation";
-    private Boolean mHorizontal;
     public TextView textViewprice,textviewname;
 
-    //private List<App> mApps;
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
     private int dotscount;
@@ -123,13 +115,28 @@ public class MainActivity extends AppCompatActivity
 
 
 
+        if (isOnline()) {
+            //do whatever you want to do
+        } else {
+            try {
+                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-        if(!isConnected(MainActivity.this)) buildDialog(MainActivity.this).show();
-        else {
-            //Toast.makeText(MainActivity.this,"", Toast.LENGTH_SHORT).show();
-            setContentView(R.layout.activity_main);
+                alertDialog.setTitle("Info");
+                alertDialog.setMessage("Internet not available, Cross check your internet connectivity and try again");
+                alertDialog.setIcon(R.drawable.ic_warning_black_24dp);
+                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+//                        finish();
+                        startActivity(new Intent(MainActivity.this,MainActivity.class));
+
+                    }
+                });
+
+                alertDialog.show();
+            } catch (Exception e) {
+                //Log.d(SyncStateContract.Constants.TAG, "Show Dialog: " + e.getMessage());
+            }
         }
-
 
         //Snap 1
 
@@ -277,39 +284,17 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public boolean isConnected(Context context) {
+    public boolean isOnline() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
 
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netinfo = cm.getActiveNetworkInfo();
-
-        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
-            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-            if((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting())) return true;
-            else return false;
-        } else
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            // Toast.makeText(this, "No Internet connection!", Toast.LENGTH_LONG).show();
             return false;
+        }
+        return true;
     }
 
-
-    public AlertDialog.Builder buildDialog(Context c) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(c);
-        builder.setTitle("No Internet Connection");
-        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to continue");
-
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                startActivity(new Intent(MainActivity.this,MainActivity.class));
-            }
-        });
-
-        return builder;
-    }
 
     private void parseJSON() {
 
@@ -349,7 +334,8 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("TAg",error.getMessage());
+                        //Log.e("TAg",error.getMessage());
+                        Log.e("TAG", Log.getStackTraceString(error));
                     }
                 });
 
@@ -381,10 +367,12 @@ public class MainActivity extends AppCompatActivity
 
                                 mExampleList1.add(new App(object.optString("id"),
                                         object.optString("product_image"),
-                                        object.optString("modelno"),
+                                        object.optString("model_name"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
-                                        object.optString("store_count")));
+                                        object.optString("store_count"),
+                                        object.optString("slug"),
+                                        object.optString("slug_suffix")));
                             }
 
                             Log.e("rootJsonArray",mExampleList1.size()+"");
@@ -404,7 +392,8 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("TAg",error.getMessage());
+                        //Log.e("TAg",error.getMessage());
+                        Log.e("TAG", Log.getStackTraceString(error));
                     }
                 });
 
@@ -431,10 +420,12 @@ public class MainActivity extends AppCompatActivity
 
                                 mExampleList2.add(new App(object.optString("id"),
                                         object.optString("product_image"),
-                                        object.optString("modelno"),
+                                        object.optString("model_name"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
-                                        object.optString("store_count")));
+                                        object.optString("store_count"),
+                                        object.optString("slug"),
+                                        object.optString("slug_suffix")));
                             }
 
                             Log.e("rootJsonArray",mExampleList2.size()+"");
@@ -454,7 +445,8 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("TAg",error.getMessage());
+                        //Log.e("TAg",error.getMessage());
+                        Log.e("TAG", Log.getStackTraceString(error));
                     }
                 });
 
@@ -480,10 +472,12 @@ public class MainActivity extends AppCompatActivity
 
                                 mExampleList3.add(new App(object.optString("id"),
                                         object.optString("product_image"),
-                                        object.optString("modelno"),
+                                        object.optString("model_name"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
-                                        object.optString("store_count")));
+                                        object.optString("store_count"),
+                                        object.optString("slug"),
+                                        object.optString("slug_suffix")));
                             }
 
                             Log.e("rootJsonArray",mExampleList3.size()+"");
@@ -503,7 +497,8 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("TAg",error.getMessage());
+                        //Log.e("TAg",error.getMessage());
+                        Log.e("TAG", Log.getStackTraceString(error));
                     }
                 });
 
@@ -530,10 +525,12 @@ public class MainActivity extends AppCompatActivity
 
                                 mExampleList4.add(new App(object.optString("id"),
                                         object.optString("product_image"),
-                                        object.optString("modelno"),
+                                        object.optString("model_name"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
-                                        object.optString("store_count")));
+                                        object.optString("store_count"),
+                                        object.optString("slug"),
+                                        object.optString("slug_suffix")));
                             }
 
                             Log.e("rootJsonArray",mExampleList4.size()+"");
@@ -553,7 +550,8 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onErrorResponse(VolleyError error) {
                        // Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                        Log.e("TAg",error.getMessage());
+                        //Log.e("TAg",error.getMessage());
+                        Log.e("TAG", Log.getStackTraceString(error));
                     }
                 });
 

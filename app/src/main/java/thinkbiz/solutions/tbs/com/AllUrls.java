@@ -17,7 +17,10 @@ public class AllUrls {
     public static final String GRID_CATEG = SERVER_URL+"getproductlisting?cat_id=";
     public static final String MORE_SITES = SERVER_URL+"getCompareProductData?pid=";
     public static final String SIMILAR_PROD = SERVER_URL+"getrelatedproducts?prod_id=";
-    public static final String AUTO_COMPL_TEXT = "https://ae.priceomania.com/assets/search/compare.json";
+    public static final String AUTO_COMPL_TEXT = "https://ae.priceomania.com/assets/search/mobile/14.json";
+                                                //https://ae.priceomania.com/assets/search/compare.json?
+    public static final String DETAIL_PAGE = "https://ae.priceomania.com/hybridproductdetailapp/";
+
 
 
 }

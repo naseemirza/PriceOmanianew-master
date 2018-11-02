@@ -1,14 +1,18 @@
 package thinkbiz.solutions.tbs.com.CategoryItems;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,6 +41,7 @@ public class ChildActivity extends AppCompatActivity {
     private RecyclerView sRecyclerview;
 
     private String Prdname;
+    TextView textname;
 
 
     @Override
@@ -44,13 +49,32 @@ public class ChildActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child);
 
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.backbar);
+        View view =getSupportActionBar().getCustomView();
+
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-        subCategoryId=pref.getString("pid","");
+        subCategoryId=pref.getString("cid","");
         Prdname=pref.getString("pname","");
 
-        getSupportActionBar().setTitle(Prdname);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Log.e("pid",subCategoryId);
+
+        textname=(TextView)findViewById(R.id.textname);
+        textname.setText(Prdname);
+
+        ImageButton imageButton= (ImageButton)view.findViewById(R.id.action_bar_back);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        //getSupportActionBar().setTitle(Prdname);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         Log.e("responce",subCategoryId);
@@ -70,6 +94,10 @@ public class ChildActivity extends AppCompatActivity {
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
+        //String childurl=AllUrls.CHILD_CATEG+subCategoryId;
+        //Log.e("responce",childurl );
+                //"https://ae.priceomania.com/mobileappwebservices/getchildcategory?catId="+subCategoryId;
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, AllUrls.CHILD_CATEG+subCategoryId,
                 new Response.Listener<String>() {
                     @Override
@@ -78,8 +106,6 @@ public class ChildActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.INVISIBLE);
 
                         Log.e("responce",response );
-
-
                         try {
 
                             JSONObject rootJsonObject = new JSONObject(response);
@@ -90,7 +116,7 @@ public class ChildActivity extends AppCompatActivity {
                             for (int i = 0; i < subCategoryArray.length(); i++) {
                                 JSONObject object = subCategoryArray.getJSONObject(i);
 
-                                mExampleList.add(new Child(object.optString("category_id"),
+                                mExampleList.add(new Child(object.optString("id"),
                                         object.optString("category_name"),
                                         object.optString("category_image"),
                                         object.optString("child_category_type")));

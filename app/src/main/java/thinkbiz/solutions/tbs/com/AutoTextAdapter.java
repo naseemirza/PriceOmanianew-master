@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails;
 import thinkbiz.solutions.tbs.com.CardDetailsPkg.RecyclerViewItemClickListener;
+import thinkbiz.solutions.tbs.com.DetailPage.DetailPageActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,15 +65,15 @@ public class AutoTextAdapter  extends RecyclerView.Adapter<AutoTextAdapter.ViewH
             @Override
             public void onClick(View view, int position) {
 
-                String prd_id=app.getmID().toString();
-                String prd_name=app.getmName().toString();
-                String prd_image=app.getmImageUrl().toString();
-                String prd_crny=app.getmCurrency().toString();
-                String prd_price=app.getmPrice().toString();
-
-//
+                String prd_id=app.getmID();
+                String prd_name=app.getmName();
+                String prd_image=app.getmImageUrl();
+                String prd_crny=app.getmCurrency();
+                String prd_price=app.getmPrice();
+                String slug=app.getSlug();
+                String slug_suffix=app.getSlug_suffix();
                 Log.e("responce",prd_id);
-//
+
                 SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
 
@@ -81,16 +82,16 @@ public class AutoTextAdapter  extends RecyclerView.Adapter<AutoTextAdapter.ViewH
                 edit.putString("currency",prd_crny);
                 edit.putString("name",prd_name);
                 edit.putString("cardimage",prd_image);
+                edit.putString("slug",slug);
+                edit.putString("slug_suffix",slug_suffix);
 
-                edit.commit();
-                Intent intent = new Intent(view.getContext(), CardDetails.class);
+                edit.apply();                                 //CardDetails
+                Intent intent = new Intent(view.getContext(), DetailPageActivity.class);
                 view.getContext().startActivity(intent);
 
 
             }
         });
-
-
     }
 
     public void filterList(ArrayList<AutoTextModel> filterdNames) {

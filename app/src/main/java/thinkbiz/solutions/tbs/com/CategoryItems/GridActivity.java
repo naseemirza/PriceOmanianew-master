@@ -1,7 +1,9 @@
 package thinkbiz.solutions.tbs.com.CategoryItems;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -9,8 +11,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,6 +41,7 @@ public class GridActivity extends AppCompatActivity {
 
     String pid;
     private String Prdname;
+    TextView textname;
 
     RelativeLayout relativeLayout;
 
@@ -45,7 +50,10 @@ public class GridActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
 
-
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.backbar);
+        View view =getSupportActionBar().getCustomView();
 
         relativeLayout=(RelativeLayout)findViewById(R.id.reltvlayout);
 
@@ -54,8 +62,28 @@ public class GridActivity extends AppCompatActivity {
         pid = pref.getString("cid", "");
         Prdname=pref.getString("pname","");
 
-        getSupportActionBar().setTitle(Prdname);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        textname=(TextView)findViewById(R.id.textname);
+        textname.setText(Prdname);
+
+        ImageButton imageButton= (ImageButton)view.findViewById(R.id.action_bar_back);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                //String Pdname="Categories";
+//                SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//                SharedPreferences.Editor edit = pref.edit();
+//                edit.putString("pname",Prdname);
+//
+//                edit.apply();
+//                Intent intent = new Intent(v.getContext(), Sub_ChildActivity.class);
+//                v.getContext().startActivity(intent);
+            }
+        });
+
+//        getSupportActionBar().setTitle(Prdname);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Log.e("responce",pid);
 
 
@@ -64,7 +92,6 @@ public class GridActivity extends AppCompatActivity {
         mRequestQueue = Volley.newRequestQueue(this);
         sRecyclerview=(RecyclerView)findViewById(R.id.recyclerview5);
         sRecyclerview.setNestedScrollingEnabled(false);
-
         sRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
 
         sRecyclerview.setHasFixedSize(true);
@@ -86,7 +113,6 @@ public class GridActivity extends AppCompatActivity {
 
                         Log.e("responce",response );
 
-
                         try {
 
                             JSONObject rootJsonObject = new JSONObject(response);
@@ -98,11 +124,13 @@ public class GridActivity extends AppCompatActivity {
                                 JSONObject object = subCategoryArray.getJSONObject(i);
 
                                 mExampleList.add(new GridModel(object.optString("id"),
-                                        object.optString("modelno"),
+                                        object.optString("model_name"),
                                         object.optString("product_image"),
                                         object.optString("currency_type"),
                                         object.optString("price"),
-                                        object.optString("store_count")));
+                                        object.optString("store_count"),
+                                        object.optString("slug"),
+                                        object.optString("slug_suffix")));
 
                             }
 
@@ -126,6 +154,7 @@ public class GridActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         //Log.e("TAg",error.getMessage());
+                        Log.e("TAG", Log.getStackTraceString(error));
                     }
                 });
 

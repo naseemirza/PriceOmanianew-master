@@ -36,7 +36,6 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
         View v = LayoutInflater.from(mCtx).inflate(R.layout.child_list, parent, false);
         return new ViewHolder(v);
 
-
     }
 
     @Override
@@ -44,10 +43,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
         final Child app=childList.get(position);
 
         //for arrow
-
         String catgType=app.getCateg_type();
-        Log.e("responce",catgType);
-
+        //Log.e("responce",catgType);
 
         if (catgType.equals("Category"))
         {
@@ -64,35 +61,31 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                String clistid=app.getId().toString();
-                String Prdname=app.getName().toString();
-                Log.e("responce",clistid);
+                String clistid = app.getId();
+                String Prdname = app.getName();
+                String catgType = app.getCateg_type();
+                //Log.e("responce", clistid);
+                SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = pref.edit();
 
+                if (catgType.equalsIgnoreCase("Category")) {
 
-                if (childList.size()!=0) {
-                    SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor edit = pref.edit();
                     edit.putString("cid", clistid);
-                    edit.putString("pname",Prdname);
+                    edit.putString("pname", Prdname);
                     edit.apply();
 
-                    Intent intent = new Intent(view.getContext(), Sub_ChildActivity.class);
+                    Intent intent = new Intent(view.getContext(), ChildActivity.class);
                     view.getContext().startActivity(intent);
 
-
                 }
-                else {
-                    SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor edit = pref.edit();
+                if (catgType.equalsIgnoreCase("Brand")) {
+
                     edit.putString("cid", clistid);
-                    edit.putString("pname",Prdname);
-
-                    edit.commit();
-
+                    edit.putString("pname", Prdname);
+                    edit.apply();
                     Intent intent = new Intent(view.getContext(), GridActivity.class);
                     view.getContext().startActivity(intent);
                 }
-
             }
         });
 

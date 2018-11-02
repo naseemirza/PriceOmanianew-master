@@ -64,16 +64,16 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ViewHolder
         holder.setItemClickListener(new RecyclerViewItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                String plistid=app.getId().toString();
-                String Pdname=app.getName().toString();
-                Log.e("responce",Pdname);
+                String plistid=app.getId();
+                String Pdname=app.getName();
+                Log.e("responce",plistid);
 
                 SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
-                edit.putString("pid",plistid);
+                edit.putString("cid",plistid);
                 edit.putString("pname",Pdname);
 
-                edit.commit();
+                edit.apply();
                 Intent intent = new Intent(view.getContext(), ChildActivity.class);
                 view.getContext().startActivity(intent);
 

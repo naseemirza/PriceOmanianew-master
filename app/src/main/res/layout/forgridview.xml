@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/cardID"
-    android:layout_width="205dp"
-    android:layout_height="285dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="1dp"
     android:clickable="false"
     app:cardCornerRadius="3dp"
@@ -21,6 +21,8 @@
             android:id="@+id/linimg"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
@@ -28,7 +30,7 @@
             <ImageView
                 android:id="@+id/imageview"
                 android:layout_width="120dp"
-                android:layout_height="150dp"
+                android:layout_height="140dp"
                 android:layout_gravity="center"
                 android:clickable="false"
                 android:scaleType="fitCenter"

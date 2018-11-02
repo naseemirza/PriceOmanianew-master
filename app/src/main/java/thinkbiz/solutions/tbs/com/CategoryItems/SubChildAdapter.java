@@ -37,14 +37,11 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
         View v = LayoutInflater.from(mCtx).inflate(R.layout.child_items, parent, false);
         return new ViewHolder(v);
 
-
     }
 
     @Override
     public void onBindViewHolder(final SubChildAdapter.ViewHolder holder, int position) {
         final SubChild app=schildList.get(position);
-
-
         // arrow in list
 
         String catgType=app.getCateg_type();
@@ -68,24 +65,22 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
             @Override
             public void onClick(View view, int position) {
 
-                String prd_id=app.getId().toString();
-                String Prdname=app.getName().toString();
+                String prd_id=app.getId();
+                String Prdname=app.getName();
                 Log.e("responce",prd_id);
                 SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
 
                 edit.putString("cid",prd_id);
                 edit.putString("pname",Prdname);
-                edit.commit();
+                edit.apply();
 
                 Intent intent = new Intent(view.getContext(), GridActivity.class);
                 view.getContext().startActivity(intent);
-
             }
         });
 
     }
-
 
     @Override
     public int getItemViewType(int position){
@@ -98,7 +93,6 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
         return schildList.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //public ImageView mImageView;
@@ -108,7 +102,6 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
 
         private RecyclerViewItemClickListener itemClickListener;
 
-
         public ViewHolder(View itemView) {
 
             super(itemView);
@@ -116,7 +109,6 @@ public class SubChildAdapter extends RecyclerView.Adapter<SubChildAdapter.ViewHo
             mTextViewName = (TextView) itemView.findViewById(R.id.textViewname);
             arrowimage=(ImageView)itemView.findViewById(R.id.arrow);
             itemView.setOnClickListener(this);
-
 
         }
 

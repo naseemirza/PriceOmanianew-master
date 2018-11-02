@@ -42,14 +42,9 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>  {
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final CatModel app=glist.get(position);
 
-
-
         String Pname = app.getName();
         String imageurl = app.getImageUrl();
-
-
         holder.catname.setText(Pname);
-
         Glide.with(context)
                 .load(imageurl)
                 .fitCenter()
@@ -59,8 +54,8 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>  {
             @Override
             public void onClick(View view, int position) {
 
-                String clistid=app.getId().toString();
-                String prdname=app.getName().toString();
+                String clistid=app.getId();
+                String prdname=app.getName();
                 Log.e("responce",clistid);
 
                 SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -68,17 +63,12 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>  {
                 edit.putString("cid", clistid);
                 edit.putString("pname",prdname);
 
-                edit.commit();
-
+                edit.apply();
                 Intent intent = new Intent(view.getContext(), GridActivity.class);
                 view.getContext().startActivity(intent);
-
             }
         });
-
     }
-
-
     @Override
     public int getItemViewType(int position){
 
@@ -96,11 +86,7 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder>  {
         public ImageView catimage;
         public TextView catname ;
 
-
-
-
         private RecyclerViewItemClickListener itemClickListener;
-
 
         public ViewHolder(View itemView ) {
 

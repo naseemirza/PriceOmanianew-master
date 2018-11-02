@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="thinkbiz.solutions.tbs.com">
 
-    <!--package="com.example.tbs.com"-->
+    <!-- package="com.example.tbs.com" -->
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="thinkbiz.solutions.tbs.com.SplashActivity"
+            android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -26,55 +26,64 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="thinkbiz.solutions.tbs.com.LoginActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity" />
+            android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.SignupActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.LoginActivity" />
+            android:name=".SignupActivity"
+            android:parentActivityName=".LoginActivity" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails"
+            android:name=".CardDetailsPkg.CardDetails"
             android:label=""
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.GotoSIte"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails" />
+            android:name=".CardDetailsPkg.GotoSIte"
+            android:parentActivityName=".CardDetailsPkg.CardDetails"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.DialogActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails" />
+            android:name=".CardDetailsPkg.DialogActivity"
+            android:parentActivityName=".CardDetailsPkg.CardDetails" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.SeeAllOptions"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.DialogActivity" />
+            android:name=".CardDetailsPkg.SeeAllOptions"
+            android:parentActivityName=".CardDetailsPkg.DialogActivity" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.AutoEditTextActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity"
+            android:name=".AutoEditTextActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CategoryItems.ParentActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.MainActivity" />
+            android:name=".CategoryItems.ParentActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CategoryItems.ChildActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CategoryItems.ParentActivity" />
+            android:name=".CategoryItems.ChildActivity"
+            android:parentActivityName=".CategoryItems.ParentActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.CategoryItems.Sub_ChildActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CategoryItems.ChildActivity" />
+            android:name=".CategoryItems.Sub_ChildActivity"
+            android:parentActivityName=".CategoryItems.ChildActivity" />
         <activity
-            android:name="thinkbiz.solutions.tbs.com.Options.MoreOptionActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails" />
-        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity1" />
-        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity2" />
-        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity3" />
-        <activity android:name="thinkbiz.solutions.tbs.com.BottomBar.Activity4" />
-        <activity android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.ColorActivity" />
-        <activity android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.StorageActivity" />
-        <activity android:name="thinkbiz.solutions.tbs.com.CardDetailsPkg.NetworkActivity" />
-        <activity android:name="thinkbiz.solutions.tbs.com.CategoryItems.GridActivity"
-            android:parentActivityName="thinkbiz.solutions.tbs.com.CategoryItems.ChildActivity"></activity>
+            android:name=".Options.MoreOptionActivity"
+            android:parentActivityName=".CardDetailsPkg.CardDetails" />
+        <activity android:name=".BottomBar.Activity1" />
+        <activity android:name=".BottomBar.Activity2" />
+        <activity android:name=".BottomBar.Activity3" />
+        <activity android:name=".BottomBar.Activity4" />
+        <activity android:name=".CardDetailsPkg.ColorActivity" />
+        <activity android:name=".CardDetailsPkg.StorageActivity" />
+        <activity android:name=".CardDetailsPkg.NetworkActivity" />
+        <activity
+            android:name=".CategoryItems.GridActivity"
+            android:parentActivityName=".CategoryItems.ChildActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".DetailPage.DetailPageActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
+
 </manifest>

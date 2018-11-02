@@ -11,14 +11,15 @@
 
 
         android:padding="4dp">
+
         <ImageView
-            android:layout_width="72dp"
-            android:layout_height="90dp"
             android:id="@+id/imageview"
+            android:layout_width="150dp"
+            android:layout_height="90dp"
+            android:scaleType="fitXY"
             android:scaleX="1.25"
             android:scaleY="1.25"
-            android:scaleType="fitXY"
-            android:src="@drawable/apple"/>
+            android:src="@drawable/apple" />
 
         <LinearLayout
             android:layout_width="match_parent"

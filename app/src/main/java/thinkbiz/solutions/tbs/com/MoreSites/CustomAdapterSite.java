@@ -41,9 +41,7 @@ public class CustomAdapterSite extends RecyclerView.Adapter<CustomAdapterSite.Vi
         View v = LayoutInflater.from(mContext).inflate(R.layout.sitelist, parent, false);
         return new ViewHolder(v);
 
-
     }
-
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
@@ -61,6 +59,7 @@ public class CustomAdapterSite extends RecyclerView.Adapter<CustomAdapterSite.Vi
         holder.mTextViewCurrency.setText(currencyType);
         holder.mTextViewPrice.setText(totalPrice);
         holder.mTextViewSitename.setText(sitename);
+
         holder.buttonSite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v ) {
@@ -104,9 +103,7 @@ public class CustomAdapterSite extends RecyclerView.Adapter<CustomAdapterSite.Vi
         public Button buttonSite;
 
 
-
         private RecyclerViewItemClickListener itemClickListener;
-
 
         public ViewHolder(View itemView ) {
 

@@ -3,6 +3,7 @@ package thinkbiz.solutions.tbs.com;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails;
 import thinkbiz.solutions.tbs.com.CardDetailsPkg.RecyclerViewItemClickListener;
+import thinkbiz.solutions.tbs.com.DetailPage.DetailPageActivity;
 
 import java.util.List;
 
@@ -49,6 +51,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
         String totalPrice = app.getmPrice();
         String totalCount = app.getmCount();
 
+
         holder.mTextViewName.setText(productName);
         holder.mTextViewCurrency.setText(currencyType);
         holder.mTextViewPrice.setText(totalPrice);
@@ -64,14 +67,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
             @Override
             public void onClick(View view, int position) {
 
-                String prd_id=app.getmID().toString();
-                String prd_name=app.getmName().toString();
-                String prd_image=app.getmImageUrl().toString();
-                String prd_crny=app.getmCurrency().toString();
-                String prd_price=app.getmPrice().toString();
-                String prd_count=app.getmCount().toString();
+                //String url= "https://ae.priceomania.com/hybridproductdetailapp/";
 
-                Log.e("responce",prd_id);
+                String prd_id=app.getmID();
+                String prd_name=app.getmName();
+                String prd_image=app.getmImageUrl();
+                String prd_crny=app.getmCurrency();
+                String prd_price=app.getmPrice();
+                String prd_count=app.getmCount();
+                String slug=app.getSlug();
+                String slug_suffix=app.getSlug_suffix();
+
+//                Log.e("responce",slug);
+//                Log.e("responce",slug_suffix);
 
                 SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = pref.edit();
@@ -82,11 +90,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
                 edit.putString("name",prd_name);
                 edit.putString("cardimage",prd_image);
                 edit.putString("totalcount",prd_count);
+                edit.putString("slug",slug);
+                edit.putString("slug_suffix",slug_suffix);
 
 
-                edit.commit();
-                Intent intent = new Intent(view.getContext(), CardDetails.class);
+                edit.apply();                                 // CardDetails
+
+                Intent intent = new Intent(view.getContext(), DetailPageActivity.class);
                 view.getContext().startActivity(intent);
+                //                Uri uriUrl = Uri.parse(url+slug+slug_suffix);
+//                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+//                view.getContext().startActivity(launchBrowser);
 
 
             }
