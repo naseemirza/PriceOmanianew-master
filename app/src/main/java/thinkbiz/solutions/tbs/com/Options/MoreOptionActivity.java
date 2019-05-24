@@ -27,10 +27,8 @@ public class MoreOptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more_option);
 
-
         getSupportActionBar().setTitle("Store Options");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         //1st cardview
 
@@ -50,7 +48,6 @@ public class MoreOptionActivity extends AppCompatActivity {
         mLinearLayoutMore = (LinearLayout) findViewById(R.id.linrtextmore);
 
         mLinearLayoutMore.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 mLinearLayoutMore.setVisibility(View.GONE);
@@ -59,8 +56,6 @@ public class MoreOptionActivity extends AppCompatActivity {
             }
         });
         mLinearLayoutLess.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
                 mLinearLayoutMore.setVisibility(View.VISIBLE);
@@ -99,7 +94,6 @@ public class MoreOptionActivity extends AppCompatActivity {
         });
         mLinearLayoutLess1.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
                 mLinearLayoutMore1.setVisibility(View.VISIBLE);
@@ -107,8 +101,6 @@ public class MoreOptionActivity extends AppCompatActivity {
 
             }
         });
-
-
         //3rd cardview
 
         button2=(Button) findViewById(R.id.buttonsite111);
@@ -127,7 +119,6 @@ public class MoreOptionActivity extends AppCompatActivity {
         mLinearLayoutMore2 = (LinearLayout) findViewById(R.id.linrtextmore11);
 
         mLinearLayoutMore2.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 mLinearLayoutMore2.setVisibility(View.GONE);
@@ -137,7 +128,6 @@ public class MoreOptionActivity extends AppCompatActivity {
         });
         mLinearLayoutLess2.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
                 mLinearLayoutMore2.setVisibility(View.VISIBLE);
@@ -145,14 +135,7 @@ public class MoreOptionActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
-
-
 
     //1st cardview
 
@@ -162,11 +145,9 @@ public class MoreOptionActivity extends AppCompatActivity {
        // mLinearLayoutMore.setVisibility(View.GONE);
 
 
-
         final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         mLinearLayoutDetalis.measure(widthSpec, heightSpec);
-
 
         ValueAnimator mAnimator = slideAnimator(0, mLinearLayoutDetalis.getMeasuredHeight());
         mAnimator.start();
@@ -231,11 +212,9 @@ public class MoreOptionActivity extends AppCompatActivity {
         // mLinearLayoutMore.setVisibility(View.GONE);
 
 
-
         final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         mLinearLayoutDetalis1.measure(widthSpec, heightSpec);
-
 
         ValueAnimator mAnimator = slideAnimator1(0, mLinearLayoutDetalis1.getMeasuredHeight());
         mAnimator.start();
@@ -273,7 +252,6 @@ public class MoreOptionActivity extends AppCompatActivity {
         mAnimator.start();
     }
 
-
     private ValueAnimator slideAnimator1(int start, int end) {
 
         ValueAnimator animator = ValueAnimator.ofInt(start, end);
@@ -291,15 +269,12 @@ public class MoreOptionActivity extends AppCompatActivity {
         return animator;
     }
 
-
     //3rd cardview
 
     private void expand2() {
         //set Visible
         mLinearLayoutDetalis2.setVisibility(View.VISIBLE);
         // mLinearLayoutMore.setVisibility(View.GONE);
-
-
 
         final int widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         final int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
@@ -341,7 +316,6 @@ public class MoreOptionActivity extends AppCompatActivity {
         });
         mAnimator.start();
     }
-
 
     private ValueAnimator slideAnimator2(int start, int end) {
 

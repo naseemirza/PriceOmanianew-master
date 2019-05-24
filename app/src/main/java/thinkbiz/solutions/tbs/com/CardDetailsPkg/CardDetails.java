@@ -1,8 +1,13 @@
 package thinkbiz.solutions.tbs.com.CardDetailsPkg;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,10 +26,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -37,6 +46,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import thinkbiz.solutions.tbs.com.AllUrls;
+import thinkbiz.solutions.tbs.com.MoreOptionsPkg.OptionsActivity;
+import thinkbiz.solutions.tbs.com.Options.MoreOptionActivity;
 import thinkbiz.solutions.tbs.com.R;
 
 import thinkbiz.solutions.tbs.com.MoreSites.CardModel;
@@ -55,12 +66,16 @@ import java.util.List;
 
 public class CardDetails extends AppCompatActivity {
 
-    private PlaceholderFragment.SectionsPagerAdapter mSectionsPagerAdapter;
+    PlaceholderFragment.SectionsPagerAdapter mSectionsPagerAdapter;
 
-    private ViewPager mViewPager;
+    ViewPager mViewPager;
     TextView PrdTextName;
     String prdname;
     String Tcount;
+
+   public String ustring;
+    public TextView textViewname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +83,54 @@ public class CardDetails extends AppCompatActivity {
         setContentView(R.layout.activity_card_details);
 
         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        SharedPreferences pref = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
         PrdTextName=(TextView)findViewById(R.id.prdnametext);
+       // textViewcurncy = (TextView)findViewById(R.id.crncytype);
+       // textViewprice = (TextView) findViewById(R.id.pricetext1);
+       // imageView = (ImageView) findViewById(R.id.cardimg);
+
+        SharedPreferences pref = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+
         prdname = pref.getString("name", "");
-        PrdTextName.setText(prdname);
+        ustring = pref.getString("usermessage", "");
+
+
+//        Log.e("pid",ustring);
+//        Log.e("pid",prdname);
+//        Log.e("pid",mcrncy);
+//        Log.e("pid",mimage);
+//        Log.e("pid",mprice);
+
+
+
+          PrdTextName.setText(prdname);
+//        Glide.with(this)
+//                .load(mimage)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .fitCenter()
+//                .into(imageView);
+////
+//         // textViewname.setText(mname);
+//        textViewprice.setText(mprice);
+//        textViewcurncy.setText(mcrncy);
+
+
+
+       // SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+//        ustring = pref.getString("usermessage", "");
+//        mname = pref.getString("name", "");
+//        mcrncy = pref.getString("currency", "");
+//        mprice = pref.getString("price", "");
+//        mimage = pref.getString("cardimage", "");
 
         Tcount=pref.getString("totalcount","");
 
          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
+         mSectionsPagerAdapter = new PlaceholderFragment.SectionsPagerAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -92,7 +140,6 @@ public class CardDetails extends AppCompatActivity {
         tabLayout.setTabTextColors(R.color.colorBlack, R.color.colorBlack);
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,23 +179,21 @@ public class CardDetails extends AppCompatActivity {
         public TextView textViewclr, textViewstrg, textViewntwk;
         public ImageView imageView;
 
-//        LinearLayout mLinearLayoutDetalis;
-//        LinearLayout mLinearLayoutMore;
-//        LinearLayout mLinearLayoutLess;
+        LinearLayout mLinearLayoutDetalis;
+        LinearLayout mLinearLayoutMore;
+        LinearLayout mLinearLayoutLess;
 
 
-        String ustring,mname,mcrncy,mprice,mimage;
+
         String color,strg,netwk;
 
         // more sites
 
         private String MORE_SITE_URL="https://ae.priceomania.com/mobileappwebservices/getCompareProductData?pid=";
-
         private CustomAdapterSite mExampleAdapter;
         private ArrayList<CardModel> mExampleList;
         private RequestQueue mRequestQueue;
         private RecyclerView sRecyclerview;
-        String pid;
 
 
 
@@ -159,15 +204,25 @@ public class CardDetails extends AppCompatActivity {
         private RequestQueue mRequestQueue1;
         private RecyclerView mRecyclerview1;
 
+       //most related prd
+        private CardAdapter mExampleAdapter2;
+        private ArrayList<CardDetailsApp> mExampleList2;
+        private RequestQueue mRequestQueue2;
+        private RecyclerView mRecyclerview2;
 
         //product faqs
-
         ExpandableListView expandableListView;
         ExpandableListAdapter expandableListAdapter;
         List<String> expandableListTitle;
         HashMap<String, List<String>> expandableListDetail;
 
+        WebView mywebview,mywebviewfaq,mywebviewspc;
+        ProgressDialog progressDialog;
 
+        String pid;
+        String websitid;
+        String mprice, mcrncy, mimage;
+        TextView brandtxt, ostxt,storagetxt, memorytxt,simtxt,colortxt,displaytxt,networktxt;
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
@@ -185,10 +240,41 @@ public class CardDetails extends AppCompatActivity {
                 View rootView = inflater.inflate(R.layout.activity_tab1, container, false);
 
 
+               // textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
+              //  textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
+              //  imageView = (ImageView) rootView.findViewById(R.id.cardimg);
 
-//                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
-//                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
-//                textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
+//                SharedPreferences pref = this.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//
+//                mcrncy = pref.getString("currency", "");
+//                mprice = pref.getString("price", "");
+//                mimage = pref.getString(
+
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                pid = pref.getString("usermessage", "");
+                mcrncy = pref.getString("currency", "");
+                mprice = pref.getString("price", "");
+                mimage = pref.getString("cardimage", "");
+
+
+              //  PrdTextName.setText(prdname);
+//                Glide.with(this)
+//                        .load(mimage)
+//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                        .fitCenter()
+//                        .into(imageView);
+//
+//                //textViewname.setText(mname);
+//                textViewprice.setText(mprice);
+//                textViewcurncy.setText(mcrncy);
+
+                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
+                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
+                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
+
+                textViewclr = (TextView) rootView.findViewById(R.id.mcolor);
+                textViewstrg = (TextView) rootView.findViewById(R.id.mmemory);
+                textViewntwk = (TextView) rootView.findViewById(R.id.mnetwork);
 
                 Intent intent = getActivity().getIntent();
                 Bundle b = intent.getExtras();
@@ -203,30 +289,15 @@ public class CardDetails extends AppCompatActivity {
 
                 }
 
-
-                //textViewname = (TextView) rootView.findViewById(R.id.mobilenametext);
-                textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
-                textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
-                imageView = (ImageView) rootView.findViewById(R.id.cardimg);
-
-                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-
-                ustring = pref.getString("usermessage", "");
-                mname = pref.getString("name", "");
-                mcrncy = pref.getString("currency", "");
-                mprice = pref.getString("price", "");
-                mimage = pref.getString("cardimage", "");
-
                 Glide.with(getActivity())
                         .load(mimage)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .fitCenter()
                         .into(imageView);
 
-                // Picasso.with(getActivity()).load(mimage).fit().centerInside().into(imageView);
-                //textViewname.setText(mname);
                 textViewprice.setText(mprice);
                 textViewcurncy.setText(mcrncy);
+
 
                 //moreinfo
 
@@ -255,6 +326,15 @@ public class CardDetails extends AppCompatActivity {
 //                    }
 //                });
 
+//                TextView optiontext = (TextView) rootView.findViewById(R.id.moreoptiontxt);
+//                optiontext.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                                                        //MoreOptionActivity
+//                        startActivity(new Intent(getActivity(), OptionsActivity.class));
+//                    }
+//                });
+
                 //replace text with button
 
 //                TextView optiontext = (TextView) rootView.findViewById(R.id.options);
@@ -266,38 +346,31 @@ public class CardDetails extends AppCompatActivity {
 //                    }
 //                });
 
+                dialogbutton = (LinearLayout) rootView.findViewById(R.id.optioncard);
+                dialogbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-//                dialogbutton = (LinearLayout) rootView.findViewById(R.id.optioncard);
-//                dialogbutton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        String color=textViewclr.getText().toString();
-//                        String storage=textViewstrg.getText().toString();
-//                        String network=textViewntwk.getText().toString();
-//
-//                        SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor edit = pref.edit();
-//                        edit.putString("color",color);
-//                        edit.putString("storag",storage);
-//                        edit.putString("netwk",network);
-//
-//                        edit.commit();
-//                        Intent intent = new Intent(getActivity(), DialogActivity.class);
-//
-//                        startActivity(intent);
-//
-//                        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//
-//                    }
-//                });
+                        String color=textViewclr.getText().toString();
+                        String storage=textViewstrg.getText().toString();
+                        String network=textViewntwk.getText().toString();
+
+                        SharedPreferences pref = view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor edit = pref.edit();
+                        edit.putString("color",color);
+                        edit.putString("storag",storage);
+                        edit.putString("netwk",network);
+
+                        edit.commit();
+                        Intent intent = new Intent(getActivity(), DialogActivity.class);
+
+                        startActivity(intent);
+                        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                    }
+                });
 
                 //moresites
-
-                pid = pref.getString("usermessage", "");
-
-                 Log.e("responce",pid);
-
 
                 mExampleList = new ArrayList<>();
                 sRecyclerview = (RecyclerView) rootView.findViewById(R.id.siterecycl);
@@ -307,7 +380,6 @@ public class CardDetails extends AppCompatActivity {
                 sRecyclerview.setHasFixedSize(true);
 
                 parseJSON();
-
 
                 //similar product
 
@@ -321,68 +393,211 @@ public class CardDetails extends AppCompatActivity {
                 parseJSON1();
 
 
+                // most similar product
+
+                mExampleList2 = new ArrayList<>();
+                mRequestQueue2 = Volley.newRequestQueue(getActivity());
+
+                mRecyclerview2 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlrmost);
+                mRecyclerview2.setNestedScrollingEnabled(false);
+                mRecyclerview2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview2.setHasFixedSize(true);
+                parseJSON2();
+
                 //CardPager cardPager = new CardPager(this.getActivity());
-
-
-
 
                 return rootView;
             } else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
                 View rootView = inflater.inflate(R.layout.activity_tab2, container, false);
+
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                pid = pref.getString("usermessage", "");
+
+                mywebview = (WebView) rootView.findViewById(R.id.webView1);
+                mywebview.setWebViewClient(new MyWebViewClient());
+                String url= "https://ae.priceomania.com/mobileappwebservices/getDescription?models_id="+pid;
+                mywebview.getSettings().setJavaScriptEnabled(true);
+                mywebview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                mywebview.loadUrl(url);
+
+                //similar product
+
+                mExampleList1 = new ArrayList<>();
+                mRequestQueue1 = Volley.newRequestQueue(getActivity());
+
+                mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
+                mRecyclerview1.setNestedScrollingEnabled(false);
+                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview1.setHasFixedSize(true);
+                parseJSON1();
+
+
+                // most similar product
+
+                mExampleList2 = new ArrayList<>();
+                mRequestQueue2 = Volley.newRequestQueue(getActivity());
+
+                mRecyclerview2 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlrmost);
+                mRecyclerview2.setNestedScrollingEnabled(false);
+                mRecyclerview2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview2.setHasFixedSize(true);
+                parseJSON2();
+
                 return rootView;
             } else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3) {
                 View rootView = inflater.inflate(R.layout.activity_tab3, container, false);
 
-                expandableListView = (ExpandableListView)rootView.findViewById(R.id.expandableListView);
-                expandableListDetail = ExpandableListDataPump.getData();
-                expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-                expandableListAdapter = new CustomExpandableListAdapter(getActivity(), expandableListTitle, expandableListDetail);
-                expandableListView.setAdapter(expandableListAdapter);
-                expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                pid = pref.getString("usermessage", "");
 
-                    @Override
-                    public void onGroupExpand(int groupPosition) {
-//                        Toast.makeText(getActivity().getApplicationContext(),
-//                                expandableListTitle.get(groupPosition) + " List Expanded.",
-//                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+                mywebviewfaq = (WebView) rootView.findViewById(R.id.webViewfaq);
+                mywebviewfaq.setWebViewClient(new MyWebViewClient());
+                String url= "https://ae.priceomania.com/mobileappwebservices/getFaq?models_id="+pid;
+                mywebviewfaq.getSettings().setJavaScriptEnabled(true);
+                mywebviewfaq.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+                mywebviewfaq.loadUrl(url);
 
-                expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+                //similar product
 
-                    @Override
-                    public void onGroupCollapse(int groupPosition) {
-//                        Toast.makeText(getActivity().getApplicationContext(),
-//                                expandableListTitle.get(groupPosition) + " List Collapsed.",
-//                                Toast.LENGTH_SHORT).show();
+                mExampleList1 = new ArrayList<>();
+                mRequestQueue1 = Volley.newRequestQueue(getActivity());
 
-                    }
-                });
+                mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
+                mRecyclerview1.setNestedScrollingEnabled(false);
+                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview1.setHasFixedSize(true);
+                parseJSON1();
 
-                expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-                    @Override
-                    public boolean onChildClick(ExpandableListView parent, View v,
-                                                int groupPosition, int childPosition, long id) {
-//                        Toast.makeText(
-//                                getActivity().getApplicationContext(),
-//                                expandableListTitle.get(groupPosition)
-//                                        + " -> "
-//                                        + expandableListDetail.get(
-//                                        expandableListTitle.get(groupPosition)).get(
-//                                        childPosition), Toast.LENGTH_SHORT
-//                        ).show();
-                        return false;
-                    }
-                });
+
+                // most similar product
+
+                mExampleList2 = new ArrayList<>();
+                mRequestQueue2 = Volley.newRequestQueue(getActivity());
+
+                mRecyclerview2 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlrmost);
+                mRecyclerview2.setNestedScrollingEnabled(false);
+                mRecyclerview2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview2.setHasFixedSize(true);
+                parseJSON2();
+
+//                expandableListView = (ExpandableListView)rootView.findViewById(R.id.expandableListView);
+//                expandableListDetail = ExpandableListDataPump.getData();
+//                expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+//                expandableListAdapter = new CustomExpandableListAdapter(getActivity(), expandableListTitle, expandableListDetail);
+//                expandableListView.setAdapter(expandableListAdapter);
+//                expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//
+//                    @Override
+//                    public void onGroupExpand(int groupPosition) {
+////                        Toast.makeText(getActivity().getApplicationContext(),
+////                                expandableListTitle.get(groupPosition) + " List Expanded.",
+////                                Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//
+//                expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//
+//                    @Override
+//                    public void onGroupCollapse(int groupPosition) {
+////                        Toast.makeText(getActivity().getApplicationContext(),
+////                                expandableListTitle.get(groupPosition) + " List Collapsed.",
+////                                Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                });
+//
+//                expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//                    @Override
+//                    public boolean onChildClick(ExpandableListView parent, View v,
+//                                                int groupPosition, int childPosition, long id) {
+////                        Toast.makeText(
+////                                getActivity().getApplicationContext(),
+////                                expandableListTitle.get(groupPosition)
+////                                        + " -> "
+////                                        + expandableListDetail.get(
+////                                        expandableListTitle.get(groupPosition)).get(
+////                                        childPosition), Toast.LENGTH_SHORT
+////                        ).show();
+//                        return false;
+//                    }
+//                });
                 return rootView;
 
+            }else if (getArguments().getInt(ARG_SECTION_NUMBER) == 4) {
+                View rootView = inflater.inflate(R.layout.activity_specf, container, false);
 
-            } else {
+                SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                pid = pref.getString("usermessage", "");
+
+                brandtxt=(TextView)rootView.findViewById(R.id.brand);
+                ostxt=(TextView)rootView.findViewById(R.id.ostype);
+                storagetxt=(TextView)rootView.findViewById(R.id.storage);
+                memorytxt=(TextView)rootView.findViewById(R.id.memory);
+                simtxt=(TextView)rootView.findViewById(R.id.sim);
+                colortxt=(TextView)rootView.findViewById(R.id.color);
+                displaytxt=(TextView)rootView.findViewById(R.id.display);
+                networktxt=(TextView)rootView.findViewById(R.id.network);
+
+                //similar product
+
+                mExampleList1 = new ArrayList<>();
+                mRequestQueue1 = Volley.newRequestQueue(getActivity());
+
+                mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
+                mRecyclerview1.setNestedScrollingEnabled(false);
+                mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview1.setHasFixedSize(true);
+                parseJSON1();
+
+                // most similar product
+
+                mExampleList2 = new ArrayList<>();
+                mRequestQueue2 = Volley.newRequestQueue(getActivity());
+                mRecyclerview2 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlrmost);
+                mRecyclerview2.setNestedScrollingEnabled(false);
+                mRecyclerview2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                mRecyclerview2.setHasFixedSize(true);
+                parseJSON2();
+
+                SpeciData();
+
+                return rootView;
+            }
+
+            else
+                {
 
                 View rootView = inflater.inflate(R.layout.fragment_card_details, container, false);
                 TextView textView = (TextView) rootView.findViewById(R.id.section_label);
                 textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
                 return rootView;
+              }
+        }
+
+        private class MyWebViewClient extends WebViewClient {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //view.loadUrl(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Please wait ...");
+                progressDialog.setProgressStyle(90);
+                progressDialog.show();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                if (progressDialog != null) {
+                    progressDialog.dismiss();
+                }
             }
         }
 
@@ -390,20 +605,31 @@ public class CardDetails extends AppCompatActivity {
 
         private void parseJSON() {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, AllUrls.MORE_SITES+pid,
+           // final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBarsite);
+           // progressBar.setVisibility(View.VISIBLE);
+
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/compareData_test?pid="+pid,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
-                            Log.e("responce",response );
+                           // progressBar.setVisibility(View.INVISIBLE);
+                            //Log.e("responce",response );
 
                             try {
                                 JSONObject rootJsonObject = new JSONObject(response);
-                                JSONArray subCategoryArray = rootJsonObject.getJSONArray("websitedata");
-                                //Log.e("subCategoryArray", subCategoryArray.length() + "");
+                               // JSONArray subCategoryArray = rootJsonObject.getJSONArray("prod_details_json");
+                               // Log.e("subCategoryArray", subCategoryArray.length() + "");
 
-                                for (int i = 0; i < subCategoryArray.length(); i++) {
-                                    JSONObject object = subCategoryArray.getJSONObject(i);
+                                JSONObject data = rootJsonObject.getJSONObject("prod_details_json");
+
+                                JSONArray current_condition = data.getJSONArray("cmp_store");
+
+                                for (int i = 0; i < current_condition.length(); i++) {
+                                    JSONObject object = current_condition.getJSONObject(i);
+
+                                     websitid=object.getString("website_id");
+                                    //Log.e("wid",websitid);
 
                                     mExampleList.add(new CardModel(object.optString("id"),
                                             object.optString("product_name"),
@@ -411,10 +637,11 @@ public class CardDetails extends AppCompatActivity {
                                             object.optString("website_logo"),
                                             object.optString("currency_type"),
                                             object.optString("price"),
-                                            object.optString("product_url")));
-                                }
+                                            object.optString("website_url")));
 
-                                Log.e("rootJsonArray", String.valueOf(mExampleList));
+                                }
+                              // if (!websitid.equalsIgnoreCase(websitid))
+                               // Log.e("rootJsonArray", String.valueOf(mExampleList));
 
                                 mExampleAdapter = new CustomAdapterSite(getActivity(), mExampleList);
                                 sRecyclerview.setAdapter(mExampleAdapter);
@@ -458,29 +685,11 @@ public class CardDetails extends AppCompatActivity {
 
                                     mExampleList1.add(new CardDetailsApp(object.optString("id"),
                                             object.optString("product_image"),
-                                            object.optString("modelno"),
+                                            object.optString("model_name"),
                                             object.optString("currency_type"),
                                             object.optString("price"),
                                             object.optString("store_count")));
                                 }
-
-//                            try {
-//                                Log.e("rootJsonArray",response);
-//                                JSONArray rootJsonArray = new JSONArray(response);
-//
-//                                Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
-//
-//                                for (int i = 0; i < rootJsonArray.length(); i++) {
-//                                    JSONObject object = rootJsonArray.getJSONObject(i);
-//
-//                                    mExampleList1.add(new CardDetailsApp(object.optString("id"),
-//                                            object.optString("product_image"),
-//                                            object.optString("modelno"),
-//                                            object.optString("currency_type"),
-//                                            object.optString("price"),
-//                                            object.optString("store_count")));
-//                                }
-
                                 Log.e("rootJsonArray",mExampleList1.size()+"");
 
                                 mExampleAdapter1 = new CardAdapter(getActivity(), mExampleList1);
@@ -504,6 +713,108 @@ public class CardDetails extends AppCompatActivity {
 
             mRequestQueue1 = Volley.newRequestQueue(getActivity());
             mRequestQueue1.add(stringRequest);
+        }
+
+        // most similar product
+
+        private void parseJSON2() {
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getPopularProducts?prod_id="+pid,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject rootJsonObject = new JSONObject(response);
+                                JSONArray subCategoryArray = rootJsonObject.getJSONArray("PopularProducts");
+                                //Log.e("subCategoryArray", subCategoryArray.length() + "");
+
+                                for (int i = 0; i < subCategoryArray.length(); i++) {
+                                    JSONObject object = subCategoryArray.getJSONObject(i);
+
+                                    mExampleList2.add(new CardDetailsApp(object.optString("id"),
+                                            object.optString("product_image"),
+                                            object.optString("model_name"),
+                                            object.optString("currency_type"),
+                                            object.optString("price"),
+                                            object.optString("store_count")));
+                                }
+                                Log.e("rootJsonArray",mExampleList2.size()+"");
+
+                                mExampleAdapter2 = new CardAdapter(getActivity(), mExampleList2);
+                                mRecyclerview2.setAdapter(mExampleAdapter2);
+                                mExampleAdapter2.notifyDataSetChanged();
+                                mRecyclerview2.setHasFixedSize(true);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Log.e("TAg",error.getMessage());
+                        }
+                    });
+
+            mRequestQueue2 = Volley.newRequestQueue(getActivity());
+            mRequestQueue2.add(stringRequest);
+        }
+
+        private void SpeciData() {
+
+            Log.e("resp",pid);
+
+            String url="https://ae.priceomania.com/mobileappwebservices/getFeatures?models_id="+pid;
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            try {
+                                JSONArray rootJsonArray = new JSONArray(response);
+                                Log.e("rootJsonArrayLength",rootJsonArray.length()+"");
+
+                                for (int i = 0; i < rootJsonArray.length(); i++) {
+                                    JSONObject obj = rootJsonArray.getJSONObject(i);
+
+
+                                    String brand=obj.getString("Brand");
+                                    String ostype=obj.getString("Operating System Type");
+                                    String strge=obj.getString("Storage Capacity");
+                                    String ram=obj.getString("Memory RAM");
+                                    String sim=obj.getString("Number Of SIM");
+                                    String color=obj.getString("Color");
+                                    String display=obj.getString("Display Size (Inch)");
+                                    String network=obj.getString("Cellular Network Technology");
+
+                                    brandtxt.setText(brand);
+                                    ostxt.setText(ostype);
+                                    storagetxt.setText(strge);
+                                    memorytxt.setText(ram);
+                                    simtxt.setText(sim);
+                                    colortxt.setText(color);
+                                    displaytxt.setText(display);
+                                    networktxt.setText(network);
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            Log.e("TAg",error.getMessage());
+                        }
+                    });
+
+            RequestQueue queue2 = Volley.newRequestQueue(getActivity());
+            queue2.add(stringRequest);
         }
 
 //        private void expand() {
@@ -571,7 +882,7 @@ public class CardDetails extends AppCompatActivity {
 //            });
 //            return animator;
 //        }
-//
+
 
 
         @Override
@@ -608,7 +919,7 @@ public class CardDetails extends AppCompatActivity {
             @Override
             public int getCount() {
                 // Show 3 total pages.
-                return 3;
+                return 4;
             }
 
             @Override
@@ -620,7 +931,8 @@ public class CardDetails extends AppCompatActivity {
                         return "Description";
                     case 2:
                         return "FAQ";
-
+                    case 3:
+                        return "Specs";
                 }
                 return null;
             }

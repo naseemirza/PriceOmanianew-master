@@ -27,10 +27,12 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SignupActivity"
-            android:parentActivityName=".LoginActivity" />
+            android:parentActivityName=".LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -67,7 +69,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".CategoryItems.Sub_ChildActivity"
-            android:parentActivityName=".CategoryItems.ChildActivity" />
+            android:parentActivityName=".CategoryItems.ChildActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Options.MoreOptionActivity"
             android:parentActivityName=".CardDetailsPkg.CardDetails" />
@@ -82,8 +85,25 @@
             android:name=".CategoryItems.GridActivity"
             android:parentActivityName=".CategoryItems.ChildActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".DetailPage.DetailPageActivity"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".DetailPage.DetailPageActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".KeyWordSearchActivity" />
+        <activity
+            android:name=".ProductDetailPage.ProdDetailActivity"
+            android:label=""
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CardDetailsPkg.SpecfActivity" />
+        <activity
+            android:name=".ForgotPassActivity"
+            android:parentActivityName=".LoginActivity" />
+        <activity android:name=".CardDetailsPkg.PrdColorActivity" />
+        <activity android:name=".CardDetailsPkg.PrdStorageActivity" />
+        <activity android:name=".CardDetailsPkg.PrdNetwrkActivity" />
+        <activity android:name=".MoreOptionsPkg.OptionsActivity" />
     </application>
 
 </manifest>

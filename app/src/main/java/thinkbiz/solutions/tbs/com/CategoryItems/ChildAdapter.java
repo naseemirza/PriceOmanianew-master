@@ -75,7 +75,8 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
                     edit.apply();
 
                     Intent intent = new Intent(view.getContext(), ChildActivity.class);
-                    view.getContext().startActivity(intent);
+                    view.getContext
+                            ().startActivity(intent);
 
                 }
                 if (catgType.equalsIgnoreCase("Brand")) {

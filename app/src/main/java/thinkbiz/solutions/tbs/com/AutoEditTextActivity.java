@@ -2,7 +2,9 @@ package thinkbiz.solutions.tbs.com;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -29,31 +32,35 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import thinkbiz.solutions.tbs.com.CategoryItems.GridActivity;
+import thinkbiz.solutions.tbs.com.DetailPage.DetailPageActivity;
+
 
 public class AutoEditTextActivity extends Activity {
 
-    ImageView imageview;
+    ImageView imageview,imageViewsrch;
     ImageButton imageButton;
-
     CardView cardView1;
-
     private AutoTextAdapter mExampleAdapter;
     private ArrayList<AutoTextModel> mExampleList;
     private RequestQueue mRequestQueue;
     private RecyclerView sRecyclerview;
     String pid;
-
     AutoCompleteTextView editTextSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_edit_text);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         editTextSearch=(AutoCompleteTextView)findViewById(R.id.autoCompleteTextView1);
 
         imageview = (ImageView)findViewById(R.id.imageView1);
         imageview.setVisibility(View.GONE);
+        imageViewsrch = (ImageView)findViewById(R.id.imageViewsrch);
+        imageViewsrch.setVisibility(View.GONE);
 
         cardView1 = (CardView) findViewById(R.id.cardcategory);
         cardView1.setVisibility(View.GONE);
@@ -120,6 +127,7 @@ public class AutoEditTextActivity extends Activity {
                                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                                     imageview.setVisibility(View.VISIBLE);
+                                    imageViewsrch.setVisibility(View.VISIBLE);
                                     sRecyclerview.setVisibility(View.VISIBLE);
                                     sRecyclerview.setAdapter(mExampleAdapter);
                                 }
@@ -130,11 +138,13 @@ public class AutoEditTextActivity extends Activity {
                                     if (charSequence.toString().trim().length()==0){
                                         editTextSearch.getText().clear();
                                         imageview.setVisibility(View.GONE);
+                                        imageViewsrch.setVisibility(View.GONE);
                                         sRecyclerview.setVisibility(View.GONE);
                                         cardView1.setVisibility(View.GONE);
                                     }
                                     else {
                                         imageview.setVisibility(View.VISIBLE);
+                                        imageViewsrch.setVisibility(View.VISIBLE);
                                         sRecyclerview.setVisibility(View.VISIBLE);
                                         // mExampleAdapter.getFilter().filter(s.toString());
                                         sRecyclerview.setAdapter(mExampleAdapter);
@@ -149,12 +159,29 @@ public class AutoEditTextActivity extends Activity {
                                 }
                             });
 
+                            imageViewsrch.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String search=editTextSearch.getText().toString();
+
+                                    SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor edit = pref.edit();
+                                    edit.putString("keyword", search);
+                                    edit.apply();
+
+                                    Intent intent = new Intent(AutoEditTextActivity.this, KeyWordSearchActivity.class);
+                                    startActivity(intent);
+
+                                }
+                            });
+
                             imageview.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
 
                                     editTextSearch.getText().clear();
                                     imageview.setVisibility(View.GONE);
+                                    imageViewsrch.setVisibility(View.GONE);
                                     sRecyclerview.setVisibility(View.GONE);
                                     cardView1.setVisibility(View.GONE);
                                 }

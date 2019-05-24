@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails;
 import thinkbiz.solutions.tbs.com.CardDetailsPkg.RecyclerViewItemClickListener;
 import thinkbiz.solutions.tbs.com.DetailPage.DetailPageActivity;
+import thinkbiz.solutions.tbs.com.ProductDetailPage.ProdDetailActivity;
 
 import java.util.List;
 
@@ -94,9 +95,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
                 edit.putString("slug_suffix",slug_suffix);
 
 
-                edit.apply();                                 // CardDetails
+                edit.apply();                              //ProdDetailActivity   // CardDetails //DetailPageActivity (webview)
 
-                Intent intent = new Intent(view.getContext(), DetailPageActivity.class);
+                Intent intent = new Intent(view.getContext(), CardDetails.class);
                 view.getContext().startActivity(intent);
                 //                Uri uriUrl = Uri.parse(url+slug+slug_suffix);
 //                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
@@ -143,9 +144,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>  {
 
             itemView.setOnClickListener(this);
 
-
         }
-
         @Override
         public void onClick(View v) {
             this.itemClickListener.onClick(v,getLayoutPosition());

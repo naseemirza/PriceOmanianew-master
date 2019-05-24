@@ -76,6 +76,7 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ViewHolder> {
                 String prd_price=app.getmPrice();
                 String slug=app.getSlug();
                 String slug_suffix=app.getSlug_suffix();
+                String prd_count=app.getmCount();
 
                 Log.e("responce",prd_id);
 
@@ -89,10 +90,11 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.ViewHolder> {
                 edit.putString("cardimage",prd_image);
                 edit.putString("slug",slug);
                 edit.putString("slug_suffix",slug_suffix);
+                edit.putString("totalcount",prd_count);
 
 
-                edit.apply();                                //CardDetails
-                Intent intent = new Intent(view.getContext(), DetailPageActivity.class);
+                edit.apply();                                //CardDetails, DetailPageActivity
+                Intent intent = new Intent(view.getContext(), CardDetails.class);
                 view.getContext().startActivity(intent);
 
 

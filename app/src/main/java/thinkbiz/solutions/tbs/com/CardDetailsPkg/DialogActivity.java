@@ -48,11 +48,9 @@ public class DialogActivity extends AppCompatActivity {
         textViewn.setText(netwk);
 
 
-        getSupportActionBar().setTitle("Filters");
+        getSupportActionBar().setTitle("Filter options");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
 //        final Intent i = getIntent();
 //        Bundle bd = i.getExtras();
@@ -71,6 +69,38 @@ public class DialogActivity extends AppCompatActivity {
         textViewc=(TextView)findViewById(R.id.subtextcolor);
         textViews=(TextView)findViewById(R.id.storagetext);
         textViewn=(TextView)findViewById(R.id.brandtextview);
+
+
+        cardView1=(CardView)findViewById(R.id.card1);
+        cardView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DialogActivity.this,PrdColorActivity.class);
+                startActivityForResult(intent, 2);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+        cardView2=(CardView)findViewById(R.id.card2);
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DialogActivity.this,PrdStorageActivity.class);
+                startActivityForResult(intent, 3);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        cardView3=(CardView)findViewById(R.id.card3);
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(DialogActivity.this,PrdNetwrkActivity.class);
+                startActivityForResult(intent, 4);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
 
         buttonaply=(Button)findViewById(R.id.buttonok);
         buttonaply.setOnClickListener(new View.OnClickListener() {
@@ -117,35 +147,6 @@ public class DialogActivity extends AppCompatActivity {
 //            }
 //        });
 
-        cardView1=(CardView)findViewById(R.id.card1);
-        cardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(DialogActivity.this,ColorActivity.class);
-                startActivityForResult(intent, 2);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-        cardView2=(CardView)findViewById(R.id.card2);
-        cardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(DialogActivity.this,StorageActivity.class);
-                startActivityForResult(intent, 3);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-
-        cardView3=(CardView)findViewById(R.id.card3);
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent=new Intent(DialogActivity.this,NetworkActivity.class);
-                startActivityForResult(intent, 4);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
 
 
 

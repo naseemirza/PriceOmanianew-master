@@ -27,7 +27,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextView1"
-            android:layout_width="270dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:backgroundTint="@android:color/transparent"
@@ -41,14 +41,24 @@
             <requestFocus />
         </AutoCompleteTextView>
 
+        <ImageView
+            android:id="@+id/imageViewsrch"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/imageView1"
+            android:src="@drawable/ic_search_black_24dp" />
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/autoCompleteTextView1"
             android:src="@drawable/ic_close_black_24dp" />
+
+
 
 
     </RelativeLayout>

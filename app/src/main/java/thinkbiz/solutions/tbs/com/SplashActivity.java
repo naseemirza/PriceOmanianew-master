@@ -33,10 +33,6 @@ public class SplashActivity extends AppCompatActivity {
         l.startAnimation(animation);
 
 
-
-
-
-
         animation=AnimationUtils.loadAnimation(this,R.anim.translate);
         animation.reset();
 
@@ -55,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
                         waited += 100;
                     }
                     Intent intent = new Intent(SplashActivity.this,
-                            MainActivity.class);
+                            LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
 

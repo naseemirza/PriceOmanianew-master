@@ -4,69 +4,144 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-android:background="#61aa8f"
-    tools:context="com.example.tbs.com.thinkbiz.example.tbs.com.LoginActivity">
+    tools:context="thinkbiz.solutions.tbs.com.LoginActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:inputType="textPersonName"
-        android:hint="  Email"
-        android:drawableLeft="@drawable/ic_email_black_24dp"
-        android:background="@color/colorWhite"
-        android:ems="13"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:id="@+id/editText" />
+    <ScrollView
+        android:id="@+id/scrolview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:inputType="textPassword"
-        android:hint=" Password"
-        android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
-        android:background="@color/colorWhite"
-        android:ems="13"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_marginTop="25dp"
-        android:id="@+id/editText2" />
+        <RelativeLayout
+            android:id="@+id/re"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:text="LOGIN"
-        android:background="#507963"
-        android:textColor="@color/colorWhite"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="50dp"
-        android:id="@+id/button_login"
-        android:layout_alignEnd="@+id/editText2"
-        android:layout_alignStart="@+id/editText2" />
 
-    <TextView
-        android:text="Not a member?"
-        android:textColor="@color/colorWhite"
-        android:textSize="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_below="@+id/button_login"
-        android:layout_alignStart="@+id/button_login"
-        android:layout_marginTop="47dp"
-        android:id="@+id/textView2" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="150dp"
+                android:layout_height="90dp"
+                android:src="@drawable/splash1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp" />
 
-    <TextView
-        android:text="  Sign up now"
-        android:clickable="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="17dp"
 
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/textView2"
-        android:id="@+id/textView_signup"
-        android:layout_alignTop="@+id/textView2" />
+            <EditText
+                android:id="@+id/editTextFP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="30dp"
+                android:textSize="13sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/imageView2"
+                android:textCursorDrawable="@color/purple"
+                android:background="@color/colorWhite"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:ems="10"
+                android:paddingStart="10dp"
+                android:hint="email*"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:id="@+id/editTextP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextFP"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:textCursorDrawable="@color/purple"
+                android:background="@color/colorWhite"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:textSize="13sp"
+                android:hint="Password*"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textViewfrgt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextP"
+                android:layout_marginTop="15dp"
+                android:paddingRight="20dp"
+                android:gravity="end"
+                android:text="Forgot Password"
+                android:textColor="@color/green1"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/buttonL"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_below="@+id/textViewfrgt"
+                android:layout_marginTop="29dp"
+                android:background="@drawable/roundedbutton"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonL"
+                android:textColor="@color/green1"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Sign Up here if not already registered ?"
+                android:textSize="14sp" />
+
+            <Button
+            android:id="@+id/buttonFP"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundedbutton"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/textViewRgs"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/textView3"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Register"-->
+                <!--android:textColor="@color/purple"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textStyle="bold" />-->
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
 </RelativeLayout>

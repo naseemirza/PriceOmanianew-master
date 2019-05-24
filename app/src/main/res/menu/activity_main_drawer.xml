@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <!--<item-->
-            <!--android:id="@+id/nav_login"-->
-            <!--android:icon="@drawable/login"-->
-            <!--android:title="Login/Register" />-->
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/login"
+            android:title="Login/Register" />
         <!--<item-->
             <!--android:id="@+id/nav_wallet"-->
             <!--android:icon="@drawable/wallet"-->
@@ -29,10 +29,10 @@
             android:icon="@drawable/categories"
             android:title="Categories" />
 
-        <!--<item-->
-            <!--android:id="@+id/nav_feedback"-->
-            <!--android:icon="@drawable/send_us_feedback"-->
-            <!--android:title="Send Us Feedback" />-->
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logouticon"
+            android:title="Logout" />
     </group>
 
 

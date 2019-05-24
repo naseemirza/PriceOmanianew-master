@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import com.android.volley.Request;
@@ -42,6 +43,8 @@ public class ParentActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Categories");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mExampleList = new ArrayList<>();
         sRecyclerview=(RecyclerView)findViewById(R.id.plist);

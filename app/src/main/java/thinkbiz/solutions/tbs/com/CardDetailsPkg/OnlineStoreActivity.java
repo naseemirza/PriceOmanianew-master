@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import thinkbiz.solutions.tbs.com.R;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 
-public class TabActivity1 extends AppCompatActivity {
+public class OnlineStoreActivity extends AppCompatActivity {
 
     SimpleRatingBar ratingBar;
 
@@ -24,7 +24,7 @@ public class TabActivity1 extends AppCompatActivity {
 //        buttonSite.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                startActivity(new Intent(TabActivity1.this,GotoSIte.c));
+//                startActivity(new Intent(OnlineStoreActivity.this,GotoSIte.c));
 //
 //            }
 //        });

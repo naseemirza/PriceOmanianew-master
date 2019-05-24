@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +38,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import thinkbiz.solutions.tbs.com.CategoryItems.ParentActivity;
 
+import static thinkbiz.solutions.tbs.com.LoginActivity.booltype;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +51,6 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     private Adapter mExampleAdapter1,mExampleAdapter2,mExampleAdapter3,mExampleAdapter4;
     private ArrayList<App> mExampleList1,mExampleList2,mExampleList3,mExampleList4;
     private RequestQueue mRequestQueue1,mRequestQueue2,mRequestQueue3,mRequestQueue4;
@@ -56,7 +59,6 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView mRecyclerview2;
     private RecyclerView mRecyclerview3;
     private RecyclerView mRecyclerview4;
-
 
     // More Categorirs
 
@@ -74,45 +76,22 @@ public class MainActivity extends AppCompatActivity
     LinearLayout sliderDotspanel;
     private int dotscount;
     private ImageView[] dots;
-    String s;
+    String userId,uemail;
+    TextView textViewname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.content_main);
-//
-//                        if(!isConnected(MainActivity.this)){
-//                            Snackbar snackbar = Snackbar
-//                                    .make(relativeLayout, "No internet connection!", Snackbar.LENGTH_LONG)
-//                                    .setAction("Retry", new View.OnClickListener() {
-//                                        @Override
-//                                        public void onClick(View view) {
-//                                            isConnected(MainActivity.this);
-//                                        }
-//                                    });
-//                            // Changing message text color
-//                            snackbar.setActionTextColor(Color.WHITE);
-//
-//                            // Changing snackbar background color
-//                            ViewGroup group = (ViewGroup) snackbar.getView();
-//                            group.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorPrimary));
-//
-//                            // Changing action button text color
-//                            View sbView = snackbar.getView();
-//                            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-//                            textView.setTextColor(Color.RED);
-//
-//                            snackbar.show();
-//                        }
-//
-//
-//                        else {
-//
-//                            setContentView(R.layout.activity_main);
-//                        }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+        SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        booltype=pref.getBoolean("Booltype", Boolean.parseBoolean(""));
+        //uemail = pref.getString("email", "");
+       // userId = pref.getString("user_id", "");
 
 
         if (isOnline()) {
@@ -174,7 +153,6 @@ public class MainActivity extends AppCompatActivity
 
         parseJSON3();
 
-
         //Snap 4
 
         mExampleList4 = new ArrayList<>();
@@ -187,9 +165,7 @@ public class MainActivity extends AppCompatActivity
 
         parseJSON4();
 
-
         //morecategory
-
 
         mExampleList = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
@@ -267,7 +243,6 @@ public class MainActivity extends AppCompatActivity
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 3000);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -282,6 +257,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+       // textViewname= (TextView) navigationView.getHeaderView(0).findViewById(R.id.textViewmail);
+       // textViewname.setText(uemail);
     }
 
     public boolean isOnline() {
@@ -294,7 +271,6 @@ public class MainActivity extends AppCompatActivity
         }
         return true;
     }
-
 
     private void parseJSON() {
 
@@ -342,7 +318,6 @@ public class MainActivity extends AppCompatActivity
         mRequestQueue = Volley.newRequestQueue(this);
         mRequestQueue.add(stringRequest);
     }
-
 
     private void parseJSON1() {
 
@@ -640,9 +615,19 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, ParentActivity.class));
         }
 
-//        if (id == R.id.nav_login) {
-//            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-//
+        if (id == R.id.nav_login) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+
+        if (id == R.id.nav_logout) {
+
+            booltype=false;
+            SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = pref.edit();
+            edit.putBoolean("Booltype",booltype);
+            edit.apply();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        }
 //
 //            // Handle the camera action
 //        } else if (id == R.id.nav_wallet) {

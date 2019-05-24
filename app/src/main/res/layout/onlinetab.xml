@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ProductDetailPage.ProdDetailActivity">
+
+    <ScrollView
+        android:id="@+id/scrolview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/re1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/imgname"
+                android:layout_marginTop="120dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/cardimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/apple7plus"
+                android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/pname"
+                    android:text="Apple"
+                    android:textSize="15sp"
+                    android:textColor="@color/purple"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/optioncard"
+                android:layout_below="@+id/imgname"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/layoutborder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                android:id="@+id/mcolor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:text="Colors"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+                <TextView
+                android:id="@+id/coma1"
+                android:layout_width="5dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="10dp"
+                android:text=","
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+                <TextView
+                android:id="@+id/mmemory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Storage"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+                <TextView
+                android:id="@+id/coma2"
+                android:layout_width="5dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="10dp"
+                android:text=","
+                android:textColor="@color/purple"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+                <TextView
+                android:id="@+id/mnetwork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Networks"
+                android:textColor="@color/purple"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="20dp"
+                    android:text=">"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/purple"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/prictxt"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:background="@color/gray"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/optioncard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/onlnstr"
+                    android:text="1"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/onlnstr1"
+                    android:text="stores starting from"
+                    android:textSize="15sp"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/prdprice"
+                    android:text="14186"
+                    android:layout_marginStart="8dp"
+                    android:textSize="17sp"
+                    android:textColor="@color/purple"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/siterecycl"
+                android:background="@color/gray"
+                android:layout_below="@+id/prictxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/snap1"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="3dp"
+                android:layout_below="@+id/siterecycl"
+                android:text="Related Products"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerviewsmlr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/snap1"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</android.support.v4.widget.NestedScrollView>

@@ -14,14 +14,14 @@ public class CardModel {
     private String mobileCurrency;
     private String mobilePrice;
     private String siteurl;
-    String image_path="http://ae.priceomania.com/upload/ProductImage/thumb/";
+    String image_path = "http://ae.priceomania.com/upload/ProductImage/thumb/";
     //, String websiteUrl
 
-    public CardModel( String websiteID,String mobileName, String siteName, String sitelogoUrl, String mobileCurrency, String mobilePrice,String siteurl) {
+    public CardModel(String websiteID, String mobileName, String siteName, String sitelogoUrl, String mobileCurrency, String mobilePrice, String siteurl) {
         this.websiteID=websiteID;
         this.mobileName = mobileName;
         this.siteName = siteName;
-        this.sitelogoUrl = image_path+sitelogoUrl;
+        this.sitelogoUrl =image_path+sitelogoUrl;
         this.mobileCurrency = mobileCurrency;
         this.mobilePrice = mobilePrice;
         this.siteurl=siteurl;

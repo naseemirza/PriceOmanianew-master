@@ -67,11 +67,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             @Override
             public void onClick(View view, int position) {
 
-                String prd_id=app.getmID().toString();
-                String prd_name=app.getmName().toString();
-                String prd_image=app.getmImageUrl().toString();
-                String prd_crny=app.getmCurrency().toString();
-                String prd_price=app.getmPrice().toString();
+                String prd_id=app.getmID();
+                String prd_name=app.getmName();
+                String prd_image=app.getmImageUrl();
+                String prd_crny=app.getmCurrency();
+                String prd_price=app.getmPrice();
+                String prd_count=app.getmCount();
 
                 Log.e("responce",prd_id);
 
@@ -83,9 +84,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
                 edit.putString("currency",prd_crny);
                 edit.putString("name",prd_name);
                 edit.putString("cardimage",prd_image);
+                edit.putString("totalcount",prd_count);
 
-
-                edit.commit();
+                edit.apply();
                 Intent intent = new Intent(view.getContext(), CardDetails.class);
                 view.getContext().startActivity(intent);
 

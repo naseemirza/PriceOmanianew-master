@@ -39,31 +39,26 @@ public class ColorActivity extends AppCompatActivity {
 
     public static List<ColorModel> colorList = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
         getSupportActionBar().setTitle("Filters");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
 
-
         childListView = (ListView) findViewById(R.id.list_viewclr);
         colorList = new ArrayList<>();
-
 
         SharedPreferences pref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
         //SharedPreferences example=getSharedPreferences("prod_id",0);
         ustring=pref.getString("usermessage","");
 
-
         Log.e("responce",ustring);
-
         loadItemList();
 
     }
@@ -91,7 +86,6 @@ public class ColorActivity extends AppCompatActivity {
                                 colorList.add(new ColorModel(
                                         detailsObject.optString("color")
                                        ));
-
 
                             }
 
@@ -130,21 +124,16 @@ public class ColorActivity extends AppCompatActivity {
                                 final RadioButton itemcheck = (RadioButton)
                                         item_view.findViewById(R.id.rbuttonc);
 
-
-
                                 if (itemcheck.isChecked()) {
                                     itemcheck.setChecked(true);
 
                                 } else {
                                     itemcheck.setChecked(true);
                                 }
-
                                 itemcheck.setChecked(true);
-
                             }
 
                         });
-
                     }
                 },
                 new Response.ErrorListener() {

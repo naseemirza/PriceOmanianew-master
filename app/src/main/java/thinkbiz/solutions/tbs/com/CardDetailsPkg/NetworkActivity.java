@@ -65,7 +65,6 @@ public class NetworkActivity extends AppCompatActivity {
         loadItemList();
 
 
-
 //        tabLayout = (TabLayout) findViewById(R.id.tabs);
 //        tabLayout.addTab(tabLayout.newTab().setText("Networks"));
 //
@@ -108,7 +107,6 @@ public class NetworkActivity extends AppCompatActivity {
 
 
     }
-
 
     private void loadItemList() {
 

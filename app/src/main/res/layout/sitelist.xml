@@ -20,6 +20,7 @@
         <LinearLayout
             android:id="@+id/li1"
             android:layout_marginTop="10dp"
+            android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
@@ -27,7 +28,6 @@
             android:orientation="horizontal">
 
             <TextView
-
                 android:id="@+id/parent_id"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -35,12 +35,14 @@
 
             <LinearLayout
                 android:id="@+id/li2"
-                android:layout_width="190dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="top|start"
                 android:background="@color/colorWhite"
+                android:layout_weight="1"
                 android:clickable="true"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
                 <TextView
                     android:id="@+id/siteTextview"
@@ -48,7 +50,6 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
-
                     android:clickable="true"
                     android:gravity="start"
                     android:text="Souq"
@@ -61,10 +62,10 @@
 
             <LinearLayout
                 android:id="@+id/li3"
-
                 android:layout_width="170dp"
                 android:layout_height="30dp"
                 android:clickable="true"
+                android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:orientation="horizontal">
 
@@ -74,7 +75,6 @@
                     android:layout_height="25dp"
                     android:clickable="true"
                     android:paddingStart="20dp"
-
                     android:src="@drawable/souq" />
 
             </LinearLayout>
@@ -117,7 +117,6 @@
                 android:id="@+id/li121"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:clickable="true"
                 android:orientation="horizontal">
 
@@ -191,7 +190,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="25dp"
                 android:layout_marginRight="25dp"
-
                 android:layout_weight="5"
                 android:background="@color/green"
                 android:clickable="false"
@@ -203,127 +201,127 @@
         </RelativeLayout>
 
 
-        <LinearLayout
-            android:id="@+id/expandable"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="#FFF"
-            android:visibility="gone"
-            android:layout_marginTop="155dp"
+        <!--<LinearLayout-->
+            <!--android:id="@+id/expandable"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:background="#FFF"-->
+            <!--android:visibility="gone"-->
+            <!--android:layout_marginTop="155dp"-->
 
-            android:orientation="vertical">
+            <!--android:orientation="vertical">-->
 
-            <LinearLayout
-                android:id="@+id/lidelvry"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:id="@+id/lidelvry"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:text="Delivery"
-                    android:id="@+id/textdlvry"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp" />
+                <!--<TextView-->
+                    <!--android:text="Delivery"-->
+                    <!--android:id="@+id/textdlvry"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginLeft="20dp" />-->
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:gravity="start|center_vertical"
-                    android:text="within 4-13 working days"
-                    android:layout_marginLeft="10dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:gravity="start|center_vertical"-->
+                    <!--android:text="within 4-13 working days"-->
+                    <!--android:layout_marginLeft="10dp" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <LinearLayout
+            <!--<LinearLayout-->
 
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:text="Warranty"
-                    android:id="@+id/textwrnty"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp" />
+                <!--<TextView-->
+                    <!--android:text="Warranty"-->
+                    <!--android:id="@+id/textwrnty"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginLeft="20dp" />-->
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:gravity="start|center_vertical"
-                    android:text="1 year since date of purchase"
-                    android:layout_marginLeft="10dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:gravity="start|center_vertical"-->
+                    <!--android:text="1 year since date of purchase"-->
+                    <!--android:layout_marginLeft="10dp" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:text="Shipping"
-                    android:id="@+id/textship"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp" />
+                <!--<TextView-->
+                    <!--android:text="Shipping"-->
+                    <!--android:id="@+id/textship"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginLeft="20dp" />-->
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:text="Same Day in India/Noida for Orders before 6:30pm"
-                    android:layout_marginLeft="10dp" />
+                <!--<TextView-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:text="Same Day in India/Noida for Orders before 6:30pm"-->
+                    <!--android:layout_marginLeft="10dp" />-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="60dp"-->
+                <!--android:orientation="horizontal">-->
 
-                <TextView
-                    android:text="Notes"
-                    android:id="@+id/textnotes"
-                    android:layout_width="80dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp" />
+                <!--<TextView-->
+                    <!--android:text="Notes"-->
+                    <!--android:id="@+id/textnotes"-->
+                    <!--android:layout_width="80dp"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginLeft="20dp" />-->
 
-                <TextView
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
+                <!--<TextView-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginStart="10dp"-->
 
-                    android:text="+2.5% fee for payment by creadit card, No Extra charge on COD, Prices includeVAT"
-                    android:layout_marginLeft="10dp" />
-            </LinearLayout>
+                    <!--android:text="+2.5% fee for payment by creadit card, No Extra charge on COD, Prices includeVAT"-->
+                    <!--android:layout_marginLeft="10dp" />-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/linrless"
-                android:orientation="vertical"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="280dp"
-                android:layout_marginLeft="280dp">
-                <TextView
-                    android:text="LessInfo"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:id="@+id/lesstext"
-                    android:layout_width="70dp"
-                    android:layout_height="28dp" />
-            </LinearLayout>
-        </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:id="@+id/linrless"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginStart="280dp"-->
+                <!--android:layout_marginLeft="280dp">-->
+                <!--<TextView-->
+                    <!--android:text="LessInfo"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:id="@+id/lesstext"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="28dp" />-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
 
     </android.support.v7.widget.CardView>
 

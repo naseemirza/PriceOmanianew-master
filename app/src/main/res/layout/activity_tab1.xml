@@ -9,7 +9,7 @@
     android:background="#ffff"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tbs.com.thinkbiz.example.tbs.com.CardDetailsPkg.TabActivity1"
+    tools:context="thinkbiz.solutions.tbs.com.CardDetailsPkg.CardDetails"
      >
 
     <ScrollView
@@ -23,252 +23,119 @@
             android:layout_height="match_parent">
 
 
-            <ImageView
-                android:id="@+id/cardimg"
-                android:layout_width="180dp"
-                android:layout_height="245dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:scaleType="fitCenter" />
+            <LinearLayout
+                android:id="@+id/imgname"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/cardimg"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:scaleType="center"
+                    android:src="@drawable/apple7plus" />
+
+
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear"
+                android:id="@+id/optioncard"
+                android:layout_below="@+id/imgname"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/layoutborder"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardimg"
+                android:layout_height="wrap_content">
 
-                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/mcolor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:text="Colors"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/coma1"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="10dp"
+                    android:text=","
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-                <!--<TextView-->
-                    <!--android:id="@+id/mobilenametext"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:gravity="center"-->
-                    <!--android:paddingBottom="5dp"-->
-                    <!--android:paddingTop="5dp"-->
-                    <!--android:text="Mobile name"-->
-                    <!--android:textSize="17dp"-->
-                    <!--android:textStyle="bold" />-->
+                <TextView
+                    android:id="@+id/mmemory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="Storage"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="5dp"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<com.iarcuschin.simpleratingbar.SimpleRatingBar-->
-                        <!--android:id="@+id/ratingBarID"-->
-                        <!--android:layout_width="140dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignBottom="@+id/spacecraftImage"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:layout_marginStart="50dp"-->
-                        <!--app:srb_borderColor="#898900"-->
-                        <!--app:srb_fillColor="#898900"-->
-                        <!--app:srb_numberOfStars="5"-->
-                        <!--app:srb_rating="3.5"-->
-                        <!--app:srb_starSize="20dp"-->
-                        <!--app:srb_stepSize="0.01">-->
-
-                    <!--</com.iarcuschin.simpleratingbar.SimpleRatingBar>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="32dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:gravity="start|center_vertical"-->
-                        <!--android:text="4.5"-->
-                        <!--android:textColor="#898900"-->
-                        <!--android:textSize="18dp" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="130dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:gravity="start|center_vertical"-->
-                        <!--android:text="(1055 ratings)"-->
-                        <!--android:textSize="15dp" />-->
+                <TextView
+                    android:id="@+id/coma2"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="10dp"
+                    android:text=","
+                    android:textColor="@color/purple"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
 
-                <!--</LinearLayout>-->
+                <TextView
+                    android:id="@+id/mnetwork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="Networks"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
 
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/optioncard"-->
-                    <!--android:layout_width="300dp"-->
-                    <!--android:layout_height="45dp"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:background="@drawable/layoutborder"-->
-                    <!--android:orientation="horizontal">-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/mcolor"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:layout_marginStart="35dp"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Colors "-->
-                        <!--android:textColor="@color/purple"-->
-                        <!--android:textSize="17dp"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/coma1"-->
-                        <!--android:layout_width="5dp"-->
-                        <!--android:layout_height="20dp"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:text=","-->
-                        <!--android:textColor="@color/purple"-->
-                        <!--android:textSize="15dp"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/mmemory"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Storage"-->
-                        <!--android:textColor="@color/purple"-->
-                        <!--android:textSize="15dp"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/coma2"-->
-                        <!--android:layout_width="5dp"-->
-                        <!--android:layout_height="20dp"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:text=","-->
-                        <!--android:textColor="@color/purple"-->
-                        <!--android:textSize="15dp"-->
-                        <!--android:textStyle="bold" />-->
+                <TextView
+                    android:id="@+id/arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="20dp"
+                    android:text=">"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/purple"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
-                    <!--<TextView-->
-                        <!--android:id="@+id/mnetwork"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="start|center"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Networks"-->
-                        <!--android:textColor="@color/purple"-->
-                        <!--android:textSize="15dp"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/arrow"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginBottom="5dp"-->
-                        <!--android:layout_marginEnd="5dp"-->
-                        <!--android:layout_marginStart="40dp"-->
-                        <!--android:text=">"-->
-                        <!--android:textColor="@color/purple"-->
-                        <!--android:textSize="20dp"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</LinearLayout>-->
-
-
-                <!--<android.support.v7.widget.CardView-->
-                <!--android:id="@+id/optioncard"-->
-                <!--android:layout_width="280dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="7dp"-->
-                <!--android:background="@drawable/buttob_border">-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/mcolor"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="start|center"-->
-                <!--android:layout_marginStart="40dp"-->
-                <!--android:gravity="center"-->
-                <!--android:text="Black "-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:textSize="17dp"-->
-                <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/coma1"-->
-                <!--android:layout_width="5dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_gravity="start|center"-->
-                <!--android:layout_marginStart="98dp"-->
-                <!--android:text=","-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:textSize="15dp"-->
-                <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/coma2"-->
-                <!--android:layout_width="5dp"-->
-                <!--android:layout_height="20dp"-->
-                <!--android:layout_gravity="start|center"-->
-                <!--android:layout_marginStart="165dp"-->
-                <!--android:text=","-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:textSize="15dp"-->
-                <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/mnetwork"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="start|center"-->
-                <!--android:layout_marginStart="175dp"-->
-                <!--android:gravity="center"-->
-                <!--android:text="LTE"-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:textSize="15dp"-->
-                <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/arrow"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="end|center_vertical"-->
-
-                <!--android:layout_marginEnd="5dp"-->
-                <!--android:text=">"-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:textSize="30dp"-->
-                <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                <!--android:id="@+id/mmemory"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="start|center"-->
-                <!--android:layout_marginStart="105dp"-->
-                <!--android:gravity="center"-->
-                <!--android:text="64 GB"-->
-                <!--android:textColor="@color/purple"-->
-                <!--android:textSize="15dp"-->
-                <!--android:textStyle="bold" />-->
-
-
-                <!--</android.support.v7.widget.CardView>-->
-
+            </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linearprice"
+                    android:layout_below="@+id/optioncard"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
                     android:background="@color/green"
                     android:orientation="horizontal">
 
@@ -276,22 +143,19 @@
                         android:id="@+id/crncytype"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginStart="120dp"
                         android:clickable="false"
                         android:gravity="center_vertical"
                         android:maxLines="1"
                         android:text="AED"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorWhite"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/pricetext1"
                         android:layout_width="wrap_content"
                         android:layout_height="35dp"
-                        android:layout_marginLeft="4dp"
                         android:layout_marginStart="10dp"
                         android:clickable="false"
                         android:gravity="center_vertical"
@@ -299,28 +163,38 @@
                         android:text="Price"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorWhite"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
 
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-
-
-
+            <!--<TextView-->
+                <!--android:id="@+id/moreoptiontxt"-->
+                <!--android:text="MoreOption+"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:textSize="20sp"-->
+                <!--android:padding="20dp"-->
+                <!--android:layout_below="@+id/linearprice"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/siterecycl"
-
-                android:layout_below="@+id/linear"
+                android:layout_below="@+id/linearprice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
 
 
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progressBarsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
 
 
             <TextView
@@ -331,7 +205,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:paddingTop="3dp"
-                android:text="Similar Products"
+                android:text="Related Products"
                 android:textColor="@color/colorBlack"
                 android:textSize="15dp" />
 
@@ -341,7 +215,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-
                 android:layout_below="@+id/similartext"
                 android:layout_marginTop="10dp">
 
@@ -350,6 +223,37 @@
             <ProgressBar
                 android:visibility="gone"
                 android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:id="@+id/mostsimilartext"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/recyclerviewsmlr"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="3dp"
+                android:text="Most Related Products"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerviewsmlrmost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/mostsimilartext"
+                android:layout_marginTop="10dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progressBarmost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
