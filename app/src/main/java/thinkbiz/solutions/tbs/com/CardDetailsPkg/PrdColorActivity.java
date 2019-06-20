@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -36,8 +37,10 @@ public class PrdColorActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ListView childListView;
     String ustring;
-
-    public static List<ColorModel> colorList = new ArrayList<>();
+    JSONArray jsonArray;
+    List<ColorModel> colorList = new ArrayList<>();
+    String JsnArray;
+    //ArrayList<String> colorList1 = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class PrdColorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prd_color);
 
         getSupportActionBar().setTitle("Filters");
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.addTab(tabLayout.newTab().setText("Options"));
@@ -60,12 +63,11 @@ public class PrdColorActivity extends AppCompatActivity {
 
         Log.e("responce",ustring);
         loadItemList();
-
     }
 
     private void loadItemList() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/getColor?pid=" +ustring ,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/compareData?pid="+ustring ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -73,28 +75,43 @@ public class PrdColorActivity extends AppCompatActivity {
                         Log.e("response", response);
 
                         try {
-                            JSONObject rootJsonObject = new JSONObject(response);
-                            //String  id = rootJsonObject.getString("category_id");
-                            //Log.e("Id", id);
+                            JSONObject jsonObject = new JSONObject(response);
+                            String prod_details_json = jsonObject.getString("prod_details_json");
+                            JSONObject jsonObject1= new JSONObject(prod_details_json);
+                            String prod_details_json1 = jsonObject1.getString("properties");
+                            JSONObject jsonObject2= new JSONObject(prod_details_json1);
+                            jsonArray= jsonObject2.getJSONArray("color");
+                           // JsnArray= String.valueOf(jsonArray);
+                           // Log.e("color", String.valueOf(jsonArray));
 
-                            JSONArray subCategoryArray = rootJsonObject.getJSONArray("color");
-                            Log.e("subCategoryArray", subCategoryArray.length() + "");
+//                            for (int i = 0; i < jsonArray.length(); i++) {
+//
+//                                try {
+//                                    JSONObject detailsObject = jsonArray.getJSONObject(i);
+//                                    colorList.add(detailsObject.toString());
+//                                }
+//                                catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
 
-                            for (int i = 0; i < subCategoryArray.length(); i++) {
+//                                JSONObject detailsObject = jsonArray.getJSONObject(i);
+//                                String varb= String.valueOf(detailsObject);
+//                                colorList.add(new ColorModel(
+//                                        detailsObject.optString(varb)
+//                                ));
 
-                                JSONObject detailsObject = subCategoryArray.getJSONObject(i);
-                                colorList.add(new ColorModel(
-                                        detailsObject.optString("color")
-                                ));
+                           // }
 
-                            }
+                        // Log.e("color", String.valueOf(colorList1));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        ColorAdapter adapter = new ColorAdapter(colorList, getApplicationContext());
-                        childListView.setAdapter(adapter);
+                        //ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, jsonArray);
+
+                        //ColorAdapter adapter = new ColorAdapter(JsnArray, getApplicationContext());
+                        //childListView.setAdapter(adapter);
 
                         childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

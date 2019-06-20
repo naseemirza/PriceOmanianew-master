@@ -41,7 +41,6 @@
 
             <TextView
                 android:id="@+id/brand"
-                android:text="Brand"
                 android:maxLines="2"
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"
@@ -71,7 +70,6 @@
 
             <TextView
                 android:id="@+id/ostype"
-                android:text="ostype"
                 android:maxLines="2"
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"
@@ -101,7 +99,6 @@
 
             <TextView
                 android:id="@+id/storage"
-                android:text="storage"
                 android:textSize="15sp"
                 android:maxLines="2"
                 android:layout_marginStart="20dp"
@@ -131,7 +128,6 @@
 
         <TextView
             android:id="@+id/memory"
-            android:text="ram"
             android:textSize="15sp"
             android:maxLines="2"
             android:layout_marginStart="20dp"
@@ -161,7 +157,6 @@
 
             <TextView
                 android:id="@+id/sim"
-                android:text="sim"
                 android:textSize="15sp"
                 android:maxLines="2"
                 android:layout_marginStart="20dp"
@@ -191,7 +186,6 @@
 
             <TextView
                 android:id="@+id/color"
-                android:text="color"
                 android:maxLines="2"
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"
@@ -221,7 +215,6 @@
 
             <TextView
                 android:id="@+id/display"
-                android:text="display"
                 android:textSize="15sp"
                 android:maxLines="2"
                 android:layout_marginStart="20dp"
@@ -251,7 +244,6 @@
 
             <TextView
                 android:id="@+id/network"
-                android:text="network"
                 android:maxLines="2"
                 android:textSize="15sp"
                 android:layout_marginStart="20dp"

@@ -78,9 +78,6 @@
         <activity android:name=".BottomBar.Activity2" />
         <activity android:name=".BottomBar.Activity3" />
         <activity android:name=".BottomBar.Activity4" />
-        <activity android:name=".CardDetailsPkg.ColorActivity" />
-        <activity android:name=".CardDetailsPkg.StorageActivity" />
-        <activity android:name=".CardDetailsPkg.NetworkActivity" />
         <activity
             android:name=".CategoryItems.GridActivity"
             android:parentActivityName=".CategoryItems.ChildActivity"
@@ -104,6 +101,9 @@
         <activity android:name=".CardDetailsPkg.PrdStorageActivity" />
         <activity android:name=".CardDetailsPkg.PrdNetwrkActivity" />
         <activity android:name=".MoreOptionsPkg.OptionsActivity" />
+        <activity android:name=".PriceChartActivity"
+            android:parentActivityName=".CardDetailsPkg.CardDetails">
+        </activity>
     </application>
 
 </manifest>

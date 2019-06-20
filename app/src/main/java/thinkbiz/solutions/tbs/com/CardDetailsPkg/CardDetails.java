@@ -31,6 +31,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -48,6 +49,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import thinkbiz.solutions.tbs.com.AllUrls;
 import thinkbiz.solutions.tbs.com.MoreOptionsPkg.OptionsActivity;
 import thinkbiz.solutions.tbs.com.Options.MoreOptionActivity;
+import thinkbiz.solutions.tbs.com.PriceChartActivity;
 import thinkbiz.solutions.tbs.com.R;
 
 import thinkbiz.solutions.tbs.com.MoreSites.CardModel;
@@ -224,6 +226,8 @@ public class CardDetails extends AppCompatActivity {
         String mprice, mcrncy, mimage;
         TextView brandtxt, ostxt,storagetxt, memorytxt,simtxt,colortxt,displaytxt,networktxt;
 
+        ImageButton ImgBtn;
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -252,9 +256,9 @@ public class CardDetails extends AppCompatActivity {
 
                 SharedPreferences pref = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 pid = pref.getString("usermessage", "");
-                mcrncy = pref.getString("currency", "");
-                mprice = pref.getString("price", "");
-                mimage = pref.getString("cardimage", "");
+               // mcrncy = pref.getString("currency", "");
+               // mprice = pref.getString("price", "");
+               // mimage = pref.getString("cardimage", "");
 
 
               //  PrdTextName.setText(prdname);
@@ -268,6 +272,8 @@ public class CardDetails extends AppCompatActivity {
 //                textViewprice.setText(mprice);
 //                textViewcurncy.setText(mcrncy);
 
+                //ImgBtn=(ImageButton)rootView.findViewById(R.id.chartbtn);
+
                 textViewcurncy = (TextView) rootView.findViewById(R.id.crncytype);
                 textViewprice = (TextView) rootView.findViewById(R.id.pricetext1);
                 imageView = (ImageView) rootView.findViewById(R.id.cardimg);
@@ -280,6 +286,7 @@ public class CardDetails extends AppCompatActivity {
                 Bundle b = intent.getExtras();
 
                 if (b != null) {
+
                     String color = (String) b.get("color");
                     textViewclr.setText(color);
                     String strg = (String) b.get("storage");
@@ -289,14 +296,21 @@ public class CardDetails extends AppCompatActivity {
 
                 }
 
-                Glide.with(getActivity())
-                        .load(mimage)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .fitCenter()
-                        .into(imageView);
+//                ImgBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        startActivity(new Intent(getActivity(), PriceChartActivity.class));
+//                    }
+//                });
 
-                textViewprice.setText(mprice);
-                textViewcurncy.setText(mcrncy);
+//                Glide.with(getActivity())
+//                        .load(mimage)
+//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                        .fitCenter()
+//                        .into(imageView);
+//
+//                textViewprice.setText(mprice);
+//                textViewcurncy.setText(mcrncy);
 
 
                 //moreinfo
@@ -346,6 +360,8 @@ public class CardDetails extends AppCompatActivity {
 //                    }
 //                });
 
+                PrdDetsils();
+
                 dialogbutton = (LinearLayout) rootView.findViewById(R.id.optioncard);
                 dialogbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -361,7 +377,7 @@ public class CardDetails extends AppCompatActivity {
                         edit.putString("storag",storage);
                         edit.putString("netwk",network);
 
-                        edit.commit();
+                        edit.apply();
                         Intent intent = new Intent(getActivity(), DialogActivity.class);
 
                         startActivity(intent);
@@ -385,19 +401,17 @@ public class CardDetails extends AppCompatActivity {
 
                 mExampleList1 = new ArrayList<>();
                 mRequestQueue1 = Volley.newRequestQueue(getActivity());
-
                 mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
                 mRecyclerview1.setNestedScrollingEnabled(false);
                 mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 mRecyclerview1.setHasFixedSize(true);
-                parseJSON1();
 
+                parseJSON1();
 
                 // most similar product
 
                 mExampleList2 = new ArrayList<>();
                 mRequestQueue2 = Volley.newRequestQueue(getActivity());
-
                 mRecyclerview2 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlrmost);
                 mRecyclerview2.setNestedScrollingEnabled(false);
                 mRecyclerview2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -424,23 +438,22 @@ public class CardDetails extends AppCompatActivity {
 
                 mExampleList1 = new ArrayList<>();
                 mRequestQueue1 = Volley.newRequestQueue(getActivity());
-
                 mRecyclerview1 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlr);
                 mRecyclerview1.setNestedScrollingEnabled(false);
                 mRecyclerview1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 mRecyclerview1.setHasFixedSize(true);
-                parseJSON1();
 
+                parseJSON1();
 
                 // most similar product
 
                 mExampleList2 = new ArrayList<>();
                 mRequestQueue2 = Volley.newRequestQueue(getActivity());
-
                 mRecyclerview2 = (RecyclerView) rootView.findViewById(R.id.recyclerviewsmlrmost);
                 mRecyclerview2.setNestedScrollingEnabled(false);
                 mRecyclerview2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
                 mRecyclerview2.setHasFixedSize(true);
+
                 parseJSON2();
 
                 return rootView;
@@ -574,6 +587,8 @@ public class CardDetails extends AppCompatActivity {
               }
         }
 
+
+
         private class MyWebViewClient extends WebViewClient {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -601,35 +616,82 @@ public class CardDetails extends AppCompatActivity {
             }
         }
 
-        //sites name in details page
 
-        private void parseJSON() {
+        private void PrdDetsils() {
 
-           // final ProgressBar progressBar = (ProgressBar)findViewById(R.id.progressBarsite);
-           // progressBar.setVisibility(View.VISIBLE);
+            //Log.e("resp",pid);
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/compareData_test?pid="+pid,
+            String url="https://ae.priceomania.com/mobileappwebservices/compareData?pid="+pid;
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
-                           // progressBar.setVisibility(View.INVISIBLE);
-                            //Log.e("responce",response );
-
                             try {
                                 JSONObject rootJsonObject = new JSONObject(response);
-                               // JSONArray subCategoryArray = rootJsonObject.getJSONArray("prod_details_json");
-                               // Log.e("subCategoryArray", subCategoryArray.length() + "");
+                                JSONArray subCategoryArray = rootJsonObject.getJSONArray("PRODUCTDETAIL");
 
-                                JSONObject data = rootJsonObject.getJSONObject("prod_details_json");
+                                for (int i = 0; i < subCategoryArray.length(); i++) {
+                                    JSONObject obj = subCategoryArray.getJSONObject(i);
 
-                                JSONArray current_condition = data.getJSONArray("cmp_store");
+                                    String image=obj.getString("product_image");
+                                    String currency=obj.getString("currency_type");
+                                    String price=obj.getString("price");
 
-                                for (int i = 0; i < current_condition.length(); i++) {
-                                    JSONObject object = current_condition.getJSONObject(i);
+                                    String image_path = "http://ae.priceomania.com/backend/ProductImage/"+image;
 
+                                    // Log.e("img",image_path);
+                                    Glide.with(getActivity())
+                                            .load(image_path)
+                                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                            .fitCenter()
+                                            .into(imageView);
+
+                                    textViewcurncy.setText(currency);
+                                    textViewprice.setText(price);
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            Log.e("TAg",error.getMessage());
+                        }
+                    });
+
+            RequestQueue queue2 = Volley.newRequestQueue(getActivity());
+            queue2.add(stringRequest);
+        }
+
+
+        //sites name in details page
+
+        private void parseJSON() {
+
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ae.priceomania.com/mobileappwebservices/compareData?pid="+pid,
+                    new Response.Listener<String>() {
+                        @Override
+
+                        public void onResponse(String response) {
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String prod_details_json = jsonObject.getString("prod_details_json");
+                                JSONObject jsonObject1= new JSONObject(prod_details_json);
+                                JSONArray jsonArray= jsonObject1.getJSONArray("cmp_store");
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject object = jsonArray.getJSONObject(i);
                                      websitid=object.getString("website_id");
                                     //Log.e("wid",websitid);
+
+                                    //if (websitid!=object.getString("website_id"))
 
                                     mExampleList.add(new CardModel(object.optString("id"),
                                             object.optString("product_name"),
@@ -638,21 +700,17 @@ public class CardDetails extends AppCompatActivity {
                                             object.optString("currency_type"),
                                             object.optString("price"),
                                             object.optString("website_url")));
-
                                 }
-                              // if (!websitid.equalsIgnoreCase(websitid))
-                               // Log.e("rootJsonArray", String.valueOf(mExampleList));
+                                //if (mExampleList.contains("website_id"))
 
                                 mExampleAdapter = new CustomAdapterSite(getActivity(), mExampleList);
                                 sRecyclerview.setAdapter(mExampleAdapter);
                                 mExampleAdapter.notifyDataSetChanged();
                                 sRecyclerview.setHasFixedSize(true);
 
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
                         }
                     },
                     new Response.ErrorListener() {
@@ -666,7 +724,6 @@ public class CardDetails extends AppCompatActivity {
             mRequestQueue = Volley.newRequestQueue(getActivity());
             mRequestQueue.add(stringRequest);
         }
-
 
         //similar product
 
@@ -700,7 +757,6 @@ public class CardDetails extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
                         }
                     },
                     new Response.ErrorListener() {
@@ -729,7 +785,6 @@ public class CardDetails extends AppCompatActivity {
 
                                 for (int i = 0; i < subCategoryArray.length(); i++) {
                                     JSONObject object = subCategoryArray.getJSONObject(i);
-
                                     mExampleList2.add(new CardDetailsApp(object.optString("id"),
                                             object.optString("product_image"),
                                             object.optString("model_name"),
@@ -737,6 +792,7 @@ public class CardDetails extends AppCompatActivity {
                                             object.optString("price"),
                                             object.optString("store_count")));
                                 }
+
                                 Log.e("rootJsonArray",mExampleList2.size()+"");
 
                                 mExampleAdapter2 = new CardAdapter(getActivity(), mExampleList2);
@@ -747,7 +803,6 @@ public class CardDetails extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
                         }
                     },
                     new Response.ErrorListener() {
@@ -764,7 +819,7 @@ public class CardDetails extends AppCompatActivity {
 
         private void SpeciData() {
 
-            Log.e("resp",pid);
+            //Log.e("resp",pid);
 
             String url="https://ae.priceomania.com/mobileappwebservices/getFeatures?models_id="+pid;
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

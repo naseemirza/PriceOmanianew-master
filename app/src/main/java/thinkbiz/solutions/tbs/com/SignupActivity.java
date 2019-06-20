@@ -56,7 +56,6 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private boolean isValidate()
@@ -85,7 +84,6 @@ public class SignupActivity extends AppCompatActivity {
             editTextPhn.requestFocus();
             return false;
         }
-
 
         if (editTextPass.getText().toString().length() == 0) {
             editTextPass.setError("Password not entered");
@@ -131,6 +129,7 @@ public class SignupActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.e("resp",response);
                         progressDialog.dismiss();
+
                         try {
                             JSONObject obj = new JSONObject(response);
                             String success= obj.getString("s");

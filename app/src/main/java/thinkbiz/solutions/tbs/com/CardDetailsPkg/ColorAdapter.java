@@ -20,7 +20,7 @@ public class ColorAdapter extends ArrayAdapter<ColorModel> {
     private List<ColorModel> colorList;
     private Context mCtx;
 
-    public ColorAdapter(List<ColorModel> colorList, Context mCtx) {
+    ColorAdapter(List<ColorModel> colorList, Context mCtx) {
         super(mCtx, R.layout.colorlist, colorList);
         this.colorList = colorList;
         this.mCtx = mCtx;

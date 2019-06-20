@@ -35,8 +35,7 @@
                     android:id="@+id/cardimg"
                     android:layout_width="150dp"
                     android:layout_height="200dp"
-                    android:scaleType="center"
-                    android:src="@drawable/apple7plus" />
+                    android:scaleType="center" />
 
 
             </LinearLayout>
@@ -165,6 +164,15 @@
                         android:textColor="@color/colorWhite"
                         android:textSize="20sp" />
 
+                    <ImageButton
+                        android:id="@+id/chartbtn"
+                        android:background="@color/green"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_show_chart_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
